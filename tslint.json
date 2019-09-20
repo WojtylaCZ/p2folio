@@ -1,0 +1,17 @@
+{
+    "extends": ["tslint:recommended", "tslint-config-prettier"],
+    "rules": {
+      "no-console": false,
+      "object-literal-sort-keys": false,
+      "ordered-imports": {
+        "options": {
+          "import-sources-order": "case-insensitive",
+          "named-imports-order": "case-insensitive",
+          "grouped-imports": true
+        }
+      },
+      "no-duplicate-imports": true,
+      "no-null-keyword": true
+    }
+  }
+  
