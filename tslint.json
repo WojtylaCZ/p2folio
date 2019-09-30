@@ -1,17 +1,19 @@
 {
-    "extends": ["tslint:recommended", "tslint-config-prettier"],
-    "rules": {
-      "no-console": false,
-      "object-literal-sort-keys": false,
-      "ordered-imports": {
-        "options": {
-          "import-sources-order": "case-insensitive",
-          "named-imports-order": "case-insensitive",
-          "grouped-imports": true
-        }
-      },
-      "no-duplicate-imports": true,
-      "no-null-keyword": true
-    }
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "jsx-wrap-multiline": false,
+    "no-console": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": {
+      "options": {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive",
+        "grouped-imports": true
+      }
+    },
+    "no-duplicate-imports": true,
+    "no-null-keyword": true,
+    "jsx-no-lambda": false,
+    "interface-over-type-literal": false
   }
-  
+}
