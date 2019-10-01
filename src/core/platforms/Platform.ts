@@ -1,3 +1,5 @@
 export abstract class Platform {
-  protected abstract rawFile: ArrayBuffer;
+  protected transactionLog: any[] = [];
+
+  protected abstract processASFile(rawFile: ArrayBuffer): void;
 }

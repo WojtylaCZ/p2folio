@@ -28,17 +28,19 @@ class App extends React.Component<{}, AppState> {
 
     switch (platformType) {
       case SupportedPlatformTypes.MINTOS:
-        platformData = new MintosPlatform(rawFile);
+        platformData = new MintosPlatform();
         break;
       case SupportedPlatformTypes.TWINO:
-        platformData = new TwinoPlatform(rawFile);
+        platformData = new TwinoPlatform();
         break;
       case SupportedPlatformTypes.ZONKY:
-        platformData = new ZonkyPlatform(rawFile);
+        platformData = new ZonkyPlatform();
         break;
       default:
         throw Error('unknown platform');
     }
+
+    platformData.processASFile(rawFile)
 
     this.setState(prevState => ({
       portfolioPlatformDataArray: [...prevState.portfolioPlatformDataArray, platformData]
