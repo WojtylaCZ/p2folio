@@ -1,10 +1,12 @@
+import moment from 'moment';
 import xlsx from 'xlsx';
 
 import { FileTypes } from '../../common/enums';
 import { getFirstWorkSheetFromRawFile } from '../../common/utils';
 
-import { SupportedPlatformTypes } from './models';
+import { ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';
+import { getNewTransactionFactory } from './utils';
 
 enum MintosASFileColumnHeadersDefs {
   TransactionId = 'TransactionId',
@@ -34,7 +36,7 @@ export class MintosPlatform extends Platform {
     MintosASFileColumnHeadersDefs.Currency
   ];
 
-  public processASFile(rawFile: ArrayBuffer) {
+  public parseASFile(rawFile: ArrayBuffer) {
     const firstSheet = getFirstWorkSheetFromRawFile(rawFile);
 
     const transactionLog: any[] = xlsx.utils.sheet_to_json(firstSheet, {
@@ -45,5 +47,28 @@ export class MintosPlatform extends Platform {
       range: 1
     });
     this.transactionLog = transactionLog;
+  }
+
+  protected *getTransaction(): IterableIterator<ITransaction<{}, {}, {}>> {
+    for (const transactionRecord of this.transactionLog) {
+      const processingDate = moment(
+        transactionRecord[MintosASFileColumnHeadersDefs.Date],
+        'YYYY-MM-DD HH:mm:ss'
+      );
+      const transaction = getNewTransactionFactory(processingDate);
+
+      yield transaction;
+    }
+  }
+
+  protected getNewMonthResultFactory() {
+    return {
+      deposit: {},
+      extraReceived: {},
+      feesPaid: {},
+      interestReceived: {},
+      principalReceived: {},
+      withdrawal: {}
+    };
   }
 }

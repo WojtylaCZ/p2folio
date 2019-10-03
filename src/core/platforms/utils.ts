@@ -1,5 +1,7 @@
+import { Moment } from 'moment';
+
 import { MintosPlatform } from './MintosPlatform';
-import { SupportedPlatformTypes } from './models';
+import { ITransaction, SupportedPlatformTypes } from './models';
 import { TwinoPlatform } from './TwinoPlatform';
 import { ZonkyPlatform } from './ZonkyPlatform';
 
@@ -13,4 +15,20 @@ export function detectPlatform(filename: string): SupportedPlatformTypes {
   } else {
     throw new Error('unknown file');
   }
+}
+
+export function getNewTransactionFactory(
+  processingDate: Moment
+): ITransaction<any, any, any> {
+  return {
+    processingDate,
+    result: {
+      deposit: {},
+      extraReceived: {},
+      feesPaid: {},
+      interestReceived: {},
+      principalReceived: {},
+      withdrawal: {}
+    }
+  };
 }

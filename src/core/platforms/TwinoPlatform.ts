@@ -1,10 +1,13 @@
+import Dinero from 'dinero.js';
+import moment from 'moment';
 import xlsx from 'xlsx';
 
 import { FileTypes } from '../../common/enums';
 import { getFirstWorkSheetFromRawFile } from '../../common/utils';
 
-import { SupportedPlatformTypes } from './models';
+import { ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';
+import { getNewTransactionFactory } from './utils';
 
 enum TwinoASFileColumnHeadersDefs {
   Date = 'ProcessingDate',
@@ -36,7 +39,7 @@ export class TwinoPlatform extends Platform {
     TwinoASFileColumnHeadersDefs.ProcessingAmount
   ];
 
-  public processASFile(rawFile: ArrayBuffer) {
+  public parseASFile(rawFile: ArrayBuffer) {
     const firstSheet = getFirstWorkSheetFromRawFile(rawFile);
 
     const transactionLog: any[] = xlsx.utils.sheet_to_json(firstSheet, {
@@ -47,5 +50,28 @@ export class TwinoPlatform extends Platform {
       range: 3
     });
     this.transactionLog = transactionLog.reverse();
+  }
+
+  protected *getTransaction(): IterableIterator<ITransaction<{}, {}, {}>> {
+    for (const transactionRecord of this.transactionLog) {
+      const processingDate = moment(
+        transactionRecord[TwinoASFileColumnHeadersDefs.Date],
+        'MM/DD/YY HH:mm'
+      );
+      const transaction = getNewTransactionFactory(processingDate);
+
+      yield transaction;
+    }
+  }
+
+  protected getNewMonthResultFactory() {
+    return {
+      deposit: {},
+      extraReceived: {},
+      feesPaid: {},
+      interestReceived: {},
+      principalReceived: {},
+      withdrawal: {}
+    };
   }
 }

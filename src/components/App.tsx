@@ -40,7 +40,8 @@ class App extends React.Component<{}, AppState> {
         throw Error('unknown platform');
     }
 
-    platformData.processASFile(rawFile)
+    platformData.parseASFile(rawFile)
+    platformData.processTransactions()
 
     this.setState(prevState => ({
       portfolioPlatformDataArray: [...prevState.portfolioPlatformDataArray, platformData]
