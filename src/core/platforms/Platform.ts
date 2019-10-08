@@ -15,10 +15,7 @@ export abstract class Platform {
 
       if (dateTransaction.isAfter(processingMonth, 'month')) {
         const dateArray = dateTransaction.toArray();
-        const newMonthMoment = moment(
-          `${dateArray[0]}-${dateArray[1] + 1}-01`,
-          'YYYY-MM-DD'
-        );
+        const newMonthMoment = moment(`${dateArray[0]}-${dateArray[1] + 1}-01`, 'YYYY-MM-DD');
 
         this.monthlyResults.unshift({
           month: newMonthMoment,
@@ -32,8 +29,6 @@ export abstract class Platform {
   }
 
   protected abstract parseASFile(rawFile: ArrayBuffer): void;
-  protected abstract getTransaction(): IterableIterator<
-    ITransaction<any, any, any>
-  >;
+  protected abstract getTransaction(): IterableIterator<ITransaction<any, any, any>>;
   protected abstract getNewMonthResultFactory(): IBaseResult<any, any, any>;
 }

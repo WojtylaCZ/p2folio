@@ -21,8 +21,7 @@ export class MintosPlatform extends Platform {
   public static readonly platform = SupportedPlatformTypes.MINTOS;
   public static isPlatformFileValid(fullFilename: string): boolean {
     return (
-      fullFilename.includes(MintosPlatform.platformFilenameSubstring) &&
-      fullFilename.endsWith(MintosPlatform.platformFileType)
+      fullFilename.includes(MintosPlatform.platformFilenameSubstring) && fullFilename.endsWith(MintosPlatform.platformFileType)
     );
   }
   private static readonly platformFilenameSubstring = 'account-statement';
@@ -51,10 +50,7 @@ export class MintosPlatform extends Platform {
 
   protected *getTransaction(): IterableIterator<ITransaction<{}, {}, {}>> {
     for (const transactionRecord of this.transactionLog) {
-      const processingDate = moment(
-        transactionRecord[MintosASFileColumnHeadersDefs.Date],
-        'YYYY-MM-DD HH:mm:ss'
-      );
+      const processingDate = moment(transactionRecord[MintosASFileColumnHeadersDefs.Date], 'YYYY-MM-DD HH:mm:ss');
       const transaction = getNewTransactionFactory(processingDate);
 
       yield transaction;

@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { loadSelectedFile } from "../common/utils";
+import { loadSelectedFile } from '../common/utils';
 
-import { RawFileUploadedProps } from "./App";
+import { RawFileUploadedProps } from './App';
 
 class UploadFilesInput extends React.Component<RawFileUploadedProps> {
   public onLoadHandler(event: any, filename: string) {

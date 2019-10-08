@@ -1,4 +1,3 @@
-import Dinero from 'dinero.js';
 import moment from 'moment';
 import xlsx from 'xlsx';
 
@@ -23,8 +22,7 @@ export class TwinoPlatform extends Platform {
 
   public static isPlatformFileValid(fullFilename: string): boolean {
     return (
-      fullFilename.startsWith(TwinoPlatform.platformFilenameSubstring) &&
-      fullFilename.endsWith(TwinoPlatform.platformFileType)
+      fullFilename.startsWith(TwinoPlatform.platformFilenameSubstring) && fullFilename.endsWith(TwinoPlatform.platformFileType)
     );
   }
 
@@ -54,10 +52,7 @@ export class TwinoPlatform extends Platform {
 
   protected *getTransaction(): IterableIterator<ITransaction<{}, {}, {}>> {
     for (const transactionRecord of this.transactionLog) {
-      const processingDate = moment(
-        transactionRecord[TwinoASFileColumnHeadersDefs.Date],
-        'MM/DD/YY HH:mm'
-      );
+      const processingDate = moment(transactionRecord[TwinoASFileColumnHeadersDefs.Date], 'MM/DD/YY HH:mm');
       const transaction = getNewTransactionFactory(processingDate);
 
       yield transaction;

@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "prettier": "prettier --write \"./**/*.{js,ts,tsx,json,md}\" --ignore-path \"./.gitignore\"",
+    "prettier": "prettier --config ./prettierrc.json --write \"./**/*.{js,ts,tsx,json,md}\" --ignore-path \"./.gitignore\"",
     "lint": "tslint --fix --project ."
   },
   "husky": {
@@ -41,12 +41,12 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "tslint --fix --project . ",
+    "*.{ts,tsx}": [
+      "tslint",
       "git add"
     ],
-    "*.{js,ts,json,md}": [
-      "prettier --single-quote --write",
+    "*.{js,ts,tsx,json,md}": [
+      "prettier",
       "git add"
     ]
   },

@@ -17,9 +17,7 @@ export function detectPlatform(filename: string): SupportedPlatformTypes {
   }
 }
 
-export function getNewTransactionFactory(
-  processingDate: Moment
-): ITransaction<any, any, any> {
+export function getNewTransactionFactory(processingDate: Moment): ITransaction<any, any, any> {
   return {
     processingDate,
     result: {

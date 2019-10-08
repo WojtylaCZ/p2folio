@@ -32,8 +32,7 @@ export class ZonkyPlatform extends Platform {
 
   public static isPlatformFileValid(fullFilename: string): boolean {
     return (
-      fullFilename.includes(ZonkyPlatform.platformFilenameSubstring) &&
-      fullFilename.endsWith(ZonkyPlatform.platformFileType)
+      fullFilename.includes(ZonkyPlatform.platformFilenameSubstring) && fullFilename.endsWith(ZonkyPlatform.platformFileType)
     );
   }
 
@@ -61,20 +60,12 @@ export class ZonkyPlatform extends Platform {
     this.transactionLog = transactionLog;
   }
 
-  public *getTransaction(): IterableIterator<
-    ITransaction<{}, IZonkyInterestReceived, IZonkyFeesPaid>
-  > {
+  public *getTransaction(): IterableIterator<ITransaction<{}, IZonkyInterestReceived, IZonkyFeesPaid>> {
     for (const transactionRecord of this.transactionLog) {
-      const processingDate = moment(
-        transactionRecord[ZonkyASFileColumnHeadersDefs.Date],
-        'DD.MM.YYYY'
-      );
+      const processingDate = moment(transactionRecord[ZonkyASFileColumnHeadersDefs.Date], 'DD.MM.YYYY');
       const transaction = getNewTransactionFactory(processingDate);
 
-      const amount = this.getAmount(
-        transactionRecord[ZonkyASFileColumnHeadersDefs.ProcessingAmount],
-        Currency.CZK
-      );
+      const amount = this.getAmount(transactionRecord[ZonkyASFileColumnHeadersDefs.ProcessingAmount], Currency.CZK);
 
       switch (transactionRecord[ZonkyASFileColumnHeadersDefs.TransactionType]) {
         case 'Poplatek za investování':
@@ -114,9 +105,7 @@ export class ZonkyPlatform extends Platform {
           );
 
           const penalty = amount.subtract(
-            transaction.result.principalReceived.principalReceived.add(
-              transaction.result.interestReceived.interestReceived
-            )
+            transaction.result.principalReceived.principalReceived.add(transaction.result.interestReceived.interestReceived)
           );
           if (!penalty.isZero()) {
             transaction.result.interestReceived.penaltyReceived = penalty;
@@ -148,9 +137,7 @@ export class ZonkyPlatform extends Platform {
 
   private getAmount(rawAmount: string, currency: Currency): Dinero.Dinero {
     const amountPrecision = rawAmount.length - (rawAmount.indexOf('.') + 1);
-    const intAmount = Math.abs(
-      parseInt(rawAmount.replace(/,/g, '').replace(/\./g, ''), 10)
-    );
+    const intAmount = Math.abs(parseInt(rawAmount.replace(/,/g, '').replace(/\./g, ''), 10));
     return Dinero({
       amount: intAmount,
       precision: amountPrecision,
@@ -158,15 +145,9 @@ export class ZonkyPlatform extends Platform {
     });
   }
 
-  private getPrincipalReceived(
-    rawPrincipalReceived: string,
-    currency: Currency
-  ): Dinero.Dinero {
-    const principalReceivedPrecision =
-      rawPrincipalReceived.length - (rawPrincipalReceived.indexOf('.') + 1);
-    const principalReceivedInt = Math.abs(
-      parseInt(rawPrincipalReceived.replace(/,/g, '').replace(/\./g, ''), 10)
-    );
+  private getPrincipalReceived(rawPrincipalReceived: string, currency: Currency): Dinero.Dinero {
+    const principalReceivedPrecision = rawPrincipalReceived.length - (rawPrincipalReceived.indexOf('.') + 1);
+    const principalReceivedInt = Math.abs(parseInt(rawPrincipalReceived.replace(/,/g, '').replace(/\./g, ''), 10));
     return Dinero({
       amount: principalReceivedInt,
       precision: principalReceivedPrecision,
@@ -174,15 +155,9 @@ export class ZonkyPlatform extends Platform {
     });
   }
 
-  private getInterestReceived(
-    rawPrincipalReceived: string,
-    currency: Currency
-  ): Dinero.Dinero {
-    const principalReceivedPrecision =
-      rawPrincipalReceived.length - (rawPrincipalReceived.indexOf('.') + 1);
-    const principalReceivedInt = Math.abs(
-      parseInt(rawPrincipalReceived.replace(/,/g, '').replace(/\./g, ''), 10)
-    );
+  private getInterestReceived(rawPrincipalReceived: string, currency: Currency): Dinero.Dinero {
+    const principalReceivedPrecision = rawPrincipalReceived.length - (rawPrincipalReceived.indexOf('.') + 1);
+    const principalReceivedInt = Math.abs(parseInt(rawPrincipalReceived.replace(/,/g, '').replace(/\./g, ''), 10));
     return Dinero({
       amount: principalReceivedInt,
       precision: principalReceivedPrecision,

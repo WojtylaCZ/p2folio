@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { loadSelectedFile } from "../common/utils";
+import { loadSelectedFile } from '../common/utils';
 
-import { RawFileUploadedProps } from "./App";
+import { RawFileUploadedProps } from './App';
 
 class DragAndDropFilesInput extends React.Component<RawFileUploadedProps> {
   public onLoadHandler(event: any, filename: string) {
@@ -12,7 +12,7 @@ class DragAndDropFilesInput extends React.Component<RawFileUploadedProps> {
   public handleDragOver(event: any) {
     event.stopPropagation();
     event.preventDefault();
-    event.dataTransfer.dropEffect = "copy";
+    event.dataTransfer.dropEffect = 'copy';
   }
 
   public handleFileSelect(event: any) {
