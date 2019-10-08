@@ -18,11 +18,11 @@ enum ZonkyASFileColumnHeadersDefs {
   PrincipalReceived = 'PrincipalReceived'
 }
 
-interface IZonkyFeesPaid {
+export interface IZonkyFeesPaid {
   plaformFeePaid?: Dinero.Dinero;
   secondaryMarketFeePaid?: Dinero.Dinero;
 }
-interface IZonkyInterestReceived {
+export interface IZonkyInterestReceived {
   interestReceived?: Dinero.Dinero;
   penaltyReceived?: Dinero.Dinero;
 }
@@ -46,6 +46,8 @@ export class ZonkyPlatform extends Platform {
     ZonkyASFileColumnHeadersDefs.PrincipalReceived,
     ZonkyASFileColumnHeadersDefs.InterestReceived
   ];
+
+  public currency = Currency.CZK;
 
   public parseASFile(rawFile: ArrayBuffer) {
     const firstSheet = getFirstWorkSheetFromRawFile(rawFile);
@@ -113,25 +115,26 @@ export class ZonkyPlatform extends Platform {
 
           break;
       }
-
       yield transaction;
     }
   }
 
-  protected getNewMonthResultFactory() {
+  protected getNewBaseResultFactory() {
     return {
-      deposit: { deposit: Dinero({ currency: 'CZK' }) },
+      deposit: { deposit: Dinero({ currency: this.currency }) },
       extraReceived: {},
       feesPaid: {
-        plaformFeePaid: Dinero({ currency: 'CZK' }),
-        secondaryMarketFeePaid: Dinero({ currency: 'CZK' })
+        plaformFeePaid: Dinero({ currency: this.currency }),
+        secondaryMarketFeePaid: Dinero({ currency: this.currency })
       },
       interestReceived: {
-        interestReceived: Dinero({ currency: 'CZK' }),
-        penaltyReceived: Dinero({ currency: 'CZK' })
+        interestReceived: Dinero({ currency: this.currency }),
+        penaltyReceived: Dinero({ currency: this.currency })
       },
-      principalReceived: { principalReceived: Dinero({ currency: 'CZK' }) },
-      withdrawal: { withdrawal: Dinero({ currency: 'CZK' }) }
+      principalReceived: {
+        principalReceived: Dinero({ currency: this.currency })
+      },
+      withdrawal: { withdrawal: Dinero({ currency: this.currency }) }
     };
   }
 

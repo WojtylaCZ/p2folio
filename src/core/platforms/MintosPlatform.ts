@@ -1,7 +1,7 @@
 import moment from 'moment';
 import xlsx from 'xlsx';
 
-import { FileTypes } from '../../common/enums';
+import { Currency, FileTypes } from '../../common/enums';
 import { getFirstWorkSheetFromRawFile } from '../../common/utils';
 
 import { ITransaction, SupportedPlatformTypes } from './models';
@@ -35,6 +35,8 @@ export class MintosPlatform extends Platform {
     MintosASFileColumnHeadersDefs.Currency
   ];
 
+  public currency = Currency.EUR;
+
   public parseASFile(rawFile: ArrayBuffer) {
     const firstSheet = getFirstWorkSheetFromRawFile(rawFile);
 
@@ -57,7 +59,7 @@ export class MintosPlatform extends Platform {
     }
   }
 
-  protected getNewMonthResultFactory() {
+  protected getNewBaseResultFactory() {
     return {
       deposit: {},
       extraReceived: {},
