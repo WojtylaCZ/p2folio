@@ -42,7 +42,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "tslint",
+      "lint",
       "git add"
     ],
     "*.{js,ts,tsx,json,md}": [

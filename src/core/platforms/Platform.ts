@@ -42,9 +42,7 @@ export abstract class Platform {
   }
 
   public getPlatformTotals() {
-    if (this.platformTotals) {
-      return this.platformTotals;
-    } else {
+    if (!this.platformTotals) {
       const totals = this.getNewBaseResultFactory();
       for (const month of this.monthlyResults) {
         for (const [transactionType, value] of Object.entries<any>(month.result)) {
