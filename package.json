@@ -42,11 +42,11 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "lint",
+      "tslint --fix --project .",
       "git add"
     ],
     "*.{js,ts,tsx,json,md}": [
-      "prettier",
+      "prettier --config ./prettierrc.json --write \"./**/*.{js,ts,tsx,json,md}\" --ignore-path \"./.gitignore\"",
       "git add"
     ]
   },
