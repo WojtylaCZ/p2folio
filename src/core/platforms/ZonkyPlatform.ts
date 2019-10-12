@@ -10,12 +10,12 @@ import { Platform } from './Platform';
 import { getNewTransactionFactory } from './utils';
 
 enum ZonkyASFileColumnHeadersDefs {
-  Date = 'ProcessingDate',
-  Direction = 'Direction',
-  TransactionType = 'TransactionType',
-  ProcessingAmount = 'ProcessingAmount',
-  InterestReceived = 'InterestReceived',
-  PrincipalReceived = 'PrincipalReceived'
+  Date = 'Datum',
+  Direction = 'Příjem / Výdaj',
+  TransactionType = 'Typ transakce',
+  ProcessingAmount = 'Částka',
+  InterestReceived = 'Jistina',
+  PrincipalReceived = 'Úrok'
 }
 
 export interface IZonkyFeesPaid {
@@ -57,8 +57,20 @@ export class ZonkyPlatform extends Platform {
       raw: false,
       blankrows: false,
       defval: 0.0,
-      range: 9
+      range: 4
     });
+
+    let headerNotFound = true;
+    for (let rowNumber = 0; rowNumber < 15; rowNumber++) {
+      if (transactionLog[rowNumber][ZonkyASFileColumnHeadersDefs.Date] === ZonkyASFileColumnHeadersDefs.Date) {
+        transactionLog.splice(0, rowNumber + 1);
+        headerNotFound = false;
+        break;
+      }
+    }
+    if (headerNotFound) {
+      throw Error('Data header not found');
+    }
     this.transactionLog = transactionLog;
   }
 
