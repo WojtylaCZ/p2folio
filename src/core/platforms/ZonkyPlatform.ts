@@ -74,7 +74,9 @@ export class ZonkyPlatform extends Platform {
     this.transactionLog = transactionLog;
   }
 
-  public *getTransaction(): IterableIterator<ITransaction<{}, IZonkyInterestReceived, IZonkyFeesPaid, IGeneralDeposit, IGeneralWithdrawal>> {
+  public *getTransaction(): IterableIterator<
+    ITransaction<{}, IZonkyInterestReceived, IZonkyFeesPaid, IGeneralDeposit, IGeneralWithdrawal>
+  > {
     for (const transactionRecord of this.transactionLog) {
       const processingDate = moment(transactionRecord[ZonkyASFileColumnHeadersDefs.Date], 'DD.MM.YYYY');
       const transaction = getNewTransactionFactory(processingDate);

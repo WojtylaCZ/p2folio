@@ -55,6 +55,9 @@ class App extends React.Component<{}, AppState> {
     return (
       <div>
         <div>
+          <h2> P2folio - early aplha version </h2>
+          <h4>There is no backend for this service, all data is stored only in your browser. (Except analytics for web usage)</h4>
+          When you refresh the page, all data is lost.
           <ul>
             <li> Pro Zonky, stahnete vypis z penezenky a naimportujte jej sem.</li>
             <li>
