@@ -59,11 +59,16 @@ class App extends React.Component<{}, AppState> {
           <h4>There is no backend for this service, all data is stored only in your browser. (Except analytics for web usage)</h4>
           When you refresh the page, all data is lost.
           <ul>
-            <li> Pro Zonky, stahnete vypis z penezenky a naimportujte jej sem.</li>
+            <li> Pro Zonky.cz, stahnete vypis z penezenky a naimportujte jej sem.</li>
             <li>
-              For Mintos, go to Account Statement tab in your account, for Start Date filter put there some day very long time ago
-              (eg.g 11.12.2013), hit Search. Below a first table, there is button Download Selected List. Download the file and
-              import that file here.
+              For Mintos.com, go to Account Statement tab in your account, for Start Date filter put there some day very long time
+              ago (eg.g 11.12.2013), hit Search. Below a first table, there is button Download Selected List. Download the file
+              and import that file here.
+            </li>
+            <li>
+              For Twino.eu, log in to your account, go to My Investment tab, then Account Statement and for Start Date filter put
+              there some day very long time ago (eg.g 11.12.2013) and wait for data to load. There is a button Download. Download
+              the file and import that file here.
             </li>
           </ul>
           <UploadFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />

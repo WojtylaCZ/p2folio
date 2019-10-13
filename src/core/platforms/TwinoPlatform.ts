@@ -1,20 +1,26 @@
+import Dinero from 'dinero.js';
 import moment from 'moment';
 import xlsx from 'xlsx';
 
 import { Currency, FileTypes } from '../../common/enums';
 import { getFirstWorkSheetFromRawFile } from '../../common/utils';
 
-import { ITransaction, SupportedPlatformTypes } from './models';
+import { IGeneralDeposit, IGeneralWithdrawal, ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';
 import { getNewTransactionFactory } from './utils';
 
 enum TwinoASFileColumnHeadersDefs {
-  Date = 'ProcessingDate',
-  TransactionId = 'TransactionId',
-  TransactionType = 'TransactionType',
-  PaymentType = 'PaymentType',
-  LoanId = 'LoanId',
-  ProcessingAmount = 'ProcessingAmount'
+  Date = 'Processing Date',
+  TransactionId = 'Transaction ID',
+  TransactionType = 'Type',
+  PaymentType = 'Description',
+  LoanId = 'Loan Number',
+  ProcessingAmount = 'Amount, EUR'
+}
+
+export interface ITwinoInterestReceived {
+  interestReceived?: Dinero.Dinero;
+  penaltyReceived?: Dinero.Dinero;
 }
 
 export class TwinoPlatform extends Platform {
@@ -52,10 +58,60 @@ export class TwinoPlatform extends Platform {
     this.transactionLog = transactionLog.reverse();
   }
 
-  protected *getTransaction(): IterableIterator<ITransaction<{}, {}, {}, {}, {}>> {
+  protected *getTransaction(): IterableIterator<ITransaction<{}, ITwinoInterestReceived, {} , IGeneralDeposit, IGeneralWithdrawal>> {
     for (const transactionRecord of this.transactionLog) {
       const processingDate = moment(transactionRecord[TwinoASFileColumnHeadersDefs.Date], 'MM/DD/YY HH:mm');
       const transaction = getNewTransactionFactory(processingDate);
+
+      const dataAmount =
+      transactionRecord[TwinoASFileColumnHeadersDefs.ProcessingAmount];
+
+    let amountPrecision = 0;
+    if (dataAmount.indexOf('.') >= 0) {
+      amountPrecision = dataAmount.length - (dataAmount.indexOf('.') + 1);
+    }
+    const intAmount = parseInt(
+      transactionRecord[TwinoASFileColumnHeadersDefs.ProcessingAmount].replace(
+        /\./g,
+        ''
+      ),
+      10
+    );
+
+      switch (transactionRecord[TwinoASFileColumnHeadersDefs.TransactionType]) {
+        case 'FUNDING':
+          if (intAmount > 0) {
+            transaction.result.deposit.deposit = Dinero({
+              amount: Math.abs(intAmount),
+              precision: amountPrecision,
+              currency: this.currency
+            });
+          } else if (intAmount < 0) {
+            transaction.result.withdrawal.withdrawal = Dinero({
+              amount: Math.abs(intAmount),
+              precision: amountPrecision,
+              currency:  this.currency
+            });
+          }
+          break;
+      }
+
+      switch (transactionRecord[TwinoASFileColumnHeadersDefs.PaymentType]) {
+        case 'PENALTY':
+          transaction.result.interestReceived.penaltyReceived = Dinero({
+            amount: Math.abs(intAmount),
+            precision: amountPrecision,
+            currency:  this.currency
+          });
+          break;
+        case 'INTEREST':
+          transaction.result.interestReceived.interestReceived = Dinero({
+            amount: intAmount,
+            precision: amountPrecision,
+            currency:  this.currency
+          });
+          break;
+      }
 
       yield transaction;
     }
@@ -63,12 +119,19 @@ export class TwinoPlatform extends Platform {
 
   protected getNewBaseResultFactory() {
     return {
-      deposit: {},
+      deposit: {
+        deposit: Dinero({ currency: this.currency })
+      },
       extraReceived: {},
       feesPaid: {},
-      interestReceived: {},
+      interestReceived: {
+        interestReceived: Dinero({ currency: this.currency }),
+        penaltyReceived: Dinero({ currency: this.currency })
+      },
       principalReceived: {},
-      withdrawal: {}
+      withdrawal: {
+        withdrawal: Dinero({ currency: this.currency })
+      }
     };
   }
 }
