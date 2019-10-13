@@ -1,6 +1,13 @@
 import { Moment } from 'moment';
 
-import { MintosPlatform } from './MintosPlatform';
+import {
+  IMintosDeposit,
+  IMintosExtraReceived,
+  IMintosFeesPaid,
+  IMintosInterestReceived,
+  IMintosWithdrawal,
+  MintosPlatform
+} from './MintosPlatform';
 import { TwinoPlatform } from './TwinoPlatform';
 import { IZonkyFeesPaid, IZonkyInterestReceived, ZonkyPlatform } from './ZonkyPlatform';
 
@@ -21,13 +28,17 @@ export interface IPortfolioResult {
   feesPaid: Dinero.Dinero;
 }
 
-export interface IBaseResult<ExtraReceived, InterestReceived, FeePaid> {
-  deposit: {
-    deposit?: Dinero.Dinero;
-  };
-  withdrawal: {
-    withdrawal?: Dinero.Dinero;
-  };
+export interface IGeneralDeposit {
+  deposit?: Dinero.Dinero;
+}
+
+export interface IGeneralWithdrawal {
+  withdrawal?: Dinero.Dinero;
+}
+
+export interface IBaseResult<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal> {
+  deposit: Deposit;
+  withdrawal: Withdrawal;
   principalReceived: {
     principalReceived?: Dinero.Dinero;
   };
@@ -36,17 +47,19 @@ export interface IBaseResult<ExtraReceived, InterestReceived, FeePaid> {
   feesPaid: FeePaid;
 }
 
-export interface IMonthlyResults<ExtraReceived, InterestReceived, FeePaid> {
+export interface IMonthlyResults<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal> {
   month: Moment;
-  result: IBaseResult<ExtraReceived, InterestReceived, FeePaid>;
+  result: IBaseResult<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal>;
 }
 
-export interface ITransaction<ExtraReceived, InterestReceived, FeePaid> {
+export interface ITransaction<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal> {
   processingDate: Moment;
-  result: IBaseResult<ExtraReceived, InterestReceived, FeePaid>;
+  result: IBaseResult<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal>;
 }
 
-export type IExtraReceivedOptions = {};
-export type IInterestReceivedOptions = IZonkyInterestReceived;
+export type IDepositOptions = IGeneralDeposit | IMintosDeposit;
+export type IExtraReceivedOptions = IMintosExtraReceived | {};
+export type IFeePaidOptions = IMintosFeesPaid | IZonkyFeesPaid;
+export type IInterestReceivedOptions = IMintosInterestReceived | IZonkyInterestReceived;
 
-export type IFeePaidOptions = IZonkyFeesPaid;
+export type IWithdrawalOptions = IGeneralWithdrawal | IMintosWithdrawal;

@@ -52,7 +52,7 @@ export class TwinoPlatform extends Platform {
     this.transactionLog = transactionLog.reverse();
   }
 
-  protected *getTransaction(): IterableIterator<ITransaction<{}, {}, {}>> {
+  protected *getTransaction(): IterableIterator<ITransaction<{}, {}, {}, {}, {}>> {
     for (const transactionRecord of this.transactionLog) {
       const processingDate = moment(transactionRecord[TwinoASFileColumnHeadersDefs.Date], 'MM/DD/YY HH:mm');
       const transaction = getNewTransactionFactory(processingDate);

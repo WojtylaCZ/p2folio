@@ -1,7 +1,14 @@
 import Dinero from 'dinero.js';
 import React from 'react';
 
-import { IExtraReceivedOptions, IFeePaidOptions, IInterestReceivedOptions, IMonthlyResults } from '../core/platforms/models';
+import {
+  IDepositOptions,
+  IExtraReceivedOptions,
+  IFeePaidOptions,
+  IInterestReceivedOptions,
+  IMonthlyResults,
+  IWithdrawalOptions
+} from '../core/platforms/models';
 
 import { PlatformDataProps } from './PlatformView';
 
@@ -22,7 +29,16 @@ class ResultTable extends React.Component<PlatformDataProps> {
   private renderTableData() {
     if (this.props.platformData.monthlyResults.length > 0) {
       return this.props.platformData.monthlyResults.map(
-        (month: IMonthlyResults<IExtraReceivedOptions, IInterestReceivedOptions, IFeePaidOptions>, index: any) => {
+        (
+          month: IMonthlyResults<
+            IExtraReceivedOptions,
+            IInterestReceivedOptions,
+            IFeePaidOptions,
+            IDepositOptions,
+            IWithdrawalOptions
+          >,
+          index: any
+        ) => {
           const monthResult = {
             deposit: undefined,
             withdrawal: undefined,
@@ -34,7 +50,7 @@ class ResultTable extends React.Component<PlatformDataProps> {
           for (const [transactionType, value] of Object.entries(month.result)) {
             for (const [, result] of Object.entries<Dinero.Dinero>(value)) {
               if (monthResult[transactionType]) {
-                monthResult[transactionType].add(result);
+                monthResult[transactionType] = monthResult[transactionType].add(result);
               } else {
                 monthResult[transactionType] = result;
               }

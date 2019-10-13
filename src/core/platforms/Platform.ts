@@ -8,11 +8,11 @@ import { IBaseResult, IMonthlyResults, IPortfolioResult, ITransaction } from './
 export abstract class Platform {
   public abstract currency: Currency;
 
-  public monthlyResults: Array<IMonthlyResults<any, any, any>> = [];
+  public monthlyResults: Array<IMonthlyResults<any, any, any, any, any>> = [];
 
   protected transactionLog: any[] = [];
 
-  private platformTotals?: IBaseResult<any, any, any>;
+  private platformTotals?: IBaseResult<any, any, any, any, any>;
   private portfolioTotals?: IPortfolioResult;
 
   public processTransactions() {
@@ -84,6 +84,6 @@ export abstract class Platform {
   }
 
   protected abstract parseASFile(rawFile: ArrayBuffer): void;
-  protected abstract getTransaction(): IterableIterator<ITransaction<any, any, any>>;
-  protected abstract getNewBaseResultFactory(): IBaseResult<any, any, any>;
+  protected abstract getTransaction(): IterableIterator<ITransaction<any, any, any, any, any>>;
+  protected abstract getNewBaseResultFactory(): IBaseResult<any, any, any, any, any>;
 }

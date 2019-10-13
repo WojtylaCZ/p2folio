@@ -6,7 +6,7 @@ const PortfolioHeaderView = (props: PlatformDataProps) => {
   const portfolioTotals = props.platformData.getPortfolioTotals();
   return (
     <div>
-      <h2>P2Folio Totals</h2>
+      <h2>Unified Totals</h2>
       <h4>
         Deposit:
         {portfolioTotals.deposit.toFormat()}

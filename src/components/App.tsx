@@ -55,6 +55,14 @@ class App extends React.Component<{}, AppState> {
     return (
       <div>
         <div>
+          <ul>
+            <li> Pro Zonky, stahnete vypis z penezenky a naimportujte jej sem.</li>
+            <li>
+              For Mintos, go to Account Statement tab in your account, for Start Date filter put there some day very long time ago
+              (eg.g 11.12.2013), hit Search. Below a first table, there is button Download Selected List. Download the file and
+              import that file here.
+            </li>
+          </ul>
           <UploadFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
           <DragAndDropFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
           Account statements: {this.state.portfolioPlatforms ? this.state.portfolioPlatforms.length : '0'}

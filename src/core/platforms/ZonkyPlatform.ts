@@ -5,7 +5,7 @@ import xlsx from 'xlsx';
 import { Currency, FileTypes } from '../../common/enums';
 import { getFirstWorkSheetFromRawFile } from '../../common/utils';
 
-import { ITransaction, SupportedPlatformTypes } from './models';
+import { IGeneralDeposit, IGeneralWithdrawal, ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';
 import { getNewTransactionFactory } from './utils';
 
@@ -74,7 +74,7 @@ export class ZonkyPlatform extends Platform {
     this.transactionLog = transactionLog;
   }
 
-  public *getTransaction(): IterableIterator<ITransaction<{}, IZonkyInterestReceived, IZonkyFeesPaid>> {
+  public *getTransaction(): IterableIterator<ITransaction<{}, IZonkyInterestReceived, IZonkyFeesPaid, IGeneralDeposit, IGeneralWithdrawal>> {
     for (const transactionRecord of this.transactionLog) {
       const processingDate = moment(transactionRecord[ZonkyASFileColumnHeadersDefs.Date], 'DD.MM.YYYY');
       const transaction = getNewTransactionFactory(processingDate);
