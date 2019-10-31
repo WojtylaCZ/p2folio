@@ -16,7 +16,7 @@ class ResultTable extends React.Component<PlatformDataProps> {
   public render() {
     return (
       <div>
-        <table className="ui celled table" id="students">
+        <table>
           <thead>
             <tr>{this.renderTableHeader()}</tr>
           </thead>
@@ -75,9 +75,11 @@ class ResultTable extends React.Component<PlatformDataProps> {
   }
 
   private renderTableHeader() {
-    return ['date', 'deposit', 'withdrawal', 'interestReceived', 'feesPaid', 'extraReceived'].map((key, index) => {
-      return <th key={index}>{key.toUpperCase()}</th>;
-    });
+    return ['Datum', 'Vklady', 'Výběry', 'Příjaté úroky', 'Zaplaceno na poplatcích', 'Mimo investiční odměny'].map(
+      (key, index) => {
+        return <th key={index}>{key}</th>;
+      }
+    );
   }
 }
 

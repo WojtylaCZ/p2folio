@@ -7,11 +7,11 @@ const TwinoSpecificHeaderView = (props: PlatformDataProps) => {
 
   return (
     <div>
-      <h3>Twino.eu - web statistics</h3>
-      <p>Deposit - homepage: {totals.deposit.deposit.toFormat()}</p>
-      <p>Withdrawal - homepage: {totals.deposit.deposit.toFormat()}</p>
+      <h3>Twino.eu - statistiky na webu</h3>
+      <p>Vklady - úvodní stránka: {totals.deposit.deposit.toFormat()}</p>
+      <p>Výběry - úvodní stránka: {totals.withdrawal.withdrawal.toFormat()}</p>
       <p>
-        Interest - homepage: {totals.interestReceived.interestReceived.add(totals.interestReceived.penaltyReceived).toFormat()}
+        Zisk - úvodní stránka: {totals.interestReceived.interestReceived.add(totals.interestReceived.penaltyReceived).toFormat()}
       </p>
     </div>
   );

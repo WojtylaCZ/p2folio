@@ -7,17 +7,17 @@ const MintosSpecificHeaderView = (props: PlatformDataProps) => {
   const campaignRewards = totals.extraReceived.referalReceived.add(totals.extraReceived.cashbackReceived);
   return (
     <div>
-      <h3>Mintos - web statistics</h3>
+      <h3>Mintos - statistiky na webu</h3>
       <p>
-        Interest homepage:
+        Interest - úvodní stránka:
         {totals.interestReceived.interestReceived.toFormat()}
       </p>
       <p>
-        Late Payment Fees homepage:
+        Late Payment Fees - úvodní stránka:
         {totals.interestReceived.penaltyReceived.toFormat()}
       </p>
       <p>
-        Service fees homepage:
+        Service fees - úvodní stránka:
         {totals.feesPaid.secondaryMarketFeePaid.add(totals.feesPaid.currencyExchangeFeePaid).toFormat()}
       </p>
       <p>
@@ -25,23 +25,23 @@ const MintosSpecificHeaderView = (props: PlatformDataProps) => {
         {campaignRewards.toFormat()}
       </p>
       <p>
-        Deposit - account statement page:
+        Deposit - stránka Account statement:
         {totals.deposit.deposit!.add(campaignRewards).toFormat()}
       </p>
       <p>
-        Incoming Currency Exchange - account statement page:
+        Incoming Currency Exchange - stránka Account statement:
         {totals.deposit.incomingCurrencyExchange.toFormat()}
       </p>
       <p>
-        Outgoing Currency Exchange - account statement page:
+        Outgoing Currency Exchange - stránka Account statement:
         {totals.withdrawal.outgoingCurrencyExchange.toFormat()}
       </p>
       <p>
-        Secondary Market Fees - account statement page:
+        Secondary Market Fees - stránka Account statement:
         {totals.feesPaid.secondaryMarketFeePaid.toFormat()}
       </p>
       <p>
-        Currency Exchange Fee - account statement page:
+        Currency Exchange Fee - stránka Account statement:
         {totals.feesPaid.currencyExchangeFeePaid.toFormat()}
       </p>
     </div>

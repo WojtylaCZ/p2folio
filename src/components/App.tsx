@@ -99,35 +99,48 @@ class App extends React.Component<{}, AppState> {
         <div>
           <AppBar position="static">
             <Toolbar>
-              <Typography variant="h6">P2folio - aplha version</Typography>
+              <Typography variant="h6">P2folio - testovací aplha verze</Typography>
             </Toolbar>
           </AppBar>
         </div>
 
         <div>
           <p>
-            <b>P2folio combines data from multiple different platforms to one unified statistics and portfolio view.</b>
+            <b>P2folio sjednocuje data z různých P2P platforem pro kompaktní statistiky a přehled celého portfolia.</b>
           </p>
           <p>
-            Project is open source and hosted at &nbsp;
+            Projekt má veřejný kód a uveřejněný na &nbsp;
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/WojtylaCZ/p2folio">
               github.com
             </a>
-            . I will appreciate any comments, ideas, proposals or bug reports.
+            . <br />
+            Ocením jakékoliv komentáře, návrhy nebo hlášení chyb. Buď na githubu nebo třeba v této &nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/groups/1813432205553867">
+              facebookové skupině pro P2P investory
+            </a>
+            .
           </p>
-          <h4>There is no backend for this service, all data is stored only in your browser. (Except analytics for web usage)</h4>
-          When you refresh the page, all data is lost.
-          <ul>
-            <li> Pro Zonky.cz, stahnete vypis z penezenky a naimportujte jej sem.</li>
+          <p>
+            <b>
+              Data jsou zpracována pouze ve vašem prohlížeči. Nikam se neodesílají, služba nemá žádnou další část.
+              <br />
+              Pokud stránku aktualizujete, všechna data jsou ztracena.
+            </b>
+          </p>
+
+          <p>Statistiky ze zpracovávají z výpisu z účtu z jednotlivých platforem. Jak postupovat:</p>
+
+          <ul id="upload_tutorials">
+            <li> Pro data z platformy Zonky.cz, stáhněte výpis z peněženky ve vašem účtě a nahrajte jej sem.</li>
             <li>
-              For Mintos.com, go to Account Statement tab in your account, for Start Date filter put there some day very long time
-              ago (eg.g 11.12.2013), hit Search. Below a first table, there is button Download Selected List. Download the file
-              and import that file here.
+              Pro Mintos.com, otevřete záložku Account Statement ve vašem účtě. Pro Start Date zvolete nějaké datum dávno v
+              minulosti - například (např. 11.12.2013) a klikněte na Search. Pod tabulkou s celkovým přehledem je tlačítko
+              Download Selected List. Stáhněte daný soubor a naimportujte jej sem.
             </li>
             <li>
-              For Twino.eu, log in to your account, go to My Investment tab, then Account Statement and for Start Date filter put
-              there some day very long time ago (eg.g 11.12.2013) and wait for data to load. There is a button Download. Download
-              the file and import that file here.
+              Pro data z platformy Twino.eu se přihlašte do svého účtu, klidněte na záložku My Investment a následně na záložku
+              Account Statement. Pro Start Date filtr zadejte nějaké den dávno v minulosti (např. 11.12.2013) a vyčkejte až se
+              nahrají informace. Klikně na tlačítko Download. Stáhněte daný soubor a naimportujte jej sem.
             </li>
           </ul>
         </div>
@@ -143,7 +156,7 @@ class App extends React.Component<{}, AppState> {
               </Grid>
               <Grid item={true} xs={12}>
                 <Paper square={true} id="statements_info">
-                  Successfully loaded statements: {this.state.portfolioPlatforms ? this.state.portfolioPlatforms.length : '0'}
+                  Úspěšné zpracováných výpisů z účtu: {this.state.portfolioPlatforms ? this.state.portfolioPlatforms.length : '0'}
                 </Paper>
               </Grid>
             </Grid>

@@ -37,7 +37,7 @@ class DragAndDropFilesInput extends React.Component<RawFileUploadedProps> {
         }}
         onDrop={e => this.handleFileSelect(e)}
       >
-        Drag and Drop files here
+        Přetáhněte soubory sem
       </div>
     );
   }

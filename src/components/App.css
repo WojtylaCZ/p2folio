@@ -10,3 +10,7 @@
   opacity: 0.4;
   text-align: center;
 }
+
+#upload_tutorials li {
+  padding: 4px;
+}

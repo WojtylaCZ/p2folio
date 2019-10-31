@@ -60,7 +60,7 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
     <div>
       <Paper square={true}>
         <Tabs value={tabIndexValue} onChange={onTabChange} aria-label="simple tabs example" variant="fullWidth">
-          <Tab label="Platforms:" {...a11yProps(0)} disabled={true} />
+          <Tab label="Portfolio" {...a11yProps(0)} disabled={true} />
           <Tab label="Zonky.cz (CZK)" {...a11yProps(1)} disabled={!availablePlatforms.includes(SupportedPlatformTypes.ZONKY)} />
           <Tab
             label="Mintos.com (EUR)"
@@ -74,7 +74,7 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
       <div style={{ paddingTop: '8px' }}>
         <Paper square={true}>
           <TabPanel value={tabIndexValue} index={0}>
-            Upload an account statement to show result for the platform.
+            Nahrajte výpisy z účtu k zobrazení statistik z jednotlivých platforem.
           </TabPanel>
           <TabPanel value={tabIndexValue} index={1}>
             {platformViews[SupportedPlatformTypes.ZONKY]}

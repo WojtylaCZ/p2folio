@@ -6,28 +6,28 @@ const PortfolioHeaderView = (props: PlatformDataProps) => {
   const portfolioTotals = props.platformData.getPortfolioTotals();
   return (
     <div>
-      <h3>Unified Totals</h3>
+      <h3>Sjednocené součty</h3>
       <p>
-        Deposit:
+        Vklady:
         {portfolioTotals.deposit.toFormat()}
       </p>
       <p>
-        Withdrawal:
+        Výběry:
         {portfolioTotals.withdrawal.toFormat()}
       </p>
       <p>
-        Principal received:
+        Přijaté jistiny:
         {portfolioTotals.principalReceived!.toFormat()}
       </p>
       <p>
-        Interests:
+        Zisk:
         {portfolioTotals.interestReceived!.toFormat()}
       </p>
       <p>
-        Fees paid:
+        Zaplaceno na poplatcích:
         {portfolioTotals.feesPaid!.toFormat()}
       </p>
-      <p>Extra received: {portfolioTotals.extraReceived!.toFormat()} </p>
+      <p>Mimo investiční odměny: {portfolioTotals.extraReceived!.toFormat()} </p>
     </div>
   );
 };

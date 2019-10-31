@@ -6,7 +6,7 @@ const ZonkySpecificHeaderView = (props: PlatformDataProps) => {
   const totals = props.platformData.getPlatformTotals();
   return (
     <div>
-      <h3>Zonky - web statistics</h3>
+      <h3>Zonky - statistiky na webu</h3>
       <p>
         Vyděláno:
         {totals.interestReceived.interestReceived
