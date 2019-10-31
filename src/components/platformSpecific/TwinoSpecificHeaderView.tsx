@@ -7,19 +7,12 @@ const TwinoSpecificHeaderView = (props: PlatformDataProps) => {
 
   return (
     <div>
-      <h2>Twino.eu - web statistics</h2>
-      <h4>
-        Deposit - homepage:
-        {totals.deposit.deposit.toFormat()}
-      </h4>
-      <h4>
-        Withdrawal - homepage:
-        {totals.deposit.deposit.toFormat()}
-      </h4>
-      <h4>
-        Interest - homepage:
-        {totals.interestReceived.interestReceived.add(totals.interestReceived.penaltyReceived).toFormat()}
-      </h4>
+      <h3>Twino.eu - web statistics</h3>
+      <p>Deposit - homepage: {totals.deposit.deposit.toFormat()}</p>
+      <p>Withdrawal - homepage: {totals.deposit.deposit.toFormat()}</p>
+      <p>
+        Interest - homepage: {totals.interestReceived.interestReceived.add(totals.interestReceived.penaltyReceived).toFormat()}
+      </p>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import React from 'react';
 import { loadSelectedFile } from '../common/utils';
 
 import { RawFileUploadedProps } from './App';
+import './UploadFilesInput.css';
 
 class UploadFilesInput extends React.Component<RawFileUploadedProps> {
   public onLoadHandler(event: any, filename: string) {
@@ -20,7 +21,7 @@ class UploadFilesInput extends React.Component<RawFileUploadedProps> {
 
   public render() {
     return (
-      <div className="ui segment">
+      <div id="choose_file">
         <input
           type="file"
           multiple={true}

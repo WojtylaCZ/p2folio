@@ -3,6 +3,7 @@ import React from 'react';
 import { loadSelectedFile } from '../common/utils';
 
 import { RawFileUploadedProps } from './App';
+import './DragAndDropFilesInput.css';
 
 class DragAndDropFilesInput extends React.Component<RawFileUploadedProps> {
   public onLoadHandler(event: any, filename: string) {
@@ -36,7 +37,7 @@ class DragAndDropFilesInput extends React.Component<RawFileUploadedProps> {
         }}
         onDrop={e => this.handleFileSelect(e)}
       >
-        Drop files here
+        Drag and Drop files here
       </div>
     );
   }

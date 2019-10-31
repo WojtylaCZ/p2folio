@@ -7,43 +7,43 @@ const MintosSpecificHeaderView = (props: PlatformDataProps) => {
   const campaignRewards = totals.extraReceived.referalReceived.add(totals.extraReceived.cashbackReceived);
   return (
     <div>
-      <h2>Mintos - web statistics</h2>
-      <h4>
+      <h3>Mintos - web statistics</h3>
+      <p>
         Interest homepage:
         {totals.interestReceived.interestReceived.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Late Payment Fees homepage:
         {totals.interestReceived.penaltyReceived.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Service fees homepage:
         {totals.feesPaid.secondaryMarketFeePaid.add(totals.feesPaid.currencyExchangeFeePaid).toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Campaign Rewards:
         {campaignRewards.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Deposit - account statement page:
         {totals.deposit.deposit!.add(campaignRewards).toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Incoming Currency Exchange - account statement page:
         {totals.deposit.incomingCurrencyExchange.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Outgoing Currency Exchange - account statement page:
         {totals.withdrawal.outgoingCurrencyExchange.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Secondary Market Fees - account statement page:
         {totals.feesPaid.secondaryMarketFeePaid.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Currency Exchange Fee - account statement page:
         {totals.feesPaid.currencyExchangeFeePaid.toFormat()}
-      </h4>
+      </p>
     </div>
   );
 };

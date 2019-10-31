@@ -1,3 +1,7 @@
+import { AppBar, Paper } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
 import { MintosPlatform } from '../core/platforms/MintosPlatform';
@@ -6,8 +10,9 @@ import { TwinoPlatform } from '../core/platforms/TwinoPlatform';
 import { detectPlatform } from '../core/platforms/utils';
 import { ZonkyPlatform } from '../core/platforms/ZonkyPlatform';
 
+import './App.css';
 import DragAndDropFilesInput from './DragAndDropFilesInput';
-import PlatformListView from './PlatformListView';
+import PlatformsTabMenuView from './PlatformsTabMenuView';
 import UploadFilesInput from './UploadFilesInput';
 
 export type RawFileUploadedProps = {
@@ -55,12 +60,18 @@ class App extends React.Component<{}, AppState> {
     return (
       <div>
         <div>
-          <a href="https://github.com/WojtylaCZ/p2folio" className="github-corner" aria-label="View source on GitHub">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/WojtylaCZ/p2folio"
+            className="github-corner"
+            aria-label="View source on GitHub"
+          >
             <svg
               width={80}
               height={80}
               viewBox="0 0 250 250"
-              style={{ fill: '#151513', color: '#fff', position: 'absolute', top: 0, border: 0, right: 0 }}
+              style={{ fill: '#151513', color: '#fff', position: 'absolute', top: 0, border: 0, right: 0, zIndex: 1 }}
               aria-hidden="true"
             >
               <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
@@ -84,15 +95,26 @@ class App extends React.Component<{}, AppState> {
             }}
           />
         </div>
+
         <div>
-          <h2> P2folio - early aplha version </h2>
-          <ul>
-            <li>
-              {' '}
-              Project is in an early stage and hosted at <a href="https://github.com/WojtylaCZ/p2folio"> github.com </a>. I will
-              appreciate any comments, ideas, proposals or bug reports.
-            </li>
-          </ul>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="h6">P2folio - aplha version</Typography>
+            </Toolbar>
+          </AppBar>
+        </div>
+
+        <div>
+          <p>
+            <b>P2folio combines data from multiple different platforms to one unified statistics and portfolio view.</b>
+          </p>
+          <p>
+            Project is open source and hosted at &nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/WojtylaCZ/p2folio">
+              github.com
+            </a>
+            . I will appreciate any comments, ideas, proposals or bug reports.
+          </p>
           <h4>There is no backend for this service, all data is stored only in your browser. (Except analytics for web usage)</h4>
           When you refresh the page, all data is lost.
           <ul>
@@ -108,12 +130,28 @@ class App extends React.Component<{}, AppState> {
               the file and import that file here.
             </li>
           </ul>
-          <UploadFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
-          <DragAndDropFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
-          Account statements: {this.state.portfolioPlatforms ? this.state.portfolioPlatforms.length : '0'}
         </div>
-        <div>
-          <PlatformListView portfolioPlatforms={this.state.portfolioPlatforms} />
+
+        <div className="paper">
+          <Paper square={true}>
+            <Grid container={true}>
+              <Grid item={true} xs={6}>
+                <UploadFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
+              </Grid>
+              <Grid item={true} xs={6}>
+                <DragAndDropFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
+              </Grid>
+              <Grid item={true} xs={12}>
+                <Paper square={true} id="statements_info">
+                  Successfully loaded statements: {this.state.portfolioPlatforms ? this.state.portfolioPlatforms.length : '0'}
+                </Paper>
+              </Grid>
+            </Grid>
+          </Paper>
+        </div>
+
+        <div className="paper" style={{ paddingTop: '30px' }}>
+          <PlatformsTabMenuView portfolioPlatforms={this.state.portfolioPlatforms} />
         </div>
       </div>
     );

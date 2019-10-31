@@ -59,6 +59,7 @@ export class MintosPlatform extends Platform {
     MintosASFileColumnHeadersDefs.Currency
   ];
 
+  public readonly platform = MintosPlatform.platform;
   public currency = Currency.EUR;
 
   public parseASFile(rawFile: ArrayBuffer) {

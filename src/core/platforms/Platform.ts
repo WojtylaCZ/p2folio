@@ -3,10 +3,11 @@ import moment from 'moment';
 
 import { Currency } from '../../common/enums';
 
-import { IBaseResult, IMonthlyResults, IPortfolioResult, ITransaction } from './models';
+import { IBaseResult, IMonthlyResults, IPortfolioResult, ITransaction, SupportedPlatformTypes } from './models';
 
 export abstract class Platform {
   public abstract currency: Currency;
+  public abstract readonly platform: SupportedPlatformTypes;
 
   public monthlyResults: Array<IMonthlyResults<any, any, any, any, any>> = [];
 

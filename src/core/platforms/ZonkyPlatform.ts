@@ -47,6 +47,7 @@ export class ZonkyPlatform extends Platform {
     ZonkyASFileColumnHeadersDefs.InterestReceived
   ];
 
+  public readonly platform = ZonkyPlatform.platform;
   public currency = Currency.CZK;
 
   public parseASFile(rawFile: ArrayBuffer) {

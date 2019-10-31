@@ -23,7 +23,6 @@ const PlatformHeaderView = (props: PlatformDataProps) => {
 
   return (
     <div>
-      <hr />
       <PortfolioHeaderView platformData={props.platformData} />
       <hr />
       {platformSpecificHeader}

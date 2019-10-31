@@ -1,0 +1,12 @@
+* {
+  font-family: 'Roboto';
+}
+
+.paper {
+  padding: 8px;
+}
+
+#statements_info {
+  opacity: 0.4;
+  text-align: center;
+}

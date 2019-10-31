@@ -6,31 +6,28 @@ const PortfolioHeaderView = (props: PlatformDataProps) => {
   const portfolioTotals = props.platformData.getPortfolioTotals();
   return (
     <div>
-      <h2>Unified Totals</h2>
-      <h4>
+      <h3>Unified Totals</h3>
+      <p>
         Deposit:
         {portfolioTotals.deposit.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Withdrawal:
         {portfolioTotals.withdrawal.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Principal received:
         {portfolioTotals.principalReceived!.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Interests:
         {portfolioTotals.interestReceived!.toFormat()}
-      </h4>
-      <h4>
+      </p>
+      <p>
         Fees paid:
         {portfolioTotals.feesPaid!.toFormat()}
-      </h4>
-      <h4>
-        Extra received:
-        {portfolioTotals.extraReceived!.toFormat()}
-      </h4>
+      </p>
+      <p>Extra received: {portfolioTotals.extraReceived!.toFormat()} </p>
     </div>
   );
 };

@@ -10,8 +10,10 @@
   "license": "GPL-3.0",
   "homepage": "https://p2folio.cz/",
   "dependencies": {
+    "@material-ui/core": "4.5.1",
     "@types/dinero.js": "1.4.1",
     "@types/jest": "24.0.18",
+    "@types/material-ui": "0.21.7",
     "@types/moment": "2.13.0",
     "@types/node": "12.7.5",
     "@types/react": "16.9.2",
@@ -32,7 +34,7 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "prettier": "prettier --config ./prettierrc.json --write \"./**/*.{js,ts,tsx,json,md}\" --ignore-path \"./.gitignore\"",
+    "prettier": "prettier --config ./prettierrc.json --write \"./**/*.{js,ts,tsx,css,json,md}\" --ignore-path \"./.gitignore\"",
     "lint": "tslint --fix --project ."
   },
   "husky": {
@@ -45,8 +47,8 @@
       "tslint --fix --project .",
       "git add"
     ],
-    "*.{js,ts,tsx,json,md}": [
-      "prettier --config ./prettierrc.json --write \"./**/*.{js,ts,tsx,json,md}\" --ignore-path \"./.gitignore\"",
+    "*.{js,ts,tsx,css,json,md}": [
+      "prettier --config ./prettierrc.json --write \"./**/*.{js,ts,tsx,css,json,md}\" --ignore-path \"./.gitignore\"",
       "git add"
     ]
   },

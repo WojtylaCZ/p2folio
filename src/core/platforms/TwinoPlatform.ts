@@ -43,6 +43,7 @@ export class TwinoPlatform extends Platform {
     TwinoASFileColumnHeadersDefs.ProcessingAmount
   ];
 
+  public readonly platform = TwinoPlatform.platform;
   public currency = Currency.EUR;
 
   public parseASFile(rawFile: ArrayBuffer) {
@@ -58,25 +59,20 @@ export class TwinoPlatform extends Platform {
     this.transactionLog = transactionLog.reverse();
   }
 
-  protected *getTransaction(): IterableIterator<ITransaction<{}, ITwinoInterestReceived, {} , IGeneralDeposit, IGeneralWithdrawal>> {
+  protected *getTransaction(): IterableIterator<
+    ITransaction<{}, ITwinoInterestReceived, {}, IGeneralDeposit, IGeneralWithdrawal>
+  > {
     for (const transactionRecord of this.transactionLog) {
       const processingDate = moment(transactionRecord[TwinoASFileColumnHeadersDefs.Date], 'MM/DD/YY HH:mm');
       const transaction = getNewTransactionFactory(processingDate);
 
-      const dataAmount =
-      transactionRecord[TwinoASFileColumnHeadersDefs.ProcessingAmount];
+      const dataAmount = transactionRecord[TwinoASFileColumnHeadersDefs.ProcessingAmount];
 
-    let amountPrecision = 0;
-    if (dataAmount.indexOf('.') >= 0) {
-      amountPrecision = dataAmount.length - (dataAmount.indexOf('.') + 1);
-    }
-    const intAmount = parseInt(
-      transactionRecord[TwinoASFileColumnHeadersDefs.ProcessingAmount].replace(
-        /\./g,
-        ''
-      ),
-      10
-    );
+      let amountPrecision = 0;
+      if (dataAmount.indexOf('.') >= 0) {
+        amountPrecision = dataAmount.length - (dataAmount.indexOf('.') + 1);
+      }
+      const intAmount = parseInt(transactionRecord[TwinoASFileColumnHeadersDefs.ProcessingAmount].replace(/\./g, ''), 10);
 
       switch (transactionRecord[TwinoASFileColumnHeadersDefs.TransactionType]) {
         case 'FUNDING':
@@ -90,7 +86,7 @@ export class TwinoPlatform extends Platform {
             transaction.result.withdrawal.withdrawal = Dinero({
               amount: Math.abs(intAmount),
               precision: amountPrecision,
-              currency:  this.currency
+              currency: this.currency
             });
           }
           break;
@@ -101,14 +97,14 @@ export class TwinoPlatform extends Platform {
           transaction.result.interestReceived.penaltyReceived = Dinero({
             amount: Math.abs(intAmount),
             precision: amountPrecision,
-            currency:  this.currency
+            currency: this.currency
           });
           break;
         case 'INTEREST':
           transaction.result.interestReceived.interestReceived = Dinero({
             amount: intAmount,
             precision: amountPrecision,
-            currency:  this.currency
+            currency: this.currency
           });
           break;
       }
