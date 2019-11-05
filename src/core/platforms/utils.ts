@@ -1,7 +1,10 @@
+import Dinero from 'dinero.js';
 import { Moment } from 'moment';
 
+import { Currency } from '../../common/enums';
+
 import { MintosPlatform } from './MintosPlatform';
-import { ITransaction, SupportedPlatformTypes } from './models';
+import { IPortfolioResult, ITransaction, SupportedPlatformTypes } from './models';
 import { TwinoPlatform } from './TwinoPlatform';
 import { ZonkyPlatform } from './ZonkyPlatform';
 
@@ -28,5 +31,16 @@ export function getNewTransactionFactory(processingDate: Moment): ITransaction<a
       principalReceived: {},
       withdrawal: {}
     }
+  };
+}
+
+export function getNewPortfolioResultFactory(currency: Currency): IPortfolioResult {
+  return {
+    deposit: Dinero({ currency }),
+    extraReceived: Dinero({ currency }),
+    feesPaid: Dinero({ currency }),
+    interestReceived: Dinero({ currency }),
+    principalReceived: Dinero({ currency }),
+    withdrawal: Dinero({ currency })
   };
 }

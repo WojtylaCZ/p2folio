@@ -42,7 +42,7 @@ export abstract class Platform {
     }
   }
 
-  public getPlatformTotals() {
+  public getPlatformTotals(): IBaseResult<any, any, any, any, any> {
     if (!this.platformTotals) {
       const totals = this.getNewBaseResultFactory();
       for (const month of this.monthlyResults) {
@@ -58,7 +58,7 @@ export abstract class Platform {
     return this.platformTotals;
   }
 
-  public getPortfolioTotals() {
+  public getPortfolioTotals(): IPortfolioResult {
     if (!this.portfolioTotals) {
       const totals: IPortfolioResult = {
         deposit: Dinero({ currency: this.currency }),

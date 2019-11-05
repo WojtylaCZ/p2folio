@@ -1,33 +1,36 @@
 import React from 'react';
 
-import { PlatformDataProps } from './PlatformView';
+import { IPortfolioResult } from '../core/platforms/models';
 
-const PortfolioHeaderView = (props: PlatformDataProps) => {
-  const portfolioTotals = props.platformData.getPortfolioTotals();
+type PortfolioHeaderProps = {
+  portfolioResult: IPortfolioResult;
+};
+
+const PortfolioHeaderView = (props: PortfolioHeaderProps) => {
   return (
     <div>
       <h3>Sjednocené součty</h3>
       <p>
         Vklady:
-        {portfolioTotals.deposit.toFormat()}
+        {props.portfolioResult.deposit.toFormat()}
       </p>
       <p>
         Výběry:
-        {portfolioTotals.withdrawal.toFormat()}
+        {props.portfolioResult.withdrawal.toFormat()}
       </p>
       <p>
         Přijaté jistiny:
-        {portfolioTotals.principalReceived!.toFormat()}
+        {props.portfolioResult.principalReceived!.toFormat()}
       </p>
       <p>
         Zisk:
-        {portfolioTotals.interestReceived!.toFormat()}
+        {props.portfolioResult.interestReceived!.toFormat()}
       </p>
       <p>
         Zaplaceno na poplatcích:
-        {portfolioTotals.feesPaid!.toFormat()}
+        {props.portfolioResult.feesPaid!.toFormat()}
       </p>
-      <p>Mimo investiční odměny: {portfolioTotals.extraReceived!.toFormat()} </p>
+      <p>Mimo investiční odměny: {props.portfolioResult.extraReceived!.toFormat()} </p>
     </div>
   );
 };
