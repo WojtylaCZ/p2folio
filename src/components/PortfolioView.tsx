@@ -17,7 +17,7 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
   };
 
   let portfolioHeader;
-  let currencyConversionInput;
+  let forexRateInput;
 
   if (props.portfolioPlatforms.length > 0) {
     const portfolioCurrency = props.portfolioPlatforms[0].currency;
@@ -33,7 +33,7 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
     let portfolioResult;
     if (isCurrencyConversionNeeded) {
       portfolioResult = getNewPortfolioResultFactory(Currency.CZK);
-      currencyConversionInput = <ForexRateInput setForexRateValue={setForexRateValue} />;
+      forexRateInput = <ForexRateInput setForexRateValue={setForexRateValue} />;
     } else {
       portfolioResult = getNewPortfolioResultFactory(portfolioCurrency);
     }
@@ -73,7 +73,7 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
           {portfolioHeader}
         </Grid>
         <Grid item={true} xs={6}>
-          {currencyConversionInput}
+          {forexRateInput}
         </Grid>
       </Grid>
     </div>

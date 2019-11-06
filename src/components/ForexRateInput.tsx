@@ -23,23 +23,23 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-type CurrencyConversionProps = {
+type ForexRateInputProps = {
   setForexRateValue: (value: number) => void;
 };
 
-const ForexRateInput = (props: CurrencyConversionProps) => {
-  const [exchangeRateError, setExchangeRateError] = useState('');
-  const [exchangeRate, setExchangeRate] = useState('0.0');
+const ForexRateInput = (props: ForexRateInputProps) => {
+  const [forexRateInputError, setForexRateInputError] = useState('');
+  const [forexRate, setForexRate] = useState('0.0');
 
   const classes = useStyles();
 
   const onButtonClick = (e: MouseEvent) => {
     e.preventDefault();
-    const result = parseFloat(exchangeRate);
+    const result = parseFloat(forexRate);
     if (Number.isNaN(result) || result <= 0) {
-      setExchangeRateError('Musi byt kladne cislo');
+      setForexRateInputError('Musi byt kladne cislo');
     } else {
-      setExchangeRateError('');
+      setForexRateInputError('');
       props.setForexRateValue(result);
     }
   };
@@ -49,16 +49,16 @@ const ForexRateInput = (props: CurrencyConversionProps) => {
       <TextField
         id="outlined-basic"
         className={classes.textField}
-        error={exchangeRateError ? true : false}
-        helperText={exchangeRateError}
+        error={forexRateInputError ? true : false}
+        helperText={forexRateInputError}
         label="1 EUR = ? CZK"
         margin="normal"
         onChange={(event: any) => {
-          setExchangeRate(event.target.value);
+          setForexRate(event.target.value);
         }}
         variant="outlined"
         type="number"
-        value={exchangeRate}
+        value={forexRate}
       />
       <Button variant="contained" color="primary" className={classes.button} size="small" type="submit" onClick={onButtonClick}>
         Ok
