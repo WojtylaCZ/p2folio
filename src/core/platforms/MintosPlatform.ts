@@ -94,9 +94,14 @@ export class MintosPlatform extends Platform {
         case 'Cashback bonus':
           transaction.result.extraReceived.cashbackReceived = amount;
           break;
+        case 'Deposits':
         case 'Incoming client payment':
           transaction.result.deposit.deposit = amount;
           break;
+        case 'Withdrawals':
+          transaction.result.withdrawal.withdrawal = amount;
+          break;
+        case 'Currency exchange fee':
         case 'FX commission':
           transaction.result.feesPaid.currencyExchangeFeePaid = amount;
           break;
@@ -114,6 +119,25 @@ export class MintosPlatform extends Platform {
         transaction.result.withdrawal.outgoingCurrencyExchange = amount;
       } else if (
         transactionRecord[MintosASFileColumnHeadersDefs.Details].startsWith('Discount/premium for secondary market transaction')
+      ) {
+        // TODO
+      }
+
+      // Version since 11/2019
+      if (transactionRecord[MintosASFileColumnHeadersDefs.Details].toLowerCase().indexOf('interest received') >= 0) {
+        transaction.result.interestReceived.interestReceived = amount;
+      } else if (transactionRecord[MintosASFileColumnHeadersDefs.Details].toLowerCase().indexOf('secondary market fee') >= 0) {
+        transaction.result.feesPaid.secondaryMarketFeePaid = amount;
+      } else if (transactionRecord[MintosASFileColumnHeadersDefs.Details].toLowerCase().indexOf('late fees received') >= 0) {
+        transaction.result.interestReceived.penaltyReceived = amount;
+      } else if (transactionRecord[MintosASFileColumnHeadersDefs.Details].startsWith('Incoming currency exchange transaction')) {
+        transaction.result.deposit.incomingCurrencyExchange = amount;
+      } else if (transactionRecord[MintosASFileColumnHeadersDefs.Details].startsWith('Outgoing currency exchange transaction')) {
+        transaction.result.withdrawal.outgoingCurrencyExchange = amount;
+      } else if (
+        transactionRecord[MintosASFileColumnHeadersDefs.Details]
+          .toLowerCase()
+          .indexOf('discount/premium for secondary market transaction') >= 0
       ) {
         // TODO
       }
