@@ -133,9 +133,9 @@ class App extends React.Component<{}, AppState> {
           <ul id="upload_tutorials">
             <li> Pro data z platformy Zonky.cz, stáhněte výpis z peněženky ve vašem účtě a nahrajte jej sem.</li>
             <li>
-              Pro Mintos.com, otevřete záložku Account Statement ve vašem účtě. Pro Start Date zvolete nějaké datum dávno v
-              minulosti - například (např. 11.12.2013) a klikněte na Search. Pod tabulkou s celkovým přehledem je tlačítko
-              Download Selected List. Stáhněte daný soubor a naimportujte jej sem.
+              Pro Mintos.com, otevřete záložku Account Statement ve vašem účtě a vyberte měnu EUR (zatím jediná podporovaná). Pro
+              Start Date zvolete nějaké datum dávno v minulosti - například (např. 11.12.2013) a klikněte na Search. Pod tabulkou
+              s celkovým přehledem je tlačítko Download Selected List. Stáhněte daný soubor a naimportujte jej sem.
             </li>
             <li>
               Pro data z platformy Twino.eu se přihlašte do svého účtu, klidněte na záložku My Investment a následně na záložku

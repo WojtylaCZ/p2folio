@@ -14,6 +14,7 @@
     "no-duplicate-imports": true,
     "no-null-keyword": true,
     "jsx-no-lambda": false,
-    "interface-over-type-literal": false
+    "interface-over-type-literal": false,
+    "react-hooks/rules-of-hooks": "error"
   }
 }

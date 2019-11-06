@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { SupportedPlatform, SupportedPlatformTypes } from '../core/platforms/models';
 
 import PlatformView from './PlatformView';
+import PortfolioView from './PortfolioView';
 
 export type PortfolioPlatformsProps = {
   portfolioPlatforms: (SupportedPlatform)[];
@@ -60,7 +61,7 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
     <div>
       <Paper square={true}>
         <Tabs value={tabIndexValue} onChange={onTabChange} aria-label="simple tabs example" variant="fullWidth">
-          <Tab label="Portfolio" {...a11yProps(0)} disabled={true} />
+          <Tab label="Portfolio" {...a11yProps(0)} />
           <Tab label="Zonky.cz (CZK)" {...a11yProps(1)} disabled={!availablePlatforms.includes(SupportedPlatformTypes.ZONKY)} />
           <Tab
             label="Mintos.com (EUR)"
@@ -74,7 +75,7 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
       <div style={{ paddingTop: '8px' }}>
         <Paper square={true}>
           <TabPanel value={tabIndexValue} index={0}>
-            Nahrajte výpisy z účtu k zobrazení statistik z jednotlivých platforem.
+            <PortfolioView portfolioPlatforms={props.portfolioPlatforms} />
           </TabPanel>
           <TabPanel value={tabIndexValue} index={1}>
             {platformViews[SupportedPlatformTypes.ZONKY]}
