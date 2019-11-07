@@ -6,6 +6,12 @@
   padding: 8px;
 }
 
+#footer {
+  opacity: 0.5;
+  text-align: center;
+  font-size: 70%;
+}
+
 #statements_info {
   opacity: 0.4;
   text-align: center;

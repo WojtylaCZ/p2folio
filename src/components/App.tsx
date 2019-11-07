@@ -154,7 +154,7 @@ class App extends React.Component<{}, AppState> {
                 />
               </Grid>
               <Grid item={true} xs={12}>
-                <Paper square={true} id="statements_info">
+                <Paper id="statements_info" square={true}>
                   <b>{statementsInfo} </b>
                 </Paper>
               </Grid>
@@ -164,6 +164,12 @@ class App extends React.Component<{}, AppState> {
 
         <div className="paper" style={{ paddingTop: '30px' }}>
           <PlatformsTabMenuView portfolioPlatforms={this.state.portfolioPlatforms} />
+        </div>
+
+        <div className="paper" style={{ paddingTop: '30px' }}>
+          <Paper id="footer" square={true} style={{ padding: '5px' }}>
+            2019 @ Vojtech Uhlir
+          </Paper>
         </div>
       </div>
     );
