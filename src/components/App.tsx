@@ -1,7 +1,4 @@
-import { AppBar, Paper } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { AppBar, Grid, Paper, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 
 import { MintosPlatform } from '../core/platforms/MintosPlatform';

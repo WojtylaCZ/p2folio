@@ -1,9 +1,5 @@
-import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
+import { Box, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import Typography from '@material-ui/core/Typography';
 import React, { useState } from 'react';
 
 import { SupportedPlatform, SupportedPlatformTypes } from '../core/platforms/models';
