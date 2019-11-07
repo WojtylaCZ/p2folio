@@ -1,8 +1,8 @@
 import Button from '@material-ui/core/Button';
-import { Theme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
+import createStyles from '@material-ui/core/styles/createStyles';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import TextField from '@material-ui/core/TextField';
-import createStyles from '@material-ui/styles/createStyles';
-import makeStyles from '@material-ui/styles/makeStyles';
 import React, { MouseEvent, useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) =>
