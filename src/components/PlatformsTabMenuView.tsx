@@ -1,5 +1,6 @@
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
@@ -44,11 +45,26 @@ function a11yProps(index: any) {
   };
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    tabEnabled: {
+      fontSize: '96%',
+      fontWeight: 'bold',
+      textTransform: 'none'
+    },
+    tabDisabled: {
+      textTransform: 'none'
+    }
+  })
+);
+
 const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
   const [tabIndexValue, setTabIndexValue] = useState(0);
   const onTabChange = (event: React.ChangeEvent<{}>, newTabIndexValue: number) => {
     setTabIndexValue(newTabIndexValue);
   };
+
+  const classes = useStyles();
 
   const platformViews: any = {};
 
@@ -57,18 +73,33 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
   });
   const availablePlatforms = Object.keys(platformViews);
 
+  const zonkyEnabled = availablePlatforms.includes(SupportedPlatformTypes.ZONKY);
+  const mintosEnabled = availablePlatforms.includes(SupportedPlatformTypes.MINTOS);
+  const twinoEnabled = availablePlatforms.includes(SupportedPlatformTypes.TWINO);
+
   return (
     <div>
       <Paper square={true}>
         <Tabs value={tabIndexValue} onChange={onTabChange} aria-label="simple tabs example" variant="fullWidth">
-          <Tab label="Portfolio" {...a11yProps(0)} />
-          <Tab label="Zonky.cz (CZK)" {...a11yProps(1)} disabled={!availablePlatforms.includes(SupportedPlatformTypes.ZONKY)} />
+          <Tab className={classes.tabEnabled} label="Portfolio" {...a11yProps(0)} />
           <Tab
+            className={zonkyEnabled ? classes.tabEnabled : classes.tabDisabled}
+            label="Zonky.cz (CZK)"
+            {...a11yProps(1)}
+            disabled={!zonkyEnabled}
+          />
+          <Tab
+            className={mintosEnabled ? classes.tabEnabled : classes.tabDisabled}
             label="Mintos.com (EUR)"
             {...a11yProps(2)}
-            disabled={!availablePlatforms.includes(SupportedPlatformTypes.MINTOS)}
+            disabled={!mintosEnabled}
           />
-          <Tab label="Twino.eu (EUR)" {...a11yProps(3)} disabled={!availablePlatforms.includes(SupportedPlatformTypes.TWINO)} />
+          <Tab
+            className={twinoEnabled ? classes.tabEnabled : classes.tabDisabled}
+            label="Twino.eu (EUR)"
+            {...a11yProps(3)}
+            disabled={!twinoEnabled}
+          />
         </Tabs>
       </Paper>
 
