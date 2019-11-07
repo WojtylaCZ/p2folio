@@ -2,10 +2,10 @@ import React from 'react';
 
 import { loadSelectedFile } from '../common/utils';
 
-import { RawFileUploadedProps } from './App';
+import { FileUploadInputProps } from './App';
 import './UploadFilesInput.css';
 
-class UploadFilesInput extends React.Component<RawFileUploadedProps> {
+class UploadFilesInput extends React.Component<FileUploadInputProps> {
   public onLoadHandler(event: any, filename: string) {
     this.props.onRawFileUploaded(event.target.result, filename);
   }
@@ -24,6 +24,7 @@ class UploadFilesInput extends React.Component<RawFileUploadedProps> {
       <div id="choose_file">
         <input
           type="file"
+          disabled={!this.props.uploadEnabled}
           multiple={true}
           onChange={e => {
             this.onFileInputChange(e);

@@ -1,7 +1,4 @@
-import { AppBar, Paper } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { AppBar, Grid, Paper, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 
 import { MintosPlatform } from '../core/platforms/MintosPlatform';
@@ -15,48 +12,44 @@ import DragAndDropFilesInput from './DragAndDropFilesInput';
 import PlatformsTabMenuView from './PlatformsTabMenuView';
 import UploadFilesInput from './UploadFilesInput';
 
-export type RawFileUploadedProps = {
+export type FileUploadInputProps = {
   onRawFileUploaded: (rawFile: ArrayBuffer, filename: string) => void;
+  uploadEnabled: boolean;
 };
 
+interface INewRawFile {
+  filename: string;
+  rawFile: ArrayBuffer;
+}
+
 type AppState = {
+  newRawFiles: INewRawFile[];
   portfolioPlatforms: (SupportedPlatform)[];
+  uploadEnabled: boolean;
 };
 
 class App extends React.Component<{}, AppState> {
-  public state = { portfolioPlatforms: [] };
+  public state = { newRawFiles: [], portfolioPlatforms: [], uploadEnabled: true };
 
   public handleUploadedRawFile(rawFile: ArrayBuffer, filename: string) {
-    try {
-      const platformType = detectPlatform(filename);
-      let platformData: SupportedPlatform;
+    this.setState(prevState => ({
+      newRawFiles: [...prevState.newRawFiles, { filename, rawFile }],
+      uploadEnabled: false
+    }));
+  }
 
-      switch (platformType) {
-        case SupportedPlatformTypes.MINTOS:
-          platformData = new MintosPlatform();
-          break;
-        case SupportedPlatformTypes.TWINO:
-          platformData = new TwinoPlatform();
-          break;
-        case SupportedPlatformTypes.ZONKY:
-          platformData = new ZonkyPlatform();
-          break;
-        default:
-          throw Error('unknown platform');
-      }
-
-      platformData.parseASFile(rawFile);
-      platformData.processTransactions();
-
-      this.setState(prevState => ({
-        portfolioPlatforms: [...prevState.portfolioPlatforms, platformData]
-      }));
-    } catch (e) {
-      console.log(e);
-    }
+  public componentDidUpdate() {
+    setTimeout(this.processNewRawFile, 0);
   }
 
   public render() {
+    let statementsInfo;
+    if (this.state.newRawFiles.length > 0) {
+      statementsInfo = 'Soubory se zpracovávají... (může to trvat déle, vyčkejte)';
+    } else {
+      statementsInfo = `Úspěšné zpracovaných výpisů z platforem: ${this.state.portfolioPlatforms.length}`;
+    }
+
     return (
       <div>
         <div>
@@ -149,14 +142,20 @@ class App extends React.Component<{}, AppState> {
           <Paper square={true}>
             <Grid container={true}>
               <Grid item={true} xs={6}>
-                <UploadFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
+                <UploadFilesInput
+                  uploadEnabled={this.state.uploadEnabled}
+                  onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
+                />
               </Grid>
               <Grid item={true} xs={6}>
-                <DragAndDropFilesInput onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)} />
+                <DragAndDropFilesInput
+                  uploadEnabled={this.state.uploadEnabled}
+                  onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
+                />
               </Grid>
               <Grid item={true} xs={12}>
-                <Paper square={true} id="statements_info">
-                  Úspěšné zpracováných výpisů z účtu: {this.state.portfolioPlatforms ? this.state.portfolioPlatforms.length : '0'}
+                <Paper id="statements_info" square={true}>
+                  <b>{statementsInfo} </b>
                 </Paper>
               </Grid>
             </Grid>
@@ -166,9 +165,50 @@ class App extends React.Component<{}, AppState> {
         <div className="paper" style={{ paddingTop: '30px' }}>
           <PlatformsTabMenuView portfolioPlatforms={this.state.portfolioPlatforms} />
         </div>
+
+        <div className="paper" style={{ paddingTop: '30px' }}>
+          <Paper id="footer" square={true} style={{ padding: '5px' }}>
+            2019 @ Vojtech Uhlir
+          </Paper>
+        </div>
       </div>
     );
   }
+
+  private processNewRawFile = () => {
+    if (this.state.newRawFiles.length > 0) {
+      const { filename, rawFile } = this.state.newRawFiles[0];
+      try {
+        const platformType = detectPlatform(filename);
+        let platformData: SupportedPlatform;
+
+        switch (platformType) {
+          case SupportedPlatformTypes.MINTOS:
+            platformData = new MintosPlatform();
+            break;
+          case SupportedPlatformTypes.TWINO:
+            platformData = new TwinoPlatform();
+            break;
+          case SupportedPlatformTypes.ZONKY:
+            platformData = new ZonkyPlatform();
+            break;
+          default:
+            throw Error('unknown platform');
+        }
+
+        platformData.parseASFile(rawFile);
+        platformData.processTransactions();
+
+        this.setState(prevState => ({
+          newRawFiles: prevState.newRawFiles.slice(1, prevState.newRawFiles.length),
+          portfolioPlatforms: [...prevState.portfolioPlatforms, platformData],
+          uploadEnabled: true
+        }));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
 }
 
 export default App;
