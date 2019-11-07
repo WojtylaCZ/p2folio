@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import Dinero from 'dinero.js';
 import React, { useState } from 'react';
 

@@ -1,4 +1,8 @@
-import { AppBar, Grid, Paper, Toolbar, Typography } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
 import { MintosPlatform } from '../core/platforms/MintosPlatform';
@@ -39,7 +43,7 @@ class App extends React.Component<{}, AppState> {
   }
 
   public componentDidUpdate() {
-    setTimeout(this.processNewRawFile, 0);
+    setTimeout(this.processNewRawFile, 1);
   }
 
   public render() {
