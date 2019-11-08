@@ -40,7 +40,7 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
 
     if (!isCurrencyConversionNeeded || forexRate) {
       for (const platform of props.portfolioPlatforms) {
-        for (let [transactionType, amount] of Object.entries<any>(platform.getPortfolioTotals())) {
+        for (let [transactionType, amount] of Object.entries<any>(platform.getPortfolioResult())) {
           if (forexRate) {
             if (amount.getCurrency() !== Currency.CZK) {
               const tmp = amount.multiply(forexRate);

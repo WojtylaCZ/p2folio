@@ -3,7 +3,7 @@ import React from 'react';
 import { PlatformDataProps } from '../PlatformView';
 
 const TwinoSpecificHeaderView = (props: PlatformDataProps) => {
-  const totals = props.platformData.getPlatformTotals();
+  const totals = props.platformData.getPlatformResult();
 
   return (
     <div>

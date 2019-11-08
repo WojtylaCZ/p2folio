@@ -20,7 +20,7 @@ const PlatformHeaderView = (props: PlatformDataProps) => {
   } else if (props.platformData instanceof ZonkyPlatform) {
     platformSpecificHeader = <ZonkySpecificHeaderView platformData={props.platformData} />;
   }
-  const portfolioResult = props.platformData.getPortfolioTotals();
+  const portfolioResult = props.platformData.getPortfolioResult();
 
   return (
     <div>

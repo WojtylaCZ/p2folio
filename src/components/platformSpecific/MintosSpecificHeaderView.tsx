@@ -3,7 +3,7 @@ import React from 'react';
 import { PlatformDataProps } from '../PlatformView';
 
 const MintosSpecificHeaderView = (props: PlatformDataProps) => {
-  const totals = props.platformData.getPlatformTotals();
+  const totals = props.platformData.getPlatformResult();
   const campaignRewards = totals.extraReceived.referalReceived.add(totals.extraReceived.cashbackReceived);
   return (
     <div>

@@ -13,8 +13,8 @@ export abstract class Platform {
 
   protected transactionLog: any[] = [];
 
-  private platformTotals?: IBaseResult<any, any, any, any, any>;
-  private portfolioTotals?: IPortfolioResult;
+  private platformResult?: IBaseResult<any, any, any, any, any>;
+  private portfolioResult?: IPortfolioResult;
 
   public processTransactions() {
     let processingMonth = moment(0);
@@ -42,8 +42,8 @@ export abstract class Platform {
     }
   }
 
-  public getPlatformTotals(): IBaseResult<any, any, any, any, any> {
-    if (!this.platformTotals) {
+  public getPlatformResult(): IBaseResult<any, any, any, any, any> {
+    if (!this.platformResult) {
       const totals = this.getNewBaseResultFactory();
       for (const month of this.monthlyResults) {
         for (const [transactionType, value] of Object.entries<any>(month.result)) {
@@ -53,13 +53,13 @@ export abstract class Platform {
           }
         }
       }
-      this.platformTotals = totals;
+      this.platformResult = totals;
     }
-    return this.platformTotals;
+    return this.platformResult;
   }
 
-  public getPortfolioTotals(): IPortfolioResult {
-    if (!this.portfolioTotals) {
+  public getPortfolioResult(): IPortfolioResult {
+    if (!this.portfolioResult) {
       const totals: IPortfolioResult = {
         deposit: Dinero({ currency: this.currency }),
         extraReceived: Dinero({ currency: this.currency }),
@@ -69,19 +69,19 @@ export abstract class Platform {
         withdrawal: Dinero({ currency: this.currency })
       };
 
-      const platformTotals = this.getPlatformTotals();
+      const platformResult = this.getPlatformResult();
 
-      for (const [transactionType, value] of Object.entries(platformTotals)) {
+      for (const [transactionType, value] of Object.entries(platformResult)) {
         for (const [, amount] of Object.entries<Dinero.Dinero>(value)) {
           // @ts-ignore
           totals[transactionType] = totals[transactionType].add(amount);
         }
       }
 
-      this.portfolioTotals = totals;
+      this.portfolioResult = totals;
     }
 
-    return this.portfolioTotals;
+    return this.portfolioResult;
   }
 
   protected abstract parseASFile(rawFile: ArrayBuffer): void;
