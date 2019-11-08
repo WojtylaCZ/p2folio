@@ -1,33 +1,32 @@
 import React from 'react';
 
-import { PlatformDataProps } from '../PlatformView';
+import { PlatformResultProps } from '../PlatformHeaderView';
 
-const ZonkySpecificHeaderView = (props: PlatformDataProps) => {
-  const totals = props.platformData.getPlatformResult();
+const ZonkySpecificHeaderView = (props: PlatformResultProps) => {
   return (
     <div>
       <h3>Zonky - statistiky na webu</h3>
       <p>
         Vyděláno:
-        {totals.interestReceived.interestReceived
-          .add(totals.interestReceived.penaltyReceived)
-          .subtract(totals.feesPaid.plaformFeePaid)
-          .subtract(totals.feesPaid.secondaryMarketFeePaid)
+        {props.platformResult.interestReceived.interestReceived
+          .add(props.platformResult.interestReceived.penaltyReceived)
+          .subtract(props.platformResult.feesPaid.plaformFeePaid)
+          .subtract(props.platformResult.feesPaid.secondaryMarketFeePaid)
           .toFormat()}
       </p>
 
       <p>
         Zaplaceno na poplatcích:
-        {totals.feesPaid.plaformFeePaid.add(totals.feesPaid.secondaryMarketFeePaid).toFormat()}
+        {props.platformResult.feesPaid.plaformFeePaid.add(props.platformResult.feesPaid.secondaryMarketFeePaid).toFormat()}
       </p>
 
       <p>
         Úrok zaplacený:
-        {totals.interestReceived.interestReceived.toFormat()}
+        {props.platformResult.interestReceived.interestReceived.toFormat()}
       </p>
       <p>
         Pokuty:
-        {totals.interestReceived.penaltyReceived.toFormat()}
+        {props.platformResult.interestReceived.penaltyReceived.toFormat()}
       </p>
     </div>
   );
