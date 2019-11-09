@@ -75,7 +75,7 @@ class ResultTable extends React.Component<PlatformDataProps> {
   }
 
   private renderTableHeader() {
-    return ['Datum', 'Vklady', 'Výběry', 'Příjaté úroky', 'Zaplaceno na poplatcích', 'Mimo investiční odměny'].map(
+    return ['Datum', 'Vklady', 'Výběry', 'Přijaté zisky', 'Zaplaceno na poplatcích', 'Mimo-investiční odměny'].map(
       (key, index) => {
         return <th key={index}>{key}</th>;
       }

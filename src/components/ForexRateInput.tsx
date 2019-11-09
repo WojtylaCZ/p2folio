@@ -47,25 +47,27 @@ const ForexRateInput = (props: ForexRateInputProps) => {
   };
 
   return (
-    <form className={classes.container} noValidate={true} autoComplete="off">
-      <TextField
-        id="outlined-basic"
-        className={classes.textField}
-        error={forexRateInputError ? true : false}
-        helperText={forexRateInputError}
-        label="1 EUR = ? CZK"
-        margin="normal"
-        onChange={(event: any) => {
-          setForexRate(event.target.value);
-        }}
-        variant="outlined"
-        type="number"
-        value={forexRate}
-      />
-      <Button variant="contained" color="primary" className={classes.button} size="small" type="submit" onClick={onButtonClick}>
-        Ok
-      </Button>
-    </form>
+    <div>
+      <h3>Zadejte svůj kurz EUR-CZK</h3>1 EUR = ? CZK:
+      <form className={classes.container} noValidate={true} autoComplete="off">
+        <TextField
+          id="outlined-basic"
+          className={classes.textField}
+          error={forexRateInputError ? true : false}
+          helperText={forexRateInputError}
+          margin="normal"
+          onChange={(event: any) => {
+            setForexRate(event.target.value);
+          }}
+          variant="outlined"
+          type="number"
+          value={forexRate}
+        />
+        <Button variant="contained" color="primary" className={classes.button} size="small" type="submit" onClick={onButtonClick}>
+          Zadat kurz
+        </Button>
+      </form>
+    </div>
   );
 };
 

@@ -43,7 +43,7 @@ class App extends React.Component<{}, AppState> {
   }
 
   public componentDidUpdate() {
-    setTimeout(this.processNewRawFile, 1);
+    setTimeout(this.processNewRawFile, 900);
   }
 
   public render() {
@@ -96,7 +96,7 @@ class App extends React.Component<{}, AppState> {
         <div>
           <AppBar position="static">
             <Toolbar>
-              <Typography variant="h6">P2folio - testovací aplha verze</Typography>
+              <Typography variant="h6">P2folio - testovací beta verze</Typography>
             </Toolbar>
           </AppBar>
         </div>
@@ -106,41 +106,60 @@ class App extends React.Component<{}, AppState> {
             <b>P2folio sjednocuje data z různých P2P platforem pro kompaktní statistiky a přehled celého portfolia.</b>
           </p>
           <p>
-            Projekt má veřejný kód a uveřejněný na &nbsp;
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/WojtylaCZ/p2folio">
-              github.com
-            </a>
-            . <br />
-            Ocením jakékoliv komentáře, návrhy nebo hlášení chyb. Buď na githubu nebo třeba v této &nbsp;
+            Ocením jakékoliv komentáře, návrhy nebo hlášení chyb. Třeba v této&nbsp;
             <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/groups/1813432205553867">
               facebookové skupině pro P2P investory
             </a>
+            &nbsp;nebo na{' '}
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/WojtylaCZ/p2folio">
+              GitHubu
+            </a>
             .
           </p>
-          <p>
-            <b>
-              Data jsou zpracována pouze ve vašem prohlížeči. Nikam se neodesílají, služba nemá žádnou další část.
-              <br />
-              Pokud stránku aktualizujete, všechna data jsou ztracena.
-            </b>
-          </p>
 
-          <p>Statistiky ze zpracovávají z výpisu z účtu z jednotlivých platforem. Jak postupovat:</p>
+          <p>Statistiky ze získají z výpisů z účtu z jednotlivých platforem. Jak je získat:</p>
 
           <ul id="upload_tutorials">
-            <li> Pro data z platformy Zonky.cz, stáhněte výpis z peněženky ve vašem účtě a nahrajte jej sem.</li>
             <li>
-              Pro Mintos.com, otevřete záložku Account Statement ve vašem účtě a vyberte měnu EUR (zatím jediná podporovaná). Pro
-              Start Date zvolete nějaké datum dávno v minulosti - například (např. 11.12.2013) a klikněte na Search. Pod tabulkou
-              s celkovým přehledem je tlačítko Download Selected List. Stáhněte daný soubor a naimportujte jej sem.
+              {' '}
+              <a href="https://www.zonky.cz" target="_blank" rel="noopener noreferrer">
+                {' '}
+                Zonky.cz
+              </a>{' '}
+              - pro zobrazení dat z platformy se přihlaste do svého účtu, klikněte na záložky "X Kč máte k investování" nebo
+              "Zobrazit peněženku" a na této stránce dole vyberte možnost "Exportovat výpisy z účtu". Stáhněte daný soubor dle
+              intrukcí a nahrajte je sem.
             </li>
             <li>
-              Pro data z platformy Twino.eu se přihlašte do svého účtu, klidněte na záložku My Investment a následně na záložku
-              Account Statement. Pro Start Date filtr zadejte nějaké den dávno v minulosti (např. 11.12.2013) a vyčkejte až se
-              nahrají informace. Klikně na tlačítko Download. Stáhněte daný soubor a naimportujte jej sem.
+              <a href="https://www.mintos.com" target="_blank" rel="noopener noreferrer">
+                {' '}
+                Mintos.com
+              </a>{' '}
+              - otevřete záložku "Account Statement" ve vašem účtě a vyberte měnu EUR (zatím jediná podporovaná). Pro "Start Date"
+              zvolete nějaké datum dávno v minulosti - například (např. 11.12.2013) a klikněte na "Search". Pod tabulkou s
+              celkovým přehledem je tlačítko "Download Selected List". Stáhněte daný soubor a naimportujte jej sem.
             </li>
+            <li>
+              {' '}
+              <a href="https://www.twino.eu" target="_blank" rel="noopener noreferrer">
+                {' '}
+                Twino.eu
+              </a>{' '}
+              - přihlaste do svého účtu, klikněte na záložku "My Investment" a následně na záložku "Account Statement". Pro "Start
+              Date" filtr zadejte nějaký den dávno v minulosti (např. 11.12.2013) a vyčkejte až se nahrají data. Klikně na
+              tlačítko "Download". Stáhněte daný soubor a nahrajte jej sem.
+            </li>
+            <li> Jakou další platformu?</li>
           </ul>
         </div>
+
+        <p>
+          <b>
+            Data jsou zpracována pouze ve vašem prohlížeči. Nikam se neodesílají, služba nemá žádnou další část.
+            <br />
+            Pokud stránku aktualizujete, všechna data jsou ztracena.
+          </b>
+        </p>
 
         <div className="paper">
           <Paper square={true}>
