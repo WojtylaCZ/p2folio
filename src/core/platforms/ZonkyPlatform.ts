@@ -62,7 +62,7 @@ export class ZonkyPlatform extends Platform {
     });
 
     let headerNotFound = true;
-    for (let rowNumber = 0; rowNumber < 15; rowNumber++) {
+    for (let rowNumber = 0; rowNumber < transactionLog.length; rowNumber++) {
       if (transactionLog[rowNumber][ZonkyASFileColumnHeadersDefs.Date] === ZonkyASFileColumnHeadersDefs.Date) {
         transactionLog.splice(0, rowNumber + 1);
         headerNotFound = false;

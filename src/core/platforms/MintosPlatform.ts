@@ -87,6 +87,7 @@ export class MintosPlatform extends Platform {
 
       const amount = this.getAmount(rawAmount, currency);
 
+      // ENGLIGH VERSION OF THE EXPORT
       switch (transactionRecord[MintosASFileColumnHeadersDefs.Details]) {
         case 'Refer a friend bonus':
           transaction.result.extraReceived.referalReceived = amount;
@@ -138,6 +139,49 @@ export class MintosPlatform extends Platform {
         transactionRecord[MintosASFileColumnHeadersDefs.Details]
           .toLowerCase()
           .indexOf('discount/premium for secondary market transaction') >= 0
+      ) {
+        // TODO
+      }
+
+      // CZECH VERSION OF THE EXPORT
+      switch (transactionRecord[MintosASFileColumnHeadersDefs.Details]) {
+        case 'Bonus za doporučení příteli':
+          transaction.result.extraReceived.referalReceived = amount;
+          break;
+        case 'Cashback bonus':
+          transaction.result.extraReceived.cashbackReceived = amount;
+          break;
+        case 'Vklady':
+          transaction.result.deposit.deposit = amount;
+          break;
+        case 'Výběr':
+          transaction.result.withdrawal.withdrawal = amount;
+          break;
+        case 'Poplatek směnárny':
+          transaction.result.feesPaid.currencyExchangeFeePaid = amount;
+          break;
+      }
+
+      if (transactionRecord[MintosASFileColumnHeadersDefs.Details].toLowerCase().indexOf('úrok') >= 0) {
+        transaction.result.interestReceived.interestReceived = amount;
+      } else if (
+        transactionRecord[MintosASFileColumnHeadersDefs.Details]
+          .toLowerCase()
+          .indexOf('poplatek za obchod na sekundárním trhu') >= 0
+      ) {
+        transaction.result.feesPaid.secondaryMarketFeePaid = amount;
+      } else if (
+        transactionRecord[MintosASFileColumnHeadersDefs.Details].toLowerCase().indexOf('obdržené poplatky z prodlení') >= 0
+      ) {
+        transaction.result.interestReceived.penaltyReceived = amount;
+      } else if (transactionRecord[MintosASFileColumnHeadersDefs.Details].startsWith('Příchozí směnná transakce')) {
+        transaction.result.deposit.incomingCurrencyExchange = amount;
+      } else if (transactionRecord[MintosASFileColumnHeadersDefs.Details].startsWith('Odchozí směnná transakce')) {
+        transaction.result.withdrawal.outgoingCurrencyExchange = amount;
+      } else if (
+        transactionRecord[MintosASFileColumnHeadersDefs.Details]
+          .toLowerCase()
+          .indexOf('sleva/přirážka na transakce na sekundárním trhu') >= 0
       ) {
         // TODO
       }
