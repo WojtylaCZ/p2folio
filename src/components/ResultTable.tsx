@@ -1,3 +1,8 @@
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import React from 'react';
 
 import { IOneMonthPortfolioResult } from '../core/platforms/models';
@@ -6,46 +11,69 @@ type ResultTableProps = {
   monthlyPortfolioResults: IOneMonthPortfolioResult[];
 };
 
-class ResultTable extends React.Component<ResultTableProps> {
-  public render() {
-    return (
-      <div>
-        <table>
-          <thead>
-            <tr>{this.renderTableHeader()}</tr>
-          </thead>
-          <tbody>{this.renderTableData()}</tbody>
-        </table>
-      </div>
-    );
-  }
-
-  private renderTableData() {
-    if (this.props.monthlyPortfolioResults.length > 0) {
-      return this.props.monthlyPortfolioResults.map((month: IOneMonthPortfolioResult, index: number) => {
-        return (
-          <tr key={index}>
-            <td>{month.month.format('MMM YYYY')}</td>
-            <td>{month.result.deposit ? month.result.deposit.toFormat() : ''}</td>
-            <td>{month.result.withdrawal ? month.result.withdrawal.toFormat() : ''}</td>
-            <td>{month.result.interestReceived ? month.result.interestReceived.toFormat() : ''}</td>
-            <td>{month.result.feesPaid ? month.result.feesPaid.toFormat() : ''}</td>
-            <td>{month.result.extraReceived ? month.result.extraReceived.toFormat() : ''}</td>
-          </tr>
-        );
-      });
-    } else {
-      return <tr key={0} />;
+function renderTableHeader() {
+  const columnNames = ['Datum', 'Vklady', 'Výběry', 'Příjaté zisky', 'Zaplaceno na poplatcích', 'Mimo investiční odměny'].map(
+    (value, index) => {
+      return (
+        <TableCell key={index} align="center" variant="head">
+          {' '}
+          {value}{' '}
+        </TableCell>
+      );
     }
-  }
+  );
+  return <TableRow>{columnNames}</TableRow>;
+}
 
-  private renderTableHeader() {
-    return ['Datum', 'Vklady', 'Výběry', 'Přijaté zisky', 'Zaplaceno na poplatcích', 'Mimo-investiční odměny'].map(
-      (key, index) => {
-        return <th key={index}>{key}</th>;
-      }
+function renderTableData(props: any) {
+  if (props.monthlyPortfolioResults.length > 0) {
+    return props.monthlyPortfolioResults.map((month: IOneMonthPortfolioResult, index: number) => {
+      return (
+        <TableRow key={index} hover={true}>
+          <TableCell component="th" scope="row" align="center" style={{ width: '15%' }}>
+            {month.month.format('MMM YYYY')}
+          </TableCell>
+          <TableCell align="right" style={{ width: '17%' }}>
+            {month.result.deposit ? month.result.deposit.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '17%' }}>
+            {month.result.withdrawal ? month.result.withdrawal.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '17%' }}>
+            {month.result.interestReceived ? month.result.interestReceived.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '17%' }}>
+            {month.result.feesPaid ? month.result.feesPaid.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '17%' }}>
+            {month.result.extraReceived ? month.result.extraReceived.toFormat() : ''}
+          </TableCell>
+        </TableRow>
+      );
+    });
+  } else {
+    return (
+      <TableRow>
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell />
+      </TableRow>
     );
   }
 }
+
+const ResultTable = (props: ResultTableProps) => {
+  return (
+    <div>
+      <Table size="small" aria-label="a dense table">
+        <TableHead>{renderTableHeader()}</TableHead>
+        <TableBody>{renderTableData(props)}</TableBody>
+      </Table>
+    </div>
+  );
+};
 
 export default ResultTable;
