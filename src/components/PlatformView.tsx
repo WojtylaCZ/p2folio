@@ -10,10 +10,12 @@ export type PlatformDataProps = {
 };
 
 const PlatformView = (props: PlatformDataProps) => {
+  const monthlyPortfolioResults = props.platformData.getMonthlyPortfolioResults();
+
   return (
     <div>
       <PlatformHeaderView platformData={props.platformData} />
-      <ResultTable platformData={props.platformData} />
+      <ResultTable monthlyPortfolioResults={monthlyPortfolioResults} />
     </div>
   );
 };

@@ -28,6 +28,11 @@ export interface IPortfolioResult {
   feesPaid: Dinero.Dinero;
 }
 
+export interface IOneMonthPortfolioResult {
+  month: Moment;
+  result: IPortfolioResult;
+}
+
 export interface IGeneralDeposit {
   deposit?: Dinero.Dinero;
 }
@@ -47,7 +52,7 @@ export interface IBaseResult<ExtraReceived, InterestReceived, FeePaid, Deposit, 
   feesPaid: FeePaid;
 }
 
-export interface IMonthlyResults<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal> {
+export interface IOneMonthPlatformResult<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal> {
   month: Moment;
   result: IBaseResult<ExtraReceived, InterestReceived, FeePaid, Deposit, Withdrawal>;
 }

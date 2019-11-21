@@ -3,18 +3,27 @@ import moment from 'moment';
 
 import { Currency } from '../../common/enums';
 
-import { IBaseResult, IMonthlyResults, IPortfolioResult, ITransaction, SupportedPlatformTypes } from './models';
+import {
+  IBaseResult,
+  IOneMonthPlatformResult,
+  IOneMonthPortfolioResult,
+  IPortfolioResult,
+  ITransaction,
+  SupportedPlatformTypes
+} from './models';
 
 export abstract class Platform {
   public abstract currency: Currency;
   public abstract readonly platform: SupportedPlatformTypes;
 
-  public monthlyResults: Array<IMonthlyResults<any, any, any, any, any>> = [];
+  public monthlyResults: Array<IOneMonthPlatformResult<any, any, any, any, any>> = [];
 
   protected transactionLog: any[] = [];
 
   private platformResult?: IBaseResult<any, any, any, any, any>;
   private portfolioResult?: IPortfolioResult;
+
+  private monthlyPortfolioResults?: IOneMonthPortfolioResult[];
 
   public processTransactions() {
     let processingMonth = moment(0);
@@ -82,6 +91,41 @@ export abstract class Platform {
     }
 
     return this.portfolioResult;
+  }
+
+  public getMonthlyPortfolioResults(): IOneMonthPortfolioResult[] {
+    if (!this.monthlyPortfolioResults) {
+      this.monthlyPortfolioResults = this.monthlyResults.map((month: IOneMonthPlatformResult<any, any, any, any, any>) => {
+        const monthPortfolioResult: IOneMonthPortfolioResult = {
+          month: month.month,
+          result: {
+            deposit: Dinero({ currency: this.currency }),
+            extraReceived: Dinero({ currency: this.currency }),
+            feesPaid: Dinero({ currency: this.currency }),
+            interestReceived: Dinero({ currency: this.currency }),
+            principalReceived: Dinero({ currency: this.currency }),
+            withdrawal: Dinero({ currency: this.currency })
+          }
+        };
+
+        for (const [transactionType, key] of Object.entries(month.result)) {
+          for (const [, value] of Object.entries<Dinero.Dinero>(key)) {
+            // @ts-ignore TODO
+            if (monthPortfolioResult.result[transactionType]) {
+              // @ts-ignore TODO
+              monthPortfolioResult.result[transactionType] = monthPortfolioResult.result[transactionType].add(value);
+            } else {
+              // @ts-ignore TODO
+              monthPortfolioResult.result[transactionType] = value;
+            }
+          }
+        }
+
+        return monthPortfolioResult;
+      });
+    }
+
+    return this.monthlyPortfolioResults;
   }
 
   protected abstract parseASFile(rawFile: ArrayBuffer): void;

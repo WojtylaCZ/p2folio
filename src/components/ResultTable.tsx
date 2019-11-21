@@ -1,18 +1,12 @@
-import Dinero from 'dinero.js';
 import React from 'react';
 
-import {
-  IDepositOptions,
-  IExtraReceivedOptions,
-  IFeePaidOptions,
-  IInterestReceivedOptions,
-  IMonthlyResults,
-  IWithdrawalOptions
-} from '../core/platforms/models';
+import { IOneMonthPortfolioResult } from '../core/platforms/models';
 
-import { PlatformDataProps } from './PlatformView';
+type ResultTableProps = {
+  monthlyPortfolioResults: IOneMonthPortfolioResult[];
+};
 
-class ResultTable extends React.Component<PlatformDataProps> {
+class ResultTable extends React.Component<ResultTableProps> {
   public render() {
     return (
       <div>
@@ -27,48 +21,19 @@ class ResultTable extends React.Component<PlatformDataProps> {
   }
 
   private renderTableData() {
-    if (this.props.platformData.monthlyResults.length > 0) {
-      return this.props.platformData.monthlyResults.map(
-        (
-          month: IMonthlyResults<
-            IExtraReceivedOptions,
-            IInterestReceivedOptions,
-            IFeePaidOptions,
-            IDepositOptions,
-            IWithdrawalOptions
-          >,
-          index: any
-        ) => {
-          const monthResult = {
-            deposit: undefined,
-            withdrawal: undefined,
-            feesPaid: undefined,
-            extraReceived: undefined,
-            interestReceived: undefined
-          } as any;
-
-          for (const [transactionType, value] of Object.entries(month.result)) {
-            for (const [, result] of Object.entries<Dinero.Dinero>(value)) {
-              if (monthResult[transactionType]) {
-                monthResult[transactionType] = monthResult[transactionType].add(result);
-              } else {
-                monthResult[transactionType] = result;
-              }
-            }
-          }
-
-          return (
-            <tr key={index}>
-              <td>{month.month.format('MMM YYYY')}</td>
-              <td>{monthResult.deposit ? monthResult.deposit.toFormat() : ''}</td>
-              <td>{monthResult.withdrawal ? monthResult.withdrawal.toFormat() : ''}</td>
-              <td>{monthResult.interestReceived ? monthResult.interestReceived.toFormat() : ''}</td>
-              <td>{monthResult.feesPaid ? monthResult.feesPaid.toFormat() : ''}</td>
-              <td>{monthResult.extraReceived ? monthResult.extraReceived.toFormat() : ''}</td>
-            </tr>
-          );
-        }
-      );
+    if (this.props.monthlyPortfolioResults.length > 0) {
+      return this.props.monthlyPortfolioResults.map((month: IOneMonthPortfolioResult, index: number) => {
+        return (
+          <tr key={index}>
+            <td>{month.month.format('MMM YYYY')}</td>
+            <td>{month.result.deposit ? month.result.deposit.toFormat() : ''}</td>
+            <td>{month.result.withdrawal ? month.result.withdrawal.toFormat() : ''}</td>
+            <td>{month.result.interestReceived ? month.result.interestReceived.toFormat() : ''}</td>
+            <td>{month.result.feesPaid ? month.result.feesPaid.toFormat() : ''}</td>
+            <td>{month.result.extraReceived ? month.result.extraReceived.toFormat() : ''}</td>
+          </tr>
+        );
+      });
     } else {
       return <tr key={0} />;
     }
