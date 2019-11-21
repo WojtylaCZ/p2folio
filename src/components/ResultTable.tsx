@@ -25,27 +25,27 @@ function renderTableHeader() {
   return <TableRow>{columnNames}</TableRow>;
 }
 
-function renderTableData(props: any) {
+function renderTableData(props: ResultTableProps) {
   if (props.monthlyPortfolioResults.length > 0) {
     return props.monthlyPortfolioResults.map((month: IOneMonthPortfolioResult, index: number) => {
       return (
         <TableRow key={index} hover={true}>
-          <TableCell component="th" scope="row" align="center" style={{ width: '15%' }}>
+          <TableCell component="th" scope="row" align="center" style={{ width: '10%' }}>
             {month.month.format('MMM YYYY')}
           </TableCell>
-          <TableCell align="right" style={{ width: '17%' }}>
+          <TableCell align="right" style={{ width: '18%' }}>
             {month.result.deposit ? month.result.deposit.toFormat() : ''}
           </TableCell>
-          <TableCell align="right" style={{ width: '17%' }}>
+          <TableCell align="right" style={{ width: '18%' }}>
             {month.result.withdrawal ? month.result.withdrawal.toFormat() : ''}
           </TableCell>
-          <TableCell align="right" style={{ width: '17%' }}>
+          <TableCell align="right" style={{ width: '18%' }}>
             {month.result.interestReceived ? month.result.interestReceived.toFormat() : ''}
           </TableCell>
-          <TableCell align="right" style={{ width: '17%' }}>
+          <TableCell align="right" style={{ width: '18%' }}>
             {month.result.feesPaid ? month.result.feesPaid.toFormat() : ''}
           </TableCell>
-          <TableCell align="right" style={{ width: '17%' }}>
+          <TableCell align="right" style={{ width: '18%' }}>
             {month.result.extraReceived ? month.result.extraReceived.toFormat() : ''}
           </TableCell>
         </TableRow>
