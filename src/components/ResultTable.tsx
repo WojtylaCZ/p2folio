@@ -12,16 +12,14 @@ type ResultTableProps = {
 };
 
 function renderTableHeader() {
-  const columnNames = ['Datum', 'Vklady', 'Výběry', 'Příjaté zisky', 'Zaplaceno na poplatcích', 'Mimo investiční odměny'].map(
-    (value, index) => {
-      return (
-        <TableCell key={index} align="center" variant="head">
-          {' '}
-          {value}{' '}
-        </TableCell>
-      );
-    }
-  );
+  const columnNames = ['Datum', 'Vklady', 'Výběry', 'Příjaté zisky', 'Zaplacené poplatky', 'Extra odměny'].map((value, index) => {
+    return (
+      <TableCell key={index} align="center" variant="head">
+        {' '}
+        {value}{' '}
+      </TableCell>
+    );
+  });
   return <TableRow>{columnNames}</TableRow>;
 }
 

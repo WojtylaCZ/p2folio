@@ -94,14 +94,16 @@ class App extends React.Component<{}, AppState> {
         </div>
 
         <div>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h6">P2folio - testovací beta verze</Typography>
-            </Toolbar>
+          <AppBar position="static" style={{ zIndex: -1 }}>
+            <div className="content">
+              <Toolbar style={{ padding: '0' }}>
+                <Typography variant="h6">P2folio - BETA verze</Typography>
+              </Toolbar>
+            </div>
           </AppBar>
         </div>
 
-        <div>
+        <div className="content">
           <p>
             <b>P2folio sjednocuje data z různých P2P platforem pro kompaktní statistiky a přehled celého portfolia.</b>
           </p>
@@ -145,54 +147,54 @@ class App extends React.Component<{}, AppState> {
                 {' '}
                 Twino.eu
               </a>{' '}
-              - přihlaste do svého účtu, klikněte na záložku "My Investment" a následně na záložku "Account Statement". Pro "Start
-              Date" filtr zadejte nějaký den dávno v minulosti (např. 11.12.2013) a vyčkejte až se nahrají data. Klikně na
-              tlačítko "Download". Stáhněte daný soubor a nahrajte jej sem.
+              - přihlaste do svého účtu, klikněte na záložku "My Investment" a následně na "Account Statement". Pro "Start Date"
+              filtr zadejte nějaký den dávno v minulosti (např. 11.12.2013) a vyčkejte až se nahrají data. Klikně na tlačítko
+              "Download". Stáhněte daný soubor a nahrajte jej sem.
             </li>
             <li> Jakou další platformu?</li>
           </ul>
-        </div>
 
-        <p>
-          <b>
-            Data jsou zpracována pouze ve vašem prohlížeči. Nikam se neodesílají, služba nemá žádnou další část.
-            <br />
-            Pokud stránku aktualizujete, všechna data jsou ztracena.
-          </b>
-        </p>
+          <p>
+            <b>
+              Data jsou zpracována pouze ve vašem prohlížeči. Nikam se neodesílají, služba nemá žádnou další část.
+              <br />
+              Jakmile stránku aktualizujete, všechna data jsou ztracena.
+            </b>
+          </p>
 
-        <div className="paper">
-          <Paper square={true}>
-            <Grid container={true}>
-              <Grid item={true} xs={6}>
-                <UploadFilesInput
-                  uploadEnabled={this.state.uploadEnabled}
-                  onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
-                />
+          <div className="paper">
+            <Paper square={true}>
+              <Grid container={true}>
+                <Grid item={true} xs={6}>
+                  <UploadFilesInput
+                    uploadEnabled={this.state.uploadEnabled}
+                    onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
+                  />
+                </Grid>
+                <Grid item={true} xs={6}>
+                  <DragAndDropFilesInput
+                    uploadEnabled={this.state.uploadEnabled}
+                    onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
+                  />
+                </Grid>
+                <Grid item={true} xs={12}>
+                  <Paper id="statements_info" square={true}>
+                    <b>{statementsInfo} </b>
+                  </Paper>
+                </Grid>
               </Grid>
-              <Grid item={true} xs={6}>
-                <DragAndDropFilesInput
-                  uploadEnabled={this.state.uploadEnabled}
-                  onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
-                />
-              </Grid>
-              <Grid item={true} xs={12}>
-                <Paper id="statements_info" square={true}>
-                  <b>{statementsInfo} </b>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Paper>
-        </div>
+            </Paper>
+          </div>
 
-        <div className="paper" style={{ paddingTop: '30px' }}>
-          <PlatformsTabMenuView portfolioPlatforms={this.state.portfolioPlatforms} />
-        </div>
+          <div className="paper" style={{ paddingTop: '30px' }}>
+            <PlatformsTabMenuView portfolioPlatforms={this.state.portfolioPlatforms} />
+          </div>
 
-        <div className="paper" style={{ paddingTop: '30px' }}>
-          <Paper id="footer" square={true} style={{ padding: '5px' }}>
-            2019 @ Vojtech Uhlir
-          </Paper>
+          <div className="paper" style={{ paddingTop: '30px' }}>
+            <Paper id="footer" square={true} style={{ padding: '5px' }}>
+              2019 @ Vojtech Uhlir
+            </Paper>
+          </div>
         </div>
       </div>
     );
