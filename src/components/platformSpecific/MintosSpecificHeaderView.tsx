@@ -1,24 +1,27 @@
 import React from 'react';
 
-import { PlatformDataProps } from '../PlatformView';
+import { PlatformResultProps } from '../PlatformHeaderView';
 
-const MintosSpecificHeaderView = (props: PlatformDataProps) => {
-  const totals = props.platformData.getPlatformTotals();
-  const campaignRewards = totals.extraReceived.referalReceived.add(totals.extraReceived.cashbackReceived);
+const MintosSpecificHeaderView = (props: PlatformResultProps) => {
+  const campaignRewards = props.platformResult.extraReceived.referalReceived.add(
+    props.platformResult.extraReceived.cashbackReceived
+  );
   return (
     <div>
       <h3>Mintos - statistiky na webu</h3>
       <p>
         Interest - úvodní stránka:
-        {totals.interestReceived.interestReceived.toFormat()}
+        {props.platformResult.interestReceived.interestReceived.toFormat()}
       </p>
       <p>
         Late Payment Fees - úvodní stránka:
-        {totals.interestReceived.penaltyReceived.toFormat()}
+        {props.platformResult.interestReceived.penaltyReceived.toFormat()}
       </p>
       <p>
         Service fees - úvodní stránka:
-        {totals.feesPaid.secondaryMarketFeePaid.add(totals.feesPaid.currencyExchangeFeePaid).toFormat()}
+        {props.platformResult.feesPaid.secondaryMarketFeePaid
+          .add(props.platformResult.feesPaid.currencyExchangeFeePaid)
+          .toFormat()}
       </p>
       <p>
         Campaign Rewards:
@@ -26,23 +29,23 @@ const MintosSpecificHeaderView = (props: PlatformDataProps) => {
       </p>
       <p>
         Deposit - stránka Account statement:
-        {totals.deposit.deposit!.add(campaignRewards).toFormat()}
+        {props.platformResult.deposit.deposit!.add(campaignRewards).toFormat()}
       </p>
       <p>
         Incoming Currency Exchange - stránka Account statement:
-        {totals.deposit.incomingCurrencyExchange.toFormat()}
+        {props.platformResult.deposit.incomingCurrencyExchange.toFormat()}
       </p>
       <p>
         Outgoing Currency Exchange - stránka Account statement:
-        {totals.withdrawal.outgoingCurrencyExchange.toFormat()}
+        {props.platformResult.withdrawal.outgoingCurrencyExchange.toFormat()}
       </p>
       <p>
         Secondary Market Fees - stránka Account statement:
-        {totals.feesPaid.secondaryMarketFeePaid.toFormat()}
+        {props.platformResult.feesPaid.secondaryMarketFeePaid.toFormat()}
       </p>
       <p>
         Currency Exchange Fee - stránka Account statement:
-        {totals.feesPaid.currencyExchangeFeePaid.toFormat()}
+        {props.platformResult.feesPaid.currencyExchangeFeePaid.toFormat()}
       </p>
     </div>
   );

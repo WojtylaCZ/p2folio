@@ -1,13 +1,14 @@
 import Grid from '@material-ui/core/Grid';
-import Dinero from 'dinero.js';
 import React, { useState } from 'react';
 
 import { Currency } from '../common/enums';
-import { getNewPortfolioResultFactory } from '../core/platforms/utils';
+import { IOneMonthPortfolioResult } from '../core/platforms/models';
+import { getNewPortfolioResultFactory, getPortfolioResultWithOptionalForexConversion } from '../core/platforms/utils';
 
 import ForexRateInput from './ForexRateInput';
 import { PortfolioPlatformsProps } from './PlatformsTabMenuView';
 import PortfolioHeaderView from './PortfolioHeaderView';
+import ResultTable from './ResultTable';
 
 const PortfolioView = (props: PortfolioPlatformsProps) => {
   const [forexRate, setForexRate] = useState(0.0);
@@ -17,10 +18,11 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
   };
 
   let portfolioHeader;
+  let portfolioResultTable;
   let forexRateInput;
 
   if (props.portfolioPlatforms.length > 0) {
-    const portfolioCurrency = props.portfolioPlatforms[0].currency;
+    let portfolioCurrency = props.portfolioPlatforms[0].currency;
     let isCurrencyConversionNeeded = false;
 
     for (const platform of props.portfolioPlatforms) {
@@ -30,38 +32,24 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
       }
     }
 
-    let portfolioResult;
     if (isCurrencyConversionNeeded) {
-      portfolioResult = getNewPortfolioResultFactory(Currency.CZK);
+      portfolioCurrency = Currency.CZK;
       forexRateInput = <ForexRateInput setForexRateValue={setForexRateValue} />;
-    } else {
-      portfolioResult = getNewPortfolioResultFactory(portfolioCurrency);
     }
 
+    let portfolioResult = getNewPortfolioResultFactory(portfolioCurrency);
+    let monthlyPortfolioResults: IOneMonthPortfolioResult[] = [];
+
     if (!isCurrencyConversionNeeded || forexRate) {
-      for (const platform of props.portfolioPlatforms) {
-        for (let [transactionType, amount] of Object.entries<any>(platform.getPortfolioTotals())) {
-          if (forexRate) {
-            if (amount.getCurrency() !== Currency.CZK) {
-              const tmp = amount.multiply(forexRate);
-              amount = Dinero({ amount: tmp.getAmount(), currency: Currency.CZK, precision: tmp.getPrecision() });
-              // TODO FIX this hack somehow with:
-              // const rates = {
-              //     rates: {
-              //       CZK: 26.7
-              //     }
-              //   }
-              // converted = await amount.convert('CZK', {
-              //     endpoint: new Promise(resolve => resolve(rates))
-              //   })
-            }
-          }
-          // @ts-ignore
-          portfolioResult[transactionType] = portfolioResult[transactionType].add(amount);
-        }
-      }
+      [portfolioResult, monthlyPortfolioResults] = getPortfolioResultWithOptionalForexConversion(
+        props.portfolioPlatforms,
+        portfolioCurrency,
+        forexRate
+      );
     }
+
     portfolioHeader = <PortfolioHeaderView portfolioResult={portfolioResult} />;
+    portfolioResultTable = <ResultTable monthlyPortfolioResults={monthlyPortfolioResults || []} />;
   } else {
     portfolioHeader = 'Nahrajte výpisy z účtu k zobrazení statistik z jednotlivých platforem.';
   }
@@ -76,6 +64,9 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
           {forexRateInput}
         </Grid>
       </Grid>
+
+      {portfolioResultTable ? <hr /> : undefined}
+      {portfolioResultTable}
     </div>
   );
 };

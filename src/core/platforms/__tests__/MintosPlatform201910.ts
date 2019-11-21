@@ -11,40 +11,40 @@ it('validates SUM total numbers', () => {
   platformData.parseASFile(rawFile);
   platformData.processTransactions();
 
-  expect(platformData.getPortfolioTotals().deposit.toUnit()).toEqual(mintosResult.portfolioTotals.deposit);
-  expect(platformData.getPortfolioTotals().extraReceived.toUnit()).toEqual(mintosResult.portfolioTotals.extraReceived);
-  expect(platformData.getPortfolioTotals().feesPaid.toUnit()).toEqual(mintosResult.portfolioTotals.feesPaid);
-  expect(platformData.getPortfolioTotals().interestReceived.toUnit()).toEqual(mintosResult.portfolioTotals.interestReceived);
-  expect(platformData.getPortfolioTotals().principalReceived.toUnit()).toEqual(mintosResult.portfolioTotals.principalReceived);
-  expect(platformData.getPortfolioTotals().withdrawal.toUnit()).toEqual(mintosResult.portfolioTotals.withdrawal);
+  expect(platformData.getPortfolioResult().deposit.toUnit()).toEqual(mintosResult.portfolioResult.deposit);
+  expect(platformData.getPortfolioResult().extraReceived.toUnit()).toEqual(mintosResult.portfolioResult.extraReceived);
+  expect(platformData.getPortfolioResult().feesPaid.toUnit()).toEqual(mintosResult.portfolioResult.feesPaid);
+  expect(platformData.getPortfolioResult().interestReceived.toUnit()).toEqual(mintosResult.portfolioResult.interestReceived);
+  expect(platformData.getPortfolioResult().principalReceived.toUnit()).toEqual(mintosResult.portfolioResult.principalReceived);
+  expect(platformData.getPortfolioResult().withdrawal.toUnit()).toEqual(mintosResult.portfolioResult.withdrawal);
 
-  expect(platformData.getPlatformTotals().deposit.deposit.toUnit()).toEqual(mintosResult.platformTotals.deposit.deposit);
-  expect(platformData.getPlatformTotals().deposit.incomingCurrencyExchange.toUnit()).toEqual(
-    mintosResult.platformTotals.deposit.incomingCurrencyExchange
+  expect(platformData.getPlatformResult().deposit.deposit.toUnit()).toEqual(mintosResult.platformResult.deposit.deposit);
+  expect(platformData.getPlatformResult().deposit.incomingCurrencyExchange.toUnit()).toEqual(
+    mintosResult.platformResult.deposit.incomingCurrencyExchange
   );
-  expect(platformData.getPlatformTotals().extraReceived.cashbackReceived.toUnit()).toEqual(
-    mintosResult.platformTotals.extraReceived.cashbackReceived
+  expect(platformData.getPlatformResult().extraReceived.cashbackReceived.toUnit()).toEqual(
+    mintosResult.platformResult.extraReceived.cashbackReceived
   );
-  expect(platformData.getPlatformTotals().extraReceived.referalReceived.toUnit()).toEqual(
-    mintosResult.platformTotals.extraReceived.referalReceived
+  expect(platformData.getPlatformResult().extraReceived.referalReceived.toUnit()).toEqual(
+    mintosResult.platformResult.extraReceived.referalReceived
   );
-  expect(platformData.getPlatformTotals().feesPaid.currencyExchangeFeePaid.toUnit()).toEqual(
-    mintosResult.platformTotals.feesPaid.currencyExchangeFeePaid
+  expect(platformData.getPlatformResult().feesPaid.currencyExchangeFeePaid.toUnit()).toEqual(
+    mintosResult.platformResult.feesPaid.currencyExchangeFeePaid
   );
-  expect(platformData.getPlatformTotals().feesPaid.secondaryMarketFeePaid.toUnit()).toEqual(
-    mintosResult.platformTotals.feesPaid.secondaryMarketFeePaid
+  expect(platformData.getPlatformResult().feesPaid.secondaryMarketFeePaid.toUnit()).toEqual(
+    mintosResult.platformResult.feesPaid.secondaryMarketFeePaid
   );
-  expect(platformData.getPlatformTotals().interestReceived.interestReceived!.toUnit()).toEqual(
-    mintosResult.platformTotals.interestReceived.interestReceived
+  expect(platformData.getPlatformResult().interestReceived.interestReceived!.toUnit()).toEqual(
+    mintosResult.platformResult.interestReceived.interestReceived
   );
-  expect(platformData.getPlatformTotals().interestReceived.penaltyReceived!.toUnit()).toEqual(
-    mintosResult.platformTotals.interestReceived.penaltyReceived
+  expect(platformData.getPlatformResult().interestReceived.penaltyReceived!.toUnit()).toEqual(
+    mintosResult.platformResult.interestReceived.penaltyReceived
   );
-  expect(platformData.getPlatformTotals().principalReceived).toEqual(mintosResult.platformTotals.principalReceived);
-  expect(platformData.getPlatformTotals().withdrawal.withdrawal!.toUnit()).toEqual(
-    mintosResult.platformTotals.withdrawal.withdrawal
+  expect(platformData.getPlatformResult().principalReceived).toEqual(mintosResult.platformResult.principalReceived);
+  expect(platformData.getPlatformResult().withdrawal.withdrawal!.toUnit()).toEqual(
+    mintosResult.platformResult.withdrawal.withdrawal
   );
-  expect(platformData.getPlatformTotals().withdrawal.outgoingCurrencyExchange!.toUnit()).toEqual(
-    mintosResult.platformTotals.withdrawal.outgoingCurrencyExchange
+  expect(platformData.getPlatformResult().withdrawal.outgoingCurrencyExchange!.toUnit()).toEqual(
+    mintosResult.platformResult.withdrawal.outgoingCurrencyExchange
   );
 });

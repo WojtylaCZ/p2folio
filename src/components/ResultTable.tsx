@@ -1,86 +1,77 @@
-import Dinero from 'dinero.js';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import React from 'react';
 
-import {
-  IDepositOptions,
-  IExtraReceivedOptions,
-  IFeePaidOptions,
-  IInterestReceivedOptions,
-  IMonthlyResults,
-  IWithdrawalOptions
-} from '../core/platforms/models';
+import { IOneMonthPortfolioResult } from '../core/platforms/models';
 
-import { PlatformDataProps } from './PlatformView';
+type ResultTableProps = {
+  monthlyPortfolioResults: IOneMonthPortfolioResult[];
+};
 
-class ResultTable extends React.Component<PlatformDataProps> {
-  public render() {
+function renderTableHeader() {
+  const columnNames = ['Datum', 'Vklady', 'Výběry', 'Příjaté zisky', 'Zaplacené poplatky', 'Extra odměny'].map((value, index) => {
     return (
-      <div>
-        <table>
-          <thead>
-            <tr>{this.renderTableHeader()}</tr>
-          </thead>
-          <tbody>{this.renderTableData()}</tbody>
-        </table>
-      </div>
+      <TableCell key={index} align="center" variant="head">
+        {' '}
+        {value}{' '}
+      </TableCell>
     );
-  }
+  });
+  return <TableRow>{columnNames}</TableRow>;
+}
 
-  private renderTableData() {
-    if (this.props.platformData.monthlyResults.length > 0) {
-      return this.props.platformData.monthlyResults.map(
-        (
-          month: IMonthlyResults<
-            IExtraReceivedOptions,
-            IInterestReceivedOptions,
-            IFeePaidOptions,
-            IDepositOptions,
-            IWithdrawalOptions
-          >,
-          index: any
-        ) => {
-          const monthResult = {
-            deposit: undefined,
-            withdrawal: undefined,
-            feesPaid: undefined,
-            extraReceived: undefined,
-            interestReceived: undefined
-          } as any;
-
-          for (const [transactionType, value] of Object.entries(month.result)) {
-            for (const [, result] of Object.entries<Dinero.Dinero>(value)) {
-              if (monthResult[transactionType]) {
-                monthResult[transactionType] = monthResult[transactionType].add(result);
-              } else {
-                monthResult[transactionType] = result;
-              }
-            }
-          }
-
-          return (
-            <tr key={index}>
-              <td>{month.month.format('MMM YYYY')}</td>
-              <td>{monthResult.deposit ? monthResult.deposit.toFormat() : ''}</td>
-              <td>{monthResult.withdrawal ? monthResult.withdrawal.toFormat() : ''}</td>
-              <td>{monthResult.interestReceived ? monthResult.interestReceived.toFormat() : ''}</td>
-              <td>{monthResult.feesPaid ? monthResult.feesPaid.toFormat() : ''}</td>
-              <td>{monthResult.extraReceived ? monthResult.extraReceived.toFormat() : ''}</td>
-            </tr>
-          );
-        }
+function renderTableData(props: ResultTableProps) {
+  if (props.monthlyPortfolioResults.length > 0) {
+    return props.monthlyPortfolioResults.map((month: IOneMonthPortfolioResult, index: number) => {
+      return (
+        <TableRow key={index} hover={true}>
+          <TableCell component="th" scope="row" align="center" style={{ width: '10%' }}>
+            {month.month.format('MMM YYYY')}
+          </TableCell>
+          <TableCell align="right" style={{ width: '18%' }}>
+            {month.result.deposit ? month.result.deposit.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '18%' }}>
+            {month.result.withdrawal ? month.result.withdrawal.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '18%' }}>
+            {month.result.interestReceived ? month.result.interestReceived.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '18%' }}>
+            {month.result.feesPaid ? month.result.feesPaid.toFormat() : ''}
+          </TableCell>
+          <TableCell align="right" style={{ width: '18%' }}>
+            {month.result.extraReceived ? month.result.extraReceived.toFormat() : ''}
+          </TableCell>
+        </TableRow>
       );
-    } else {
-      return <tr key={0} />;
-    }
-  }
-
-  private renderTableHeader() {
-    return ['Datum', 'Vklady', 'Výběry', 'Přijaté zisky', 'Zaplaceno na poplatcích', 'Mimo-investiční odměny'].map(
-      (key, index) => {
-        return <th key={index}>{key}</th>;
-      }
+    });
+  } else {
+    return (
+      <TableRow>
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell />
+      </TableRow>
     );
   }
 }
+
+const ResultTable = (props: ResultTableProps) => {
+  return (
+    <div>
+      <Table size="small" aria-label="a dense table">
+        <TableHead>{renderTableHeader()}</TableHead>
+        <TableBody>{renderTableData(props)}</TableBody>
+      </Table>
+    </div>
+  );
+};
 
 export default ResultTable;

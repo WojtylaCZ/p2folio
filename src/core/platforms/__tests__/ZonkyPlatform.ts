@@ -11,31 +11,31 @@ it('validates SUM total numbers', () => {
   platformData.parseASFile(rawFile);
   platformData.processTransactions();
 
-  expect(platformData.getPortfolioTotals().deposit.toUnit()).toEqual(zonkyResult.portfolioTotals.deposit);
-  expect(platformData.getPortfolioTotals().extraReceived.toUnit()).toEqual(zonkyResult.portfolioTotals.extraReceived);
-  expect(platformData.getPortfolioTotals().feesPaid.toUnit()).toEqual(zonkyResult.portfolioTotals.feesPaid);
-  expect(platformData.getPortfolioTotals().interestReceived.toUnit()).toEqual(zonkyResult.portfolioTotals.interestReceived);
-  expect(platformData.getPortfolioTotals().principalReceived.toUnit()).toEqual(zonkyResult.portfolioTotals.principalReceived);
-  expect(platformData.getPortfolioTotals().withdrawal.toUnit()).toEqual(zonkyResult.portfolioTotals.withdrawal);
+  expect(platformData.getPortfolioResult().deposit.toUnit()).toEqual(zonkyResult.portfolioResult.deposit);
+  expect(platformData.getPortfolioResult().extraReceived.toUnit()).toEqual(zonkyResult.portfolioResult.extraReceived);
+  expect(platformData.getPortfolioResult().feesPaid.toUnit()).toEqual(zonkyResult.portfolioResult.feesPaid);
+  expect(platformData.getPortfolioResult().interestReceived.toUnit()).toEqual(zonkyResult.portfolioResult.interestReceived);
+  expect(platformData.getPortfolioResult().principalReceived.toUnit()).toEqual(zonkyResult.portfolioResult.principalReceived);
+  expect(platformData.getPortfolioResult().withdrawal.toUnit()).toEqual(zonkyResult.portfolioResult.withdrawal);
 
-  expect(platformData.getPlatformTotals().deposit.deposit!.toUnit()).toEqual(zonkyResult.platformTotals.deposit.deposit);
-  expect(platformData.getPlatformTotals().extraReceived).toEqual(zonkyResult.platformTotals.extraReceived);
-  expect(platformData.getPlatformTotals().feesPaid.plaformFeePaid.toUnit()).toEqual(
-    zonkyResult.platformTotals.feesPaid.plaformFeePaid
+  expect(platformData.getPlatformResult().deposit.deposit!.toUnit()).toEqual(zonkyResult.platformResult.deposit.deposit);
+  expect(platformData.getPlatformResult().extraReceived).toEqual(zonkyResult.platformResult.extraReceived);
+  expect(platformData.getPlatformResult().feesPaid.plaformFeePaid.toUnit()).toEqual(
+    zonkyResult.platformResult.feesPaid.plaformFeePaid
   );
-  expect(platformData.getPlatformTotals().feesPaid.secondaryMarketFeePaid.toUnit()).toEqual(
-    zonkyResult.platformTotals.feesPaid.secondaryMarketFeePaid
+  expect(platformData.getPlatformResult().feesPaid.secondaryMarketFeePaid.toUnit()).toEqual(
+    zonkyResult.platformResult.feesPaid.secondaryMarketFeePaid
   );
-  expect(platformData.getPlatformTotals().interestReceived.interestReceived!.toUnit()).toEqual(
-    zonkyResult.platformTotals.interestReceived.interestReceived
+  expect(platformData.getPlatformResult().interestReceived.interestReceived!.toUnit()).toEqual(
+    zonkyResult.platformResult.interestReceived.interestReceived
   );
-  expect(platformData.getPlatformTotals().interestReceived.penaltyReceived!.toUnit()).toEqual(
-    zonkyResult.platformTotals.interestReceived.penaltyReceived
+  expect(platformData.getPlatformResult().interestReceived.penaltyReceived!.toUnit()).toEqual(
+    zonkyResult.platformResult.interestReceived.penaltyReceived
   );
-  expect(platformData.getPlatformTotals().principalReceived.principalReceived!.toUnit()).toEqual(
-    zonkyResult.platformTotals.principalReceived.principalReceived
+  expect(platformData.getPlatformResult().principalReceived.principalReceived!.toUnit()).toEqual(
+    zonkyResult.platformResult.principalReceived.principalReceived
   );
-  expect(platformData.getPlatformTotals().withdrawal.withdrawal!.toUnit()).toEqual(
-    zonkyResult.platformTotals.withdrawal.withdrawal
+  expect(platformData.getPlatformResult().withdrawal.withdrawal!.toUnit()).toEqual(
+    zonkyResult.platformResult.withdrawal.withdrawal
   );
 });

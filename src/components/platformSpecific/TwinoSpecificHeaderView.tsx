@@ -1,17 +1,18 @@
 import React from 'react';
 
-import { PlatformDataProps } from '../PlatformView';
+import { PlatformResultProps } from '../PlatformHeaderView';
 
-const TwinoSpecificHeaderView = (props: PlatformDataProps) => {
-  const totals = props.platformData.getPlatformTotals();
-
+const TwinoSpecificHeaderView = (props: PlatformResultProps) => {
   return (
     <div>
       <h3>Twino.eu - statistiky na webu</h3>
-      <p>Vklady - úvodní stránka: {totals.deposit.deposit.toFormat()}</p>
-      <p>Výběry - úvodní stránka: {totals.withdrawal.withdrawal.toFormat()}</p>
+      <p>Vklady - úvodní stránka: {props.platformResult.deposit.deposit.toFormat()}</p>
+      <p>Výběry - úvodní stránka: {props.platformResult.withdrawal.withdrawal.toFormat()}</p>
       <p>
-        Zisk - úvodní stránka: {totals.interestReceived.interestReceived.add(totals.interestReceived.penaltyReceived).toFormat()}
+        Zisk - úvodní stránka:{' '}
+        {props.platformResult.interestReceived.interestReceived
+          .add(props.platformResult.interestReceived.penaltyReceived)
+          .toFormat()}
       </p>
     </div>
   );
