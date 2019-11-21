@@ -28,7 +28,7 @@ function renderTableData(props: ResultTableProps) {
     return props.monthlyPortfolioResults.map((month: IOneMonthPortfolioResult, index: number) => {
       return (
         <TableRow key={index} hover={true}>
-          <TableCell component="th" scope="row" align="center" style={{ width: '10%' }}>
+          <TableCell component="th" scope="row" align="center" style={{ width: '12%' }}>
             {month.month.format('MMM YYYY')}
           </TableCell>
           <TableCell align="right" style={{ width: '18%' }}>
@@ -40,10 +40,10 @@ function renderTableData(props: ResultTableProps) {
           <TableCell align="right" style={{ width: '18%' }}>
             {month.result.interestReceived ? month.result.interestReceived.toFormat() : ''}
           </TableCell>
-          <TableCell align="right" style={{ width: '18%' }}>
+          <TableCell align="right" style={{ width: '17%' }}>
             {month.result.feesPaid ? month.result.feesPaid.toFormat() : ''}
           </TableCell>
-          <TableCell align="right" style={{ width: '18%' }}>
+          <TableCell align="right" style={{ width: '17%' }}>
             {month.result.extraReceived ? month.result.extraReceived.toFormat() : ''}
           </TableCell>
         </TableRow>
