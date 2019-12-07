@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 
 import { loadSelectedFile } from '../common/utils';
 
@@ -7,6 +8,10 @@ import './UploadFilesInput.css';
 
 class UploadFilesInput extends React.Component<FileUploadInputProps> {
   public onLoadHandler(event: any, filename: string) {
+    ReactGA.event({
+      category: 'FileUpload',
+      action: 'Choose file'
+    });
     this.props.onRawFileUploaded(event.target.result, filename);
   }
 

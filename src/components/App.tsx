@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import ReactGA from 'react-ga';
 
 import { MintosPlatform } from '../core/platforms/MintosPlatform';
 import { SupportedPlatform, SupportedPlatformTypes } from '../core/platforms/models';
@@ -220,6 +221,11 @@ class App extends React.Component<{}, AppState> {
           default:
             throw Error('unknown platform');
         }
+
+        ReactGA.event({
+          category: 'PlatformUsed',
+          action: platformData.platform
+        });
 
         platformData.parseASFile(rawFile);
         platformData.processTransactions();
