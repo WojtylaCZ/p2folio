@@ -5,7 +5,7 @@ import { PlatformResultProps } from '../PlatformHeaderView';
 const TwinoSpecificHeaderView = (props: PlatformResultProps) => {
   return (
     <div>
-      <h3>Twino.eu - statistiky na webu</h3>
+      <h3>Twino.eu - statistiky jako na webu pro kontrolu</h3>
       <p>Vklady - úvodní stránka: {props.platformResult.deposit.deposit.toFormat()}</p>
       <p>Výběry - úvodní stránka: {props.platformResult.withdrawal.withdrawal.toFormat()}</p>
       <p>

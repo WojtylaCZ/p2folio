@@ -15,6 +15,7 @@ const PlatformView = (props: PlatformDataProps) => {
   return (
     <div>
       <PlatformHeaderView platformData={props.platformData} />
+      <hr />
       <ResultTable monthlyPortfolioResults={monthlyPortfolioResults} />
     </div>
   );

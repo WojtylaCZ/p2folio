@@ -61,12 +61,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
+  const tabs = ['Portfolio', SupportedPlatformTypes.ZONKY, SupportedPlatformTypes.MINTOS, SupportedPlatformTypes.TWINO];
+
   const [tabIndexValue, setTabIndexValue] = useState(0);
   const onTabChange = (event: React.ChangeEvent<{}>, newTabIndexValue: number) => {
     setTabIndexValue(newTabIndexValue);
   };
-
-  const tabs = ['Portfolio', SupportedPlatformTypes.ZONKY, SupportedPlatformTypes.MINTOS, SupportedPlatformTypes.TWINO];
 
   useEffect(() => {
     let focus = 0;
@@ -74,7 +74,7 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
       focus = tabs.indexOf(platform.platform);
     }
     setTabIndexValue(focus);
-  }, [props.portfolioPlatforms.length]);
+  }, [tabs, props.portfolioPlatforms.length, props.portfolioPlatforms]);
 
   const classes = useStyles();
 

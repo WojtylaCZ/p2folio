@@ -8,7 +8,7 @@ const MintosSpecificHeaderView = (props: PlatformResultProps) => {
   );
   return (
     <div>
-      <h3>Mintos - statistiky na webu</h3>
+      <h3>Mintos - statistiky jako na webu pro kontrolu</h3>
       <p>
         Interest - úvodní stránka:
         {props.platformResult.interestReceived.interestReceived.toFormat()}

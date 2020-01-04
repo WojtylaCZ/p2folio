@@ -5,7 +5,7 @@ import { PlatformResultProps } from '../PlatformHeaderView';
 const ZonkySpecificHeaderView = (props: PlatformResultProps) => {
   return (
     <div>
-      <h3>Zonky - statistiky na webu</h3>
+      <h3>Zonky - statistiky jako na webu pro kontrolu</h3>
       <p>
         Vyděláno:
         {props.platformResult.interestReceived.interestReceived

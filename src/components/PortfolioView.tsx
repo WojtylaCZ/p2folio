@@ -48,22 +48,24 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
       );
     }
 
-    portfolioHeader = <PortfolioHeaderView portfolioResult={portfolioResult} />;
-    portfolioResultTable = <ResultTable monthlyPortfolioResults={monthlyPortfolioResults || []} />;
-  } else {
-    portfolioHeader = 'Nahrajte výpisy z účtu k zobrazení statistik z jednotlivých platforem.';
-  }
-
-  return (
-    <div>
+    portfolioHeader = (
       <Grid container={true}>
-        <Grid item={true} xs={6}>
-          {portfolioHeader}
+        <Grid item={true} xs={1} />
+        <Grid item={true} xs={5}>
+          <PortfolioHeaderView portfolioResult={portfolioResult} tooltips={{}} />
         </Grid>
         <Grid item={true} xs={6}>
           {forexRateInput}
         </Grid>
       </Grid>
+    );
+
+    portfolioResultTable = <ResultTable monthlyPortfolioResults={monthlyPortfolioResults || []} />;
+  }
+
+  return (
+    <div>
+      {portfolioHeader ? portfolioHeader : 'Nahrajte výpisy z účtu k zobrazení statistik z jednotlivých platforem.'}
 
       {portfolioResultTable ? <hr /> : undefined}
       {portfolioResultTable}
