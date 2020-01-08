@@ -65,7 +65,7 @@ function renderTableData(props: ResultTableProps) {
 
 const ResultTable = (props: ResultTableProps) => {
   return (
-    <div>
+    <div style={{ overflow: 'auto' }}>
       <Table size="small" aria-label="a dense table">
         <TableHead>{renderTableHeader()}</TableHead>
         <TableBody>{renderTableData(props)}</TableBody>
