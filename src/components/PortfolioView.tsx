@@ -1,4 +1,5 @@
 import Grid from '@material-ui/core/Grid';
+import moment from 'moment';
 import React, { useState } from 'react';
 
 import { Currency } from '../common/enums';
@@ -21,6 +22,8 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
   let portfolioResultTable;
   let forexRateInput;
 
+  let monthlyPortfolioResults: IOneMonthPortfolioResult[] = [];
+
   if (props.portfolioPlatforms.length > 0) {
     let portfolioCurrency = props.portfolioPlatforms[0].currency;
     let isCurrencyConversionNeeded = false;
@@ -38,7 +41,6 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
     }
 
     let portfolioResult = getNewPortfolioResultFactory(portfolioCurrency);
-    let monthlyPortfolioResults: IOneMonthPortfolioResult[] = [];
 
     if (!isCurrencyConversionNeeded || forexRate) {
       [portfolioResult, monthlyPortfolioResults] = getPortfolioResultWithOptionalForexConversion(
@@ -59,15 +61,20 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
         </Grid>
       </Grid>
     );
-
-    portfolioResultTable = <ResultTable monthlyPortfolioResults={monthlyPortfolioResults || []} />;
+  } else {
+    const example1 = { month: moment(), result: getNewPortfolioResultFactory(Currency.CZK) };
+    const example2 = { month: moment().subtract(1, 'months'), result: getNewPortfolioResultFactory(Currency.EUR) };
+    monthlyPortfolioResults = [example1, example2];
   }
+
+  portfolioResultTable = <ResultTable monthlyPortfolioResults={monthlyPortfolioResults} />;
 
   return (
     <div>
-      {portfolioHeader ? portfolioHeader : 'Nahrajte výpisy z účtu k zobrazení statistik z jednotlivých platforem.'}
-
-      {portfolioResultTable ? <hr /> : undefined}
+      {portfolioHeader
+        ? portfolioHeader
+        : 'Nahrajte výpisy z účtu k zobrazení statistik z jednotlivých platforem. Výsledky se zobrazí v následujícím formátě.'}
+      <hr />
       {portfolioResultTable}
     </div>
   );
