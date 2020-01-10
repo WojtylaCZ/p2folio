@@ -65,14 +65,23 @@ export class MintosPlatform extends Platform {
   public parseASFile(rawFile: ArrayBuffer) {
     const firstSheet = getFirstWorkSheetFromRawFile(rawFile);
 
-    const transactionLog: any[] = xlsx.utils.sheet_to_json(firstSheet, {
+    this.transactionLog = xlsx.utils.sheet_to_json(firstSheet, {
       header: MintosPlatform.ASFileColumnHeaders,
       raw: false,
       blankrows: false,
       defval: 0.0,
       range: 1
     });
-    this.transactionLog = transactionLog;
+  }
+
+  public resolveCurrency() {
+    const logCurrency = this.transactionLog[0][MintosASFileColumnHeadersDefs.Currency];
+    for (const record of this.transactionLog) {
+      if (record[MintosASFileColumnHeadersDefs.Currency] !== logCurrency) {
+        throw Error('Not all records in transactionLog with the same currency');
+      }
+    }
+    this.currency = logCurrency;
   }
 
   protected *getTransaction(): IterableIterator<

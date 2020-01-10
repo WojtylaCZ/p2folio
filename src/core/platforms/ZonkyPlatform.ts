@@ -75,6 +75,10 @@ export class ZonkyPlatform extends Platform {
     this.transactionLog = transactionLog;
   }
 
+  public resolveCurrency() {
+    this.currency = Currency.CZK;
+  }
+
   public *getTransaction(): IterableIterator<
     ITransaction<{}, IZonkyInterestReceived, IZonkyFeesPaid, IGeneralDeposit, IGeneralWithdrawal>
   > {

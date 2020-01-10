@@ -258,6 +258,7 @@ class App extends React.Component<{}, AppState> {
         });
 
         platformData.parseASFile(rawFile);
+        platformData.resolveCurrency();
         platformData.processTransactions();
 
         this.setState(prevState => ({

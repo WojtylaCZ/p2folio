@@ -80,9 +80,15 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
 
   const platformViews: any = {};
 
+  // TODO fix this with multi-platform multi-currency support
+  let MintosCurrencyLabel = '?';
   for (const platform of props.portfolioPlatforms) {
     platformViews[platform.platform] = <PlatformView platformData={platform} />;
+    if (platform.platform === SupportedPlatformTypes.MINTOS) {
+      MintosCurrencyLabel = platform.currency;
+    }
   }
+  const mintosLabel = 'Detail Mintos.com ' + `(${MintosCurrencyLabel})`;
 
   const availablePlatforms = Object.keys(platformViews);
 
@@ -103,7 +109,7 @@ const PlatformsTabMenuView = (props: PortfolioPlatformsProps) => {
           />
           <Tab
             className={mintosEnabled ? classes.tabEnabled : classes.tabDisabled}
-            label="Detail Mintos.com (EUR)"
+            label={mintosLabel}
             {...a11yProps(2)}
             disabled={!mintosEnabled}
           />

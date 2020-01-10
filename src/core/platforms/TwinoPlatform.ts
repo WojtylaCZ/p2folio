@@ -59,6 +59,10 @@ export class TwinoPlatform extends Platform {
     this.transactionLog = transactionLog.reverse();
   }
 
+  public resolveCurrency() {
+    this.currency = Currency.EUR;
+  }
+
   protected *getTransaction(): IterableIterator<
     ITransaction<{}, ITwinoInterestReceived, {}, IGeneralDeposit, IGeneralWithdrawal>
   > {

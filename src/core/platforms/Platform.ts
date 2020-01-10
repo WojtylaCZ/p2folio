@@ -128,7 +128,8 @@ export abstract class Platform {
     return this.monthlyPortfolioResults;
   }
 
-  protected abstract parseASFile(rawFile: ArrayBuffer): void;
-  protected abstract getTransaction(): IterableIterator<ITransaction<any, any, any, any, any>>;
   protected abstract getNewBaseResultFactory(): IBaseResult<any, any, any, any, any>;
+  protected abstract getTransaction(): IterableIterator<ITransaction<any, any, any, any, any>>;
+  protected abstract parseASFile(rawFile: ArrayBuffer): void;
+  protected abstract resolveCurrency(): void;
 }
