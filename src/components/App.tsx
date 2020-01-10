@@ -211,6 +211,9 @@ class App extends React.Component<{}, AppState> {
                   />
                 </div>
               </div>
+              <Paper id="statements_info" square={true}>
+                <b>{statementsInfo} </b>
+              </Paper>
             </Paper>
           </div>
 
