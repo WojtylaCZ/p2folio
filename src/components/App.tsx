@@ -197,25 +197,20 @@ class App extends React.Component<{}, AppState> {
 
           <div className="paper" style={{ paddingTop: '20px' }}>
             <Paper square={true}>
-              <Grid container={true}>
-                <Grid item={true} xs={6}>
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <div style={{ flexGrow: 1 }}>
                   <UploadFilesInput
                     uploadEnabled={this.state.uploadEnabled}
                     onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
                   />
-                </Grid>
-                <Grid item={true} xs={6}>
+                </div>
+                <div style={{ flexGrow: 1 }}>
                   <DragAndDropFilesInput
                     uploadEnabled={this.state.uploadEnabled}
                     onRawFileUploaded={(rawfile, filename) => this.handleUploadedRawFile(rawfile, filename)}
                   />
-                </Grid>
-                <Grid item={true} xs={12}>
-                  <Paper id="statements_info" square={true}>
-                    <b>{statementsInfo} </b>
-                  </Paper>
-                </Grid>
-              </Grid>
+                </div>
+              </div>
             </Paper>
           </div>
 
