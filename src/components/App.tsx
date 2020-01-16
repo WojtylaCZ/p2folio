@@ -39,7 +39,12 @@ type AppState = {
 };
 
 class App extends React.Component<{}, AppState> {
-  public state = { newRawFiles: [], portfolioPlatforms: [], statementInfo: undefined, uploadEnabled: true };
+  public state = {
+    newRawFiles: [] as INewRawFile[],
+    portfolioPlatforms: [] as SupportedPlatform[],
+    statementInfo: '',
+    uploadEnabled: true
+  };
 
   public handleUploadedRawFile(rawFile: ArrayBuffer, filename: string) {
     this.setState(prevState => ({
@@ -257,14 +262,23 @@ class App extends React.Component<{}, AppState> {
           action: platformData.platform
         });
 
+        const existingDataIndex = this.state.portfolioPlatforms.findIndex(platform => {
+          return platform.platform === platformData.platform && platform.currency === platformData.currency;
+        });
+
         platformData.parseASFile(rawFile);
         platformData.processTransactions();
 
-        this.setState(prevState => ({
-          newRawFiles: prevState.newRawFiles.slice(1, prevState.newRawFiles.length),
-          portfolioPlatforms: [...prevState.portfolioPlatforms, platformData],
-          uploadEnabled: true
-        }));
+        this.setState(prevState => {
+          if (existingDataIndex >= 0) {
+            prevState.portfolioPlatforms.splice(existingDataIndex, 1);
+          }
+          return {
+            newRawFiles: prevState.newRawFiles.slice(1, prevState.newRawFiles.length),
+            portfolioPlatforms: [...prevState.portfolioPlatforms, platformData],
+            uploadEnabled: true
+          };
+        });
       } catch (e) {
         console.log(e);
         this.setState(prevState => ({
