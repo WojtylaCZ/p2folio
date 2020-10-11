@@ -4,8 +4,11 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import { login } from '../libs/authentication/login';
 import { registration } from '../libs/authentication/registration';
+import { FacebookIcon } from '../shared/icons/FacebookIcon';
+import { TelegramIcon } from '../shared/icons/TelegramIcon';
+import { TwitterIcon } from '../shared/icons/TwitterIcon';
 
-import './App.css';
+import './Footer.css';
 
 export const Footer = () => {
   return (
@@ -17,6 +20,17 @@ export const Footer = () => {
           <Link to="/login"> Login </Link>
           <Link to="/register"> Register </Link>
         </Paper>
+      </div>
+
+      <div className="footer">
+        <div> {} </div>
+        <div className="signature">© 2018-2020 - Vojtech Uhlir</div>
+
+        <div className="social">
+          <FacebookIcon />
+          <TwitterIcon />
+          <TelegramIcon />
+        </div>
       </div>
     </div>
   );

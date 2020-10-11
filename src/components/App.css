@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto';
+  font-family: 'Helvetica';
 }
 
 body {
@@ -47,7 +47,7 @@ body {
 .subtitles {
   width: 651px;
   height: 60px;
-  font-family: HelveticaNeue;
+  font-family: Helvetica;
   font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
