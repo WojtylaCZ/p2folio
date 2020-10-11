@@ -25,6 +25,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-ga": "2.7.0",
+    "react-router-dom": "5.2.0",
     "react-scripts": "3.1.2",
     "typescript": "3.5.3",
     "xlsx": "0.15.1"
@@ -37,7 +38,8 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "prettier": "prettier --config ./prettierrc.json --write \"./**/*.{js,ts,tsx,css,json,md}\" --ignore-path \"./.gitignore\"",
-    "lint": "tslint --fix --project ."
+    "lint": "tslint --fix --project .",
+    "format": "yarn prettier && yarn lint"
   },
   "husky": {
     "hooks": {
@@ -70,6 +72,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "5.1.6",
     "husky": "3.0.7",
     "lint-staged": "9.4.0",
     "prettier": "1.18.2",
