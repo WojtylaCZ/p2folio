@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #f2f2f2;
+  background: #f9fcff;
 }
 
 .content {
@@ -64,20 +64,4 @@ body {
   /* border-radius: 2px; */
   /* border: solid 1px #d4dee7; */
   /* background-color: #ffffff; */
-}
-
-h2 {
-  font-size: 18px;
-  line-height: 3.33;
-  letter-spacing: 4.46px;
-  color: #f7b500;
-}
-
-h4 {
-  font-size: 20px;
-  line-height: 1.5;
-  width: 544px;
-  font-weight: normal;
-  text-align: center;
-  color: #6e6e6e;
 }

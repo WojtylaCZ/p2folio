@@ -5,7 +5,7 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
 
-import '../../components/App.css';
+import '../../shared/Style.css';
 
 export const forex = () => {
   return (

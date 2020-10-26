@@ -17,7 +17,8 @@ export const Header = () => {
           <LanguageSelect />
         </div>
       </div>
-      <AppBar position="static" style={{ display: 'block' }}>
+
+      {/* <AppBar position="static" style={{ display: 'block' }}>
         <div className="content">
           <Toolbar>
             <Typography variant="h6">P2folio - BETA verze ✎</Typography>
@@ -57,7 +58,7 @@ export const Header = () => {
             }}
           />
         </div>
-      </AppBar>
+      </AppBar> */}
     </div>
   );
 };
