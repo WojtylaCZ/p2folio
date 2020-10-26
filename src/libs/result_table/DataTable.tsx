@@ -1,22 +1,34 @@
+import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { flexbox } from '@material-ui/system';
+import moment from 'moment';
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-import { IOneMonthPortfolioResult } from '../core/platforms/models';
+import { Currency } from '../../common/enums';
+import { IOneMonthPortfolioResult } from '../../core/platforms/models';
+import { getNewPortfolioResultFactory } from '../../core/platforms/utils';
+import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
 
 type ResultTableProps = {
   monthlyPortfolioResults: IOneMonthPortfolioResult[];
 };
 
+export function getDefaultResultTableExample(): IOneMonthPortfolioResult[] {
+  const example1 = { month: moment(), result: getNewPortfolioResultFactory(Currency.CZK) };
+  const example2 = { month: moment().subtract(1, 'months'), result: getNewPortfolioResultFactory(Currency.EUR) };
+  return [example1, example2];
+}
+
 function renderTableHeader() {
   const columnNames = ['Datum', 'Vklady', 'Výběry', 'Příjaté zisky', 'Zaplacené poplatky', 'Extra odměny'].map((value, index) => {
     return (
       <TableCell key={index} align="center" variant="head">
-        {' '}
-        {value}{' '}
+        {value}
       </TableCell>
     );
   });
@@ -63,15 +75,11 @@ function renderTableData(props: ResultTableProps) {
   }
 }
 
-const ResultTable = (props: ResultTableProps) => {
+export const DataTable = (props: ResultTableProps) => {
   return (
-    <div style={{ overflow: 'auto' }}>
-      <Table size="small" aria-label="a dense table">
-        <TableHead>{renderTableHeader()}</TableHead>
-        <TableBody>{renderTableData(props)}</TableBody>
-      </Table>
-    </div>
+    <Table size="small" aria-label="a dense table">
+      <TableHead>{renderTableHeader()}</TableHead>
+      <TableBody>{renderTableData(props)}</TableBody>
+    </Table>
   );
 };
-
-export default ResultTable;

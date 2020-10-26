@@ -1,10 +1,8 @@
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
 
+import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
 import '../../shared/Style.css';
 
 export const forex = () => {
@@ -15,16 +13,7 @@ export const forex = () => {
       <div>
         <h4>Zadané kurzy 👇 jsou vztažené k hlavní měně 👉</h4>
 
-        <FormControl className="currencyform" style={{ width: 70 }}>
-          <Select
-            value={'usd'}
-            //   onChange={handleChange}
-          >
-            <MenuItem value={'usd'}>$ USD</MenuItem>
-            <MenuItem value={'eur'}>€ EUR</MenuItem>
-            <MenuItem value={'czk'}>Kc CZK</MenuItem>
-          </Select>
-        </FormControl>
+        <CurrencySelectForm />
       </div>
       <div
         className="forexTable"

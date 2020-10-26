@@ -5,11 +5,12 @@ import React, { useState } from 'react';
 import { Currency } from '../common/enums';
 import { IOneMonthPortfolioResult } from '../core/platforms/models';
 import { getNewPortfolioResultFactory, getPortfolioResultWithOptionalForexConversion } from '../core/platforms/utils';
+import { DataTable, getDefaultResultTableExample } from '../libs/result_table/DataTable';
+import ResultTable from '../libs/result_table/ResultTable';
 
 import ForexRateInput from './ForexRateInput';
 import { PortfolioPlatformsProps } from './PlatformsTabMenuView';
 import PortfolioHeaderView from './PortfolioHeaderView';
-import ResultTable from './ResultTable';
 
 const PortfolioView = (props: PortfolioPlatformsProps) => {
   const [forexRate, setForexRate] = useState(0.0);
@@ -62,12 +63,10 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
       </Grid>
     );
   } else {
-    const example1 = { month: moment(), result: getNewPortfolioResultFactory(Currency.CZK) };
-    const example2 = { month: moment().subtract(1, 'months'), result: getNewPortfolioResultFactory(Currency.EUR) };
-    monthlyPortfolioResults = [example1, example2];
+    monthlyPortfolioResults = getDefaultResultTableExample();
   }
 
-  portfolioResultTable = <ResultTable monthlyPortfolioResults={monthlyPortfolioResults} />;
+  portfolioResultTable = <DataTable monthlyPortfolioResults={monthlyPortfolioResults} />;
 
   return (
     <div>

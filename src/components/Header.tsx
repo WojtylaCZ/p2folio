@@ -3,7 +3,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
-import { P2FOLIO } from '../shared/P2FOLIO';
+import { P2FOLIO } from '../shared/components/LogoP2FOLIO';
 
 import './Header.css';
 import { LanguageSelect } from './LanguageSelect';

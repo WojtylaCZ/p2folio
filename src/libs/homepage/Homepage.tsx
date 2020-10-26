@@ -1,6 +1,8 @@
 import React from 'react';
 
 import '../../shared/Style.css';
+import { getDefaultResultTableExample } from '../result_table/DataTable';
+import ResultTable from '../result_table/ResultTable';
 
 import './Homepage.css';
 
@@ -61,7 +63,9 @@ export const Homepage = () => {
         <h2> DETAILNI TABULKOVY POHLED</h2>
       </div>
 
-      <div>tabulka</div>
+      <div>
+        <ResultTable monthlyPortfolioResults={getDefaultResultTableExample()} />
+      </div>
     </div>
   );
 };

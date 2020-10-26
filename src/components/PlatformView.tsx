@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { SupportedPlatform } from '../core/platforms/models';
+import { DataTable } from '../libs/result_table/DataTable';
+import ResultTable from '../libs/result_table/ResultTable';
 
 import PlatformHeaderView from './PlatformHeaderView';
-import ResultTable from './ResultTable';
 
 export type PlatformDataProps = {
   platformData: SupportedPlatform;
@@ -16,7 +17,7 @@ const PlatformView = (props: PlatformDataProps) => {
     <div>
       <PlatformHeaderView platformData={props.platformData} />
       <hr />
-      <ResultTable monthlyPortfolioResults={monthlyPortfolioResults} />
+      <DataTable monthlyPortfolioResults={monthlyPortfolioResults} />
     </div>
   );
 };
