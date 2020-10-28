@@ -1,0 +1,7 @@
+.Rectangle {
+  width: 620px;
+  height: 99px;
+  border-radius: 7px;
+  box-shadow: 0 0 20px 0 rgba(29, 17, 86, 0.12);
+  background-color: #ffffff;
+}

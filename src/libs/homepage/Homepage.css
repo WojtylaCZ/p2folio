@@ -11,24 +11,3 @@ h3 {
   text-align: center;
   color: #131415;
 }
-
-.Rectangle {
-  width: 620px;
-  height: 99px;
-  border-radius: 7px;
-  box-shadow: 0 0 20px 0 rgba(29, 17, 86, 0.12);
-  background-color: #ffffff;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.Rectangle-title {
-  width: 452px;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  color: #6e6e6e;
-}
