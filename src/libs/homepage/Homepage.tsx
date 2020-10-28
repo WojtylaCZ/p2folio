@@ -4,6 +4,7 @@ import { Rectangle } from '../../shared/components/Rectangle';
 import '../../shared/Style.css';
 import { getDefaultResultTableExample } from '../result_table/DataTable';
 import ResultTable from '../result_table/ResultTable';
+import { ResultView } from '../result_view/ResultView';
 
 import './Homepage.css';
 import { PlatformsLogoLinks } from './PlatformsLogoLinks';
@@ -26,6 +27,7 @@ export const Homepage = () => {
       <div>
         <h2>VASE PORTFOLIO</h2>
       </div>
+      <ResultView />
 
       <div>
         <h2>DETAILNI ZOBRAZENI DLE PLATFOREM</h2>

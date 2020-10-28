@@ -13,6 +13,7 @@ import { Currency } from '../../common/enums';
 import { IOneMonthPortfolioResult } from '../../core/platforms/models';
 import { getNewPortfolioResultFactory } from '../../core/platforms/utils';
 import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
+import { ForexNavLink } from '../../shared/components/ForexNavLink';
 
 import { DataTable } from './DataTable';
 
@@ -29,11 +30,7 @@ const ResultTable = (props: ResultTableProps) => {
           <CurrencySelectForm />
         </div>
 
-        <div>
-          <NavLink to="/forex" style={{ color: '#f7b500', textDecoration: 'none' }}>
-            Zobrazit kurz měn pro přepočet
-          </NavLink>
-        </div>
+        <ForexNavLink />
       </div>
       <Paper>
         <div style={{ width: '1000px', paddingTop: 20, paddingBottom: 20, paddingLeft: 40, paddingRight: 40 }}>
