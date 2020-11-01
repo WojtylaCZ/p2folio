@@ -3,6 +3,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
+import { LoginButton } from '../libs/authentication/components/Login.button';
+import { SignUpButton } from '../libs/authentication/components/SignUp.button';
 import { P2FOLIO } from '../shared/components/LogoP2FOLIO';
 
 import './Header.css';
@@ -15,6 +17,8 @@ export const Header = () => {
         <div className="header">
           <P2FOLIO />
           <LanguageSelect />
+          <LoginButton />
+          <SignUpButton />
         </div>
       </div>
 

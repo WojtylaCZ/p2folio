@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
 
-import { CredentialsInput } from './components/credentials';
+import { CredentialsInput } from './components/Credentials.input';
 
 export const registration = (props: any) => {
   return (
