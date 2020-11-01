@@ -6,9 +6,7 @@ import { Proposition } from './Proposition';
 
 export const Propositions = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      👉 P2Folio vám zobrazí na výsledky z jednotlivých platforem na měsíční bázi <br />
-      👉 zkombinuje výsledky dohromady pro historický vývoj celého portfolia
+    <div>
       <Rectangle width="620px" content={<Proposition left={'🔐'} right={'Vaše data jsou v bezpečí jen u vás v prohlížeči.'} />} />
       <Rectangle
         width="620px"
