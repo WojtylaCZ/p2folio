@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Rectangle } from '../../shared/components/Rectangle';
 import '../../shared/Style.css';
+import { DragAndDrop } from '../draganddrop/DragAndDrop';
 import { getDefaultResultTableExample } from '../result_table/DataTable';
 import ResultTable from '../result_table/ResultTable';
 import { ResultView } from '../result_view/ResultView';
@@ -21,7 +21,7 @@ export const Homepage = () => {
 
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
         <Propositions />
-        <div>Sem pretahnete soubory</div>
+        <DragAndDrop />
       </div>
 
       <div>

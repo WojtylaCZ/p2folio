@@ -6,7 +6,7 @@ import { Header } from './Header';
 
 export const Index = () => {
   return (
-    <div>
+    <div style={{ maxWidth: '1300px', margin: 'auto' }}>
       <Header />
       <Body />
       <Footer />
