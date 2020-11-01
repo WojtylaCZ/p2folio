@@ -3,7 +3,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import React from 'react';
 
-import { LanguageGlobeIcon } from '../shared/icons/LanguageGlobeIcon';
+import { LanguageGlobeIcon } from '../icons/LanguageGlobeIcon';
 
 export const LanguageSelect = () => {
   return (

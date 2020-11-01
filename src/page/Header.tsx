@@ -1,22 +1,17 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { LoginButton } from '../libs/authentication/components/Login.button';
 import { SignUpButton } from '../libs/authentication/components/SignUp.button';
 import { PlatformHeaderButton } from '../libs/portfolio/components/PlatformHeader.button';
+import { LanguageSelect } from '../shared/components/LanguageSelect';
 import { P2FOLIO } from '../shared/components/LogoP2FOLIO';
-
-import './Header.css';
-import { LanguageSelect } from './LanguageSelect';
 
 export const Header = () => {
   return (
     <div>
       <div>
-        <div className="header">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <NavLink to="/" style={{ textDecoration: 'none' }}>
             <P2FOLIO />
           </NavLink>

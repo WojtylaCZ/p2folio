@@ -1,13 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import App from '../componentsV1/App';
 import { login } from '../libs/authentication/Login.page';
 import { registration } from '../libs/authentication/Registration.page';
 import { ForexPage } from '../libs/forex/Forex.page';
 import { PlatformPage } from '../libs/platform/Platform.page';
 import { Portfolio } from '../libs/portfolio/Portfolio.page';
-
-import App from './App';
 
 export const Body = () => {
   return (
