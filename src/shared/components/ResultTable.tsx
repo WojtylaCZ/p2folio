@@ -11,7 +11,7 @@ import React from 'react';
 import { Currency } from '../../common/enums';
 import { IOneMonthPortfolioResult } from '../../core/platforms/models';
 import { getNewPortfolioResultFactory } from '../../core/platforms/utils';
-import { ForexSelect } from '../forex/components/ForexSelect';
+import { ForexSelect } from '../../libs/forex/components/ForexSelect';
 
 import { DataTable } from './DataTable';
 

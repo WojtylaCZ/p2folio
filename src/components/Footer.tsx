@@ -2,8 +2,8 @@ import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
-import { login } from '../libs/authentication/login';
-import { registration } from '../libs/authentication/registration';
+import { login } from '../libs/authentication/Login.page';
+import { registration } from '../libs/authentication/Registration.page';
 import { FacebookIcon } from '../shared/icons/FacebookIcon';
 import { TelegramIcon } from '../shared/icons/TelegramIcon';
 import { TwitterIcon } from '../shared/icons/TwitterIcon';

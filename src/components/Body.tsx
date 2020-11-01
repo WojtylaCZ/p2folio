@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { login } from '../libs/authentication/login';
-import { registration } from '../libs/authentication/registration';
+import { login } from '../libs/authentication/Login.page';
+import { registration } from '../libs/authentication/Registration.page';
 import { ForexPage } from '../libs/forex/Forex.page';
 import { PlatformPage } from '../libs/platform/Platform.page';
 import { Portfolio } from '../libs/portfolio/Portfolio.page';

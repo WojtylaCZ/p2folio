@@ -1,12 +1,10 @@
 import Grid from '@material-ui/core/Grid';
-import moment from 'moment';
 import React, { useState } from 'react';
 
 import { Currency } from '../common/enums';
 import { IOneMonthPortfolioResult } from '../core/platforms/models';
 import { getNewPortfolioResultFactory, getPortfolioResultWithOptionalForexConversion } from '../core/platforms/utils';
-import { DataTable, getDefaultResultTableExample } from '../libs/result_table/DataTable';
-import ResultTable from '../libs/result_table/ResultTable';
+import { DataTable, getDefaultResultTableExample } from '../shared/components/DataTable';
 
 import ForexRateInput from './ForexRateInput';
 import { PortfolioPlatformsProps } from './PlatformsTabMenuView';

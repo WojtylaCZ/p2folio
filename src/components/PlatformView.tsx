@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { SupportedPlatform } from '../core/platforms/models';
-import { DataTable } from '../libs/result_table/DataTable';
-import ResultTable from '../libs/result_table/ResultTable';
+import { DataTable } from '../shared/components/DataTable';
 
 import PlatformHeaderView from './PlatformHeaderView';
 

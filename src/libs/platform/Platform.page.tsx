@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { DragAndDrop } from '../draganddrop/DragAndDrop';
+import { getDefaultResultTableExample } from '../../shared/components/DataTable';
+import { DragAndDrop } from '../../shared/components/DragAndDrop';
+import ResultTable from '../../shared/components/ResultTable';
+import { ResultView } from '../../shared/components/ResultView';
 import { Propositions } from '../portfolio/components/Propositions';
-import { getDefaultResultTableExample } from '../result_table/DataTable';
-import ResultTable from '../result_table/ResultTable';
-import { ResultView } from '../result_view/ResultView';
 
 export const PlatformPage = () => {
   const { platformId } = useParams();

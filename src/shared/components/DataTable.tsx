@@ -12,7 +12,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { Currency } from '../../common/enums';
 import { IOneMonthPortfolioResult } from '../../core/platforms/models';
 import { getNewPortfolioResultFactory } from '../../core/platforms/utils';
-import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
+
+import { CurrencySelectForm } from './CurrencySelectForm';
 
 type ResultTableProps = {
   monthlyPortfolioResults: IOneMonthPortfolioResult[];

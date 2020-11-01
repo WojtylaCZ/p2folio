@@ -1,9 +1,9 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
 
-import { MintosLogo } from '../../shared/icons/MintosLogo';
-import { TwinoLogo } from '../../shared/icons/TwinoLogo';
-import { ZonkyLogo } from '../../shared/icons/ZonkyLogo';
+import { MintosLogo } from '../icons/MintosLogo';
+import { TwinoLogo } from '../icons/TwinoLogo';
+import { ZonkyLogo } from '../icons/ZonkyLogo';
 
 import './DragAndDrop.css';
 

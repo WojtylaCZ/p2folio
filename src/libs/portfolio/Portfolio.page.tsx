@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { getDefaultResultTableExample } from '../../shared/components/DataTable';
+import { DragAndDrop } from '../../shared/components/DragAndDrop';
+import ResultTable from '../../shared/components/ResultTable';
+import { ResultView } from '../../shared/components/ResultView';
 import '../../shared/Style.css';
-import { DragAndDrop } from '../draganddrop/DragAndDrop';
-import { getDefaultResultTableExample } from '../result_table/DataTable';
-import ResultTable from '../result_table/ResultTable';
-import { ResultView } from '../result_view/ResultView';
 
 import { PlatformsLogoLinks } from './components/PlatformsLogoLinks';
 import { Propositions } from './components/Propositions';

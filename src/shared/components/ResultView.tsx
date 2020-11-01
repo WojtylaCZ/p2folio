@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ForexSelect } from '../forex/components/ForexSelect';
-import { CumulativeGraph } from '../graphs/Cumulative';
+import { ForexSelect } from '../../libs/forex/components/ForexSelect';
+import { CumulativeGraph } from '../../libs/graphs/Cumulative';
 
 import { ResultBox } from './ResultBox';
 
