@@ -1,8 +1,6 @@
-import Paper from '@material-ui/core/Paper';
 import React from 'react';
 
-import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
-import { ForexNavLink } from '../../shared/components/ForexNavLink';
+import { ForexSelect } from '../forex/components/ForexSelect';
 import { CumulativeGraph } from '../graphs/Cumulative';
 
 import { ResultBox } from './ResultBox';
@@ -10,12 +8,8 @@ import { ResultBox } from './ResultBox';
 export const ResultView = () => {
   return (
     <div>
-      <CurrencySelectForm />
-      <ForexNavLink />
-
-      <Paper>
-        <CumulativeGraph />
-      </Paper>
+      <ForexSelect />
+      <CumulativeGraph />
 
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
         <ResultBox title="Celkove vklady" value="200 000" />

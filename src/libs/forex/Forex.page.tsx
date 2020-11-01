@@ -5,7 +5,7 @@ import React from 'react';
 import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
 import '../../shared/Style.css';
 
-export const forex = () => {
+export const ForexPage = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#f9fcff', alignItems: 'center' }}>
       <h2> UPRAVA KURZU MEN </h2>
