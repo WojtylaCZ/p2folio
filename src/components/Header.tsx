@@ -5,6 +5,7 @@ import React from 'react';
 
 import { LoginButton } from '../libs/authentication/components/Login.button';
 import { SignUpButton } from '../libs/authentication/components/SignUp.button';
+import { PlatformHeaderButton } from '../libs/homepage/components/PlatformHeader.button';
 import { P2FOLIO } from '../shared/components/LogoP2FOLIO';
 
 import './Header.css';
@@ -13,12 +14,19 @@ import { LanguageSelect } from './LanguageSelect';
 export const Header = () => {
   return (
     <div>
-      <div className="content">
+      <div>
         <div className="header">
           <P2FOLIO />
-          <LanguageSelect />
-          <LoginButton />
-          <SignUpButton />
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
+            <PlatformHeaderButton name="Mintos" />
+            <PlatformHeaderButton name="Zonky" />
+            <PlatformHeaderButton name="Twino" />
+
+            <LanguageSelect />
+            <LoginButton />
+            <SignUpButton />
+          </div>
         </div>
       </div>
 

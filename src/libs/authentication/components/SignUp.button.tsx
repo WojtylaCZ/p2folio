@@ -7,8 +7,8 @@ export const SignUpButton = () => {
       <Button
         variant="contained"
         color="primary"
+        size="small"
         style={{
-          borderRadius: '4px',
           backgroundColor: '#195bdd'
         }}
       >

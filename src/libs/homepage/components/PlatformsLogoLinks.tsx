@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Rectangle } from '../../shared/components/Rectangle';
-import { MintosLogo } from '../../shared/icons/MintosLogo';
-import { TwinoLogo } from '../../shared/icons/TwinoLogo';
-import { ZonkyLogo } from '../../shared/icons/ZonkyLogo';
+import { Rectangle } from '../../../shared/components/Rectangle';
+import { MintosLogo } from '../../../shared/icons/MintosLogo';
+import { TwinoLogo } from '../../../shared/icons/TwinoLogo';
+import { ZonkyLogo } from '../../../shared/icons/ZonkyLogo';
 
 export const PlatformsLogoLinks = () => {
   return (

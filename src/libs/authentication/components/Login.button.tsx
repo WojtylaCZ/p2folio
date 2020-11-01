@@ -4,14 +4,7 @@ import React from 'react';
 export const LoginButton = () => {
   return (
     <div>
-      <Button
-        variant="outlined"
-        color="primary"
-        style={{
-          borderRadius: '4px'
-          // backgroundColor: '#195bdd'
-        }}
-      >
+      <Button variant="outlined" color="primary" size="small">
         PRIHLASIT SE
       </Button>
     </div>

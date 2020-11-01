@@ -6,9 +6,9 @@ import { getDefaultResultTableExample } from '../result_table/DataTable';
 import ResultTable from '../result_table/ResultTable';
 import { ResultView } from '../result_view/ResultView';
 
+import { PlatformsLogoLinks } from './components/PlatformsLogoLinks';
+import { Propositions } from './components/Propositions';
 import './Homepage.css';
-import { PlatformsLogoLinks } from './PlatformsLogoLinks';
-import { Propositions } from './Propositions';
 
 export const Homepage = () => {
   return (

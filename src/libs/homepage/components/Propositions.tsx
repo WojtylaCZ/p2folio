@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Rectangle } from '../../shared/components/Rectangle';
+import { Rectangle } from '../../../shared/components/Rectangle';
 
 import { Proposition } from './Proposition';
 
