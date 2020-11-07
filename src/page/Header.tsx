@@ -30,8 +30,14 @@ export const Header = () => {
             </NavLink>
 
             <LanguageSelect />
-            <LoginButton />
-            <SignUpButton />
+
+            <NavLink to="/login" style={{ textDecoration: 'none' }}>
+              <LoginButton />
+            </NavLink>
+
+            <NavLink to="/signup" style={{ textDecoration: 'none' }}>
+              <SignUpButton />
+            </NavLink>
           </div>
         </div>
       </div>

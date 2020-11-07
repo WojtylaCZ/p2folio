@@ -3,7 +3,7 @@ import React from 'react';
 
 import { CredentialsInput } from './components/Credentials.input';
 
-export const registration = (props: any) => {
+export const SignUpPage = (props: any) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#f9fcff', alignItems: 'center' }}>
       <div className="title"> 🚀 Registrujte se a získejte mnohem více výhod </div>
