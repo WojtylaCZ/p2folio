@@ -10,6 +10,12 @@ import './DragAndDrop.css';
 export const DragAndDrop = () => {
   return (
     <div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <MintosLogo width="12%" />
+        <ZonkyLogo width="12%" />
+        <TwinoLogo width="12%" filter="grayscale(100%)" />
+      </div>
+
       <div className="Dndarea" style={{ width: 500, height: 200 }}>
         Sem pretahnete soubory s vypisy z vasich platforem
         <Button
@@ -26,12 +32,6 @@ export const DragAndDrop = () => {
         </Button>
         <br />
         Jak ziskat vypis z platforem?
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <MintosLogo width="12%" />
-        <ZonkyLogo width="12%" />
-        <TwinoLogo width="12%" filter="grayscale(100%)" />
       </div>
     </div>
   );
