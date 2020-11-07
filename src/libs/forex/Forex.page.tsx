@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import React from 'react';
 
 import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
+import { Emoji } from '../../shared/components/Emoji';
 import '../../shared/Style.css';
 
 export const ForexPage = () => {
@@ -11,7 +12,9 @@ export const ForexPage = () => {
       <h2> UPRAVA KURZU MEN </h2>
       <h4>Aktuálně pro vykreslení grafu používáme kurzy od ČNB, můžete si je změnit dle uvážení pod tímto textem.</h4>
       <div>
-        <h4>Zadané kurzy 👇 jsou vztažené k hlavní měně 👉</h4>
+        <h4>
+          Zadané kurzy <Emoji emoji="👇" /> jsou vztažené k hlavní měně <Emoji emoji="👉" />
+        </h4>
 
         <CurrencySelectForm />
       </div>

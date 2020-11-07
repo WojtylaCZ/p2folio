@@ -1,12 +1,16 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
 
+import { Emoji } from '../../shared/components/Emoji';
+
 import { CredentialsInput } from './components/Credentials.input';
 
 export const LoginPage = (props: any) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#f9fcff', alignItems: 'center' }}>
-      <div className="title"> 🙋‍♂️ Vítejte zpět </div>
+      <div className="title">
+        <Emoji emoji="🙋‍♂️" /> Vítejte zpět
+      </div>
 
       <CredentialsInput />
 

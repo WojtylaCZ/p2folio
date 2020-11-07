@@ -2,6 +2,7 @@ import React from 'react';
 
 import { getDefaultResultTableExample } from '../../shared/components/DataTable';
 import { DragAndDrop } from '../../shared/components/DragAndDrop';
+import { Emoji } from '../../shared/components/Emoji';
 import ResultTable from '../../shared/components/ResultTable';
 import { ResultView } from '../../shared/components/ResultView';
 import '../../shared/Style.css';
@@ -21,8 +22,10 @@ export const Portfolio = () => {
 
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          👉 P2Folio vám zobrazí na výsledky z jednotlivých platforem na měsíční bázi <br />
-          👉 zkombinuje výsledky dohromady pro historický vývoj celého portfolia
+          <div style={{ width: '100%' }}>
+            <Emoji emoji="👉" /> P2Folio vám zobrazí na výsledky z jednotlivých platforem na měsíční bázi <br />
+            <Emoji emoji="👉" /> zkombinuje výsledky dohromady pro historický vývoj celého portfolia
+          </div>
           <Propositions />
         </div>
 
