@@ -3,10 +3,8 @@ import React from 'react';
 
 export const PlatformHeaderButton = (props: any) => {
   return (
-    <div>
-      <Button color="primary" style={{ fontSize: '14px', fontWeight: 'bold', letterSpacing: '0.5px' }}>
-        {props.name}
-      </Button>
-    </div>
+    <Button color="primary" style={{ fontSize: '14px', fontWeight: 'bold', letterSpacing: '0.5px' }}>
+      {props.name}
+    </Button>
   );
 };

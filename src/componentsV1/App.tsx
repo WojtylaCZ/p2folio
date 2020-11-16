@@ -76,8 +76,8 @@ class App extends React.Component<{}, AppState> {
                 <Grid item={true} style={{ maxWidth: '750px' }}>
                   Sjednocuje data z různých P2P platforem pro kompaktní statistiky a přehled celého portfolia.
                   <p>
-                    P2folio vám zobrazí na výsledky z jednotlivých platforem na měsíční bázi. 📈📉 <br />
-                    Zkombinuje výsledky dohromady pro historický vývoj celého portfolia. 🧩 <br />
+                    P2folio vám zobrazí na výsledky z jednotlivých platforem na měsíční bázi. <br />
+                    Zkombinuje výsledky dohromady pro historický vývoj celého portfolia. <br />
                   </p>
                   <p>
                     <b>

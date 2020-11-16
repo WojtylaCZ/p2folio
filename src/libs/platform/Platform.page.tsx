@@ -2,39 +2,30 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getDefaultResultTableExample } from '../../shared/components/DataTable';
-import { DragAndDrop } from '../../shared/components/DragAndDrop';
+import { IntroView } from '../../shared/components/IntroView';
 import ResultTable from '../../shared/components/ResultTable';
 import { ResultView } from '../../shared/components/ResultView';
-import { Propositions } from '../portfolio/components/Propositions';
 
 export const PlatformPage = () => {
   const { platformId } = useParams();
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div>
+    <div style={{ width: '100%', display: 'flex', flexFlow: 'column wrap', alignItems: 'center' }}>
+      <div style={{ maxWidth: '900px' }}>
         <h1>
           Zobrazte si <b> data z platformy {platformId}. </b>
         </h1>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-        <Propositions />
-        <DragAndDrop />
-      </div>
+      <IntroView />
 
-      <div>
-        <h2>VASE PORTFOLIO</h2>
-      </div>
+      <h2>VASE PORTFOLIO</h2>
+
       <ResultView />
 
-      <div>
-        <h2> DETAILNI TABULKOVY POHLED</h2>
-      </div>
+      <h2> DETAILNI TABULKOVY POHLED</h2>
 
-      <div>
-        <ResultTable monthlyPortfolioResults={getDefaultResultTableExample()} />
-      </div>
+      <ResultTable monthlyPortfolioResults={getDefaultResultTableExample()} />
     </div>
   );
 };
