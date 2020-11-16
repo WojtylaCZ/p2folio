@@ -5,6 +5,7 @@ import { getDefaultResultTableExample } from '../../shared/components/DataTable'
 import { IntroView } from '../../shared/components/IntroView';
 import ResultTable from '../../shared/components/ResultTable';
 import { ResultView } from '../../shared/components/ResultView';
+import { PlatformsLogoLinks } from '../portfolio/components/PlatformsLogoLinks';
 
 export const PlatformPage = () => {
   const { platformId } = useParams();
@@ -20,11 +21,12 @@ export const PlatformPage = () => {
       <IntroView />
 
       <h2>VASE PORTFOLIO</h2>
-
       <ResultView />
 
-      <h2> DETAILNI TABULKOVY POHLED</h2>
+      <h2>DETAILNI ZOBRAZENI DLE PLATFOREM</h2>
+      <PlatformsLogoLinks />
 
+      <h2> DETAILNI TABULKOVY POHLED</h2>
       <ResultTable monthlyPortfolioResults={getDefaultResultTableExample()} />
     </div>
   );

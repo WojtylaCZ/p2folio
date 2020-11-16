@@ -10,33 +10,19 @@ import { P2FOLIO } from '../shared/components/LogoP2FOLIO';
 export const Header = () => {
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
-      <div style={{ maxWidth: '650px' }}>
+      <div
+        style={
+          {
+            // maxWidth: '450px', width: '100%'
+          }
+        }
+      >
         <NavLink to="/" style={{ textDecoration: 'none' }}>
           <P2FOLIO />
         </NavLink>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          maxWidth: '650px',
-          flexFlow: 'row-reverse wrap'
-        }}
-      >
-        <div style={{ display: 'flex', justifyContent: 'space-around', width: '330px' }}>
-          <LanguageSelect />
-
-          <NavLink to="/login" style={{ textDecoration: 'none' }}>
-            <LoginButton />
-          </NavLink>
-
-          <NavLink to="/signup" style={{ textDecoration: 'none' }}>
-            <SignUpButton />
-          </NavLink>
-        </div>
-
-        <div style={{ display: 'flex', justifyContent: 'space-around', maxWidth: '225px', width: '100%' }}>
+      {/* <div style={{ display: 'flex', justifyContent: 'space-around', maxWidth: '225px', width: '100%' }}>
           <NavLink to="/platforms/mintos" style={{ textDecoration: 'none' }}>
             <PlatformHeaderButton name="Mintos" />
           </NavLink>
@@ -48,7 +34,18 @@ export const Header = () => {
           <NavLink to="/platforms/twino" style={{ textDecoration: 'none' }}>
             <PlatformHeaderButton name="Twino" />
           </NavLink>
-        </div>
+        </div> */}
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '350px', width: '100%' }}>
+        <LanguageSelect />
+
+        <NavLink to="/login" style={{ textDecoration: 'none' }}>
+          <LoginButton />
+        </NavLink>
+
+        <NavLink to="/signup" style={{ textDecoration: 'none' }}>
+          <SignUpButton />
+        </NavLink>
       </div>
     </div>
 
