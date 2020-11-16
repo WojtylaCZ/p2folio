@@ -33,10 +33,18 @@ export const IntroView = () => {
           marginTop: '1em'
         }}
       >
-        <div style={{ maxWidth: '550px', width: '100%', display: 'flex', justifyContent: 'space-around' }}>
-          <MintosLogo width="7rem" />
-          <ZonkyLogo width="7rem" />
-          <TwinoLogo width="7rem" filter="grayscale(100%)" />
+        <div
+          style={{ maxWidth: '550px', width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start' }}
+        >
+          <div style={{ maxWidth: '6em' }}>
+            <MintosLogo />
+          </div>
+          <div style={{ maxWidth: '6em' }}>
+            <ZonkyLogo />
+          </div>
+          <div style={{ maxWidth: '6em' }}>
+            <TwinoLogo filter="grayscale(100%)" />
+          </div>
         </div>
 
         <div style={{ maxWidth: '550px', width: '100%', height: '17em', marginTop: '3em', marginBottom: '3em' }}>
