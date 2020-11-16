@@ -5,14 +5,15 @@ import React from 'react';
 
 export const CurrencySelectForm = () => {
   return (
-    <FormControl className="currencyform" style={{ width: 70 }}>
+    <FormControl style={{ minWidth: '55px' }}>
       <Select
         value={'usd'}
+        disableUnderline={true}
         //   onChange={handleChange}
       >
-        <MenuItem value={'usd'}>$ USD</MenuItem>
-        <MenuItem value={'eur'}>€ EUR</MenuItem>
-        <MenuItem value={'czk'}>Kc CZK</MenuItem>
+        <MenuItem value={'usd'}>USD</MenuItem>
+        <MenuItem value={'eur'}>EUR</MenuItem>
+        <MenuItem value={'czk'}>CZK</MenuItem>
       </Select>
     </FormControl>
   );

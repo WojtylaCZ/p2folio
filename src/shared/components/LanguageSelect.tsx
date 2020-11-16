@@ -7,11 +7,16 @@ import { LanguageGlobeIcon } from '../icons/components/LanguageGlobeIcon';
 
 export const LanguageSelect = () => {
   return (
-    <div>
-      <LanguageGlobeIcon />
-      <FormControl className="languageform" style={{ width: 70 }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+      <div style={{ marginRight: '0.2em' }}>
+        <LanguageGlobeIcon />
+      </div>
+
+      <FormControl>
         <Select
-          value={'cs'}
+          value={'en'}
+          disableUnderline={true}
+          IconComponent={() => <></>}
           //   onChange={handleChange}
         >
           <MenuItem value={'cs'}>Cesky</MenuItem>

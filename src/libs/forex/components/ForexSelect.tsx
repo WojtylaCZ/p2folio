@@ -11,12 +11,20 @@ export const ForexSelect = () => {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginLeft: '0.5em',
-        marginRight: '0.5em'
+        marginRight: '0.5em',
+        alignItems: 'center'
       }}
     >
-      <div>
-        Vyber hlavni meny: <CurrencySelectForm />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        <div style={{ marginRight: '0.5em' }}>Vyber hlavni meny:</div>
+        <CurrencySelectForm />
       </div>
+
       <ForexNavLink />
     </div>
   );

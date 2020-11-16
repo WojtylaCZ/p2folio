@@ -5,7 +5,7 @@ export const ForexNavLink = () => {
   return (
     <div>
       <NavLink to="/forex" style={{ color: '#f7b500', textDecoration: 'none' }}>
-        Zobrazit kurz měn pro přepočet
+        Zobrazit kurzy měn
       </NavLink>
     </div>
   );
