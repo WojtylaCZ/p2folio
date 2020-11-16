@@ -1,15 +1,10 @@
-import Paper from '@material-ui/core/Paper';
 import React from 'react';
-
-import './ResultBox.css';
 
 export const ResultBox = (props: any) => {
   return (
-    <Paper>
-      <div className="ResultBox">
-        {props.title}
-        {props.value}
-      </div>
-    </Paper>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%', width: '100%', margin: '1em' }}>
+      <div> {props.title} </div>
+      <div className="Proposition-text">{props.value}</div>
+    </div>
   );
 };

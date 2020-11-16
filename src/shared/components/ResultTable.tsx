@@ -1,10 +1,10 @@
-import Paper from '@material-ui/core/Paper';
 import React from 'react';
 
 import { IOneMonthPortfolioResult } from '../../core/platforms/models';
 import { ForexSelect } from '../../libs/forex/components/ForexSelect';
 
 import { DataTable } from './DataTable';
+import { Rectangle } from './Rectangle';
 
 type ResultTableProps = {
   monthlyPortfolioResults: IOneMonthPortfolioResult[];
@@ -12,15 +12,18 @@ type ResultTableProps = {
 
 const ResultTable = (props: ResultTableProps) => {
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '90%' }}>
       <ForexSelect />
-      <Paper>
-        <div style={{ width: '1000px', paddingTop: 20, paddingBottom: 20, paddingLeft: 40, paddingRight: 40 }}>
-          <div style={{ overflow: 'auto' }}>
+      <Rectangle
+        justifyContent="flex-start"
+        overflowX="auto"
+        squared={true}
+        content={
+          <div style={{ display: 'flex', alignItems: 'center', height: '100%', width: '100%', margin: '1em' }}>
             <DataTable monthlyPortfolioResults={props.monthlyPortfolioResults} />
           </div>
-        </div>
-      </Paper>
+        }
+      />
     </div>
   );
 };

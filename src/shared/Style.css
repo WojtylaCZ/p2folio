@@ -6,18 +6,28 @@ body {
   background: #f9fcff;
 }
 
-h2 {
-  font-size: 18px;
-  line-height: 3.33;
-  letter-spacing: 4.46px;
-  color: #f7b500;
-}
-
 h4 {
   font-size: 20px;
   line-height: 1.5;
   width: 544px;
-  font-weight: normal;
   text-align: center;
   color: #6e6e6e;
+}
+
+h1 {
+  font-family: HelveticaNeue;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.01rem;
+  text-align: center;
+  color: #131415;
+}
+
+h2 {
+  font-size: 18px;
+  line-height: 3.33;
+  letter-spacing: 4.46px;
+  text-align: center;
+  color: #f7b500;
 }

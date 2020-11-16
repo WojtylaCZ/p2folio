@@ -9,40 +9,52 @@ import { P2FOLIO } from '../shared/components/LogoP2FOLIO';
 
 export const Header = () => {
   return (
-    <div>
-      <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <NavLink to="/" style={{ textDecoration: 'none' }}>
-            <P2FOLIO />
-          </NavLink>
-
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
-            <NavLink to="/platforms/mintos" style={{ textDecoration: 'none' }}>
-              <PlatformHeaderButton name="Mintos" />
-            </NavLink>
-
-            <NavLink to="/platforms/zonky" style={{ textDecoration: 'none' }}>
-              <PlatformHeaderButton name="Zonky" />
-            </NavLink>
-
-            <NavLink to="/platforms/twino" style={{ textDecoration: 'none' }}>
-              <PlatformHeaderButton name="Twino" />
-            </NavLink>
-
-            <LanguageSelect />
-
-            <NavLink to="/login" style={{ textDecoration: 'none' }}>
-              <LoginButton />
-            </NavLink>
-
-            <NavLink to="/signup" style={{ textDecoration: 'none' }}>
-              <SignUpButton />
-            </NavLink>
-          </div>
-        </div>
+    <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
+      <div style={{ width: '50%', display: 'flex', maxWidth: '650px' }}>
+        <NavLink to="/" style={{ textDecoration: 'none' }}>
+          <P2FOLIO />
+        </NavLink>
       </div>
 
-      {/* <AppBar position="static" style={{ display: 'block' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          minWidth: '375px',
+          maxWidth: '650px',
+          flexFlow: 'row-reverse wrap',
+          width: '50%'
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-around', width: '330px' }}>
+          <LanguageSelect />
+
+          <NavLink to="/login" style={{ textDecoration: 'none' }}>
+            <LoginButton />
+          </NavLink>
+
+          <NavLink to="/signup" style={{ textDecoration: 'none' }}>
+            <SignUpButton />
+          </NavLink>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'space-around', maxWidth: '225px', width: '100%' }}>
+          <NavLink to="/platforms/mintos" style={{ textDecoration: 'none' }}>
+            <PlatformHeaderButton name="Mintos" />
+          </NavLink>
+
+          <NavLink to="/platforms/zonky" style={{ textDecoration: 'none' }}>
+            <PlatformHeaderButton name="Zonky" />
+          </NavLink>
+
+          <NavLink to="/platforms/twino" style={{ textDecoration: 'none' }}>
+            <PlatformHeaderButton name="Twino" />
+          </NavLink>
+        </div>
+      </div>
+    </div>
+
+    /* <AppBar position="static" style={{ display: 'block' }}>
         <div className="content">
           <Toolbar>
             <Typography variant="h6">P2folio - BETA verze ✎</Typography>
@@ -82,7 +94,6 @@ export const Header = () => {
             }}
           />
         </div>
-      </AppBar> */}
-    </div>
+      </AppBar> */
   );
 };

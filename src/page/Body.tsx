@@ -10,7 +10,7 @@ import { Portfolio } from '../libs/portfolio/Portfolio.page';
 
 export const Body = () => {
   return (
-    <div>
+    <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'center' }}>
       <Switch>
         <Route path="/login" component={LoginPage} exact={true} />
         <Route path="/signup" component={SignUpPage} exact={true} />

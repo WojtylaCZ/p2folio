@@ -1,22 +1,16 @@
 import React from 'react';
 
-import { FacebookIcon } from '../shared/icons/FacebookIcon';
-import { TelegramIcon } from '../shared/icons/TelegramIcon';
-import { TwitterIcon } from '../shared/icons/TwitterIcon';
+import { SocialIcon } from '../shared/components/SocialIcon';
+import { FacebookIcon } from '../shared/icons/components/FacebookIcon';
+import { TelegramIcon } from '../shared/icons/components/TelegramIcon';
+import { TwitterIcon } from '../shared/icons/components/TwitterIcon';
 
 export const Footer = () => {
   return (
-    <div className="content">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div> {} </div>
-        <div className="signature">© 2018-2020 - Vojtech Uhlir</div>
-
-        <div className="social">
-          <FacebookIcon />
-          <TwitterIcon />
-          <TelegramIcon />
-        </div>
-      </div>
+    <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '2em' }}>
+      <SocialIcon style={{ margin: '0.5em' }} icon={<FacebookIcon />} />
+      <SocialIcon style={{ margin: '0.5em' }} icon={<TwitterIcon />} />
+      <SocialIcon style={{ margin: '0.5em' }} icon={<TelegramIcon />} />
     </div>
   );
 };

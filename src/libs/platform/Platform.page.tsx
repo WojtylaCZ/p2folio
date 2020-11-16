@@ -13,9 +13,9 @@ export const PlatformPage = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div>
-        <h3>
+        <h1>
           Zobrazte si <b> data z platformy {platformId}. </b>
-        </h3>
+        </h1>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>

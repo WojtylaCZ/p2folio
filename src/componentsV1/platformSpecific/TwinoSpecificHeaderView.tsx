@@ -9,7 +9,7 @@ const TwinoSpecificHeaderView = (props: PlatformResultProps) => {
       <p>Vklady - úvodní stránka: {props.platformResult.deposit.deposit.toFormat()}</p>
       <p>Výběry - úvodní stránka: {props.platformResult.withdrawal.withdrawal.toFormat()}</p>
       <p>
-        Zisk - úvodní stránka:{' '}
+        Zisk - úvodní stránka:
         {props.platformResult.interestReceived.interestReceived
           .add(props.platformResult.interestReceived.penaltyReceived)
           .toFormat()}

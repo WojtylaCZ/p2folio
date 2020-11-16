@@ -4,7 +4,10 @@ import './Rectangle.css';
 
 export const Rectangle = (props: any) => {
   return (
-    <div className="Rectangle" style={{ width: props.width, margin: '1.1em' }}>
+    <div
+      className={props.squared ? 'RectangleSquared' : 'RectangleShadow'}
+      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', ...props }}
+    >
       {props.content}
     </div>
   );
