@@ -22,10 +22,30 @@ export const ResultView = () => {
       />
 
       <div style={{ width: '100%', display: 'flex', flexFlow: 'row wrap', alignItems: 'center', justifyContent: 'center' }}>
-        <Rectangle content={<ResultBox title="Celkove vklady" value="200 000" />} width="100%" maxWidth="323px" squared={true} />
-        <Rectangle content={<ResultBox title="Celkove vybery" value="100 000" />} width="100%" maxWidth="323px" squared={true} />
-        <Rectangle content={<ResultBox title="Prijate jistiny" value="300 000" />} width="100%" maxWidth="323px" squared={true} />
-        <Rectangle content={<ResultBox title="Prijate uroky" value="100 000" />} width="100%" maxWidth="323px" squared={true} />
+        <Rectangle
+          content={<ResultBox title="Celkove vklady" value="200 000 Kc" />}
+          width="100%"
+          maxWidth="323px"
+          squared={true}
+        />
+        <Rectangle
+          content={<ResultBox title="Celkove vybery" value="100 000 Kc" />}
+          width="100%"
+          maxWidth="323px"
+          squared={true}
+        />
+        <Rectangle
+          content={<ResultBox title="Prijate jistiny" value="300 000 Kc" />}
+          width="100%"
+          maxWidth="323px"
+          squared={true}
+        />
+        <Rectangle
+          content={<ResultBox title="Prijate uroky" value="100 000 Kc" />}
+          width="100%"
+          maxWidth="323px"
+          squared={true}
+        />
       </div>
     </div>
   );
