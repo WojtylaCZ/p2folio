@@ -25,7 +25,7 @@ export const IntroView = () => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'flex-end',
+          alignItems: 'center',
           width: '100%',
           maxWidth: '650px',
           marginLeft: 'auto',
