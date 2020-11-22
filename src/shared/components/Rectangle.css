@@ -1,0 +1,14 @@
+.RectangleShadow {
+  min-height: 7rem;
+  background-color: #ffffff;
+  min-height: 7rem;
+  border-radius: 7px;
+  box-shadow: 0 0 20px 0 rgba(29, 17, 86, 0.12);
+  background-color: #ffffff;
+}
+
+.RectangleSquared {
+  min-height: 7rem;
+  background-color: #ffffff;
+  border: solid 1px #d4dee7;
+}
