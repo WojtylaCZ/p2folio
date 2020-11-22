@@ -18,7 +18,6 @@ export const ForexPage = () => {
           <CurrencySelectForm />
         </div>
         <div
-          className="forexTable"
           style={{
             maxWidth: '700px',
             backgroundColor: '#f9fcff',

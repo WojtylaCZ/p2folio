@@ -13,7 +13,6 @@ import { TwinoPlatform } from '../core/platforms/TwinoPlatform';
 import { detectPlatform } from '../core/platforms/utils';
 import { ZonkyPlatform } from '../core/platforms/ZonkyPlatform';
 
-import './App.css';
 import DragAndDropFilesInput from './DragAndDropFilesInput';
 import PlatformsTabMenuView from './PlatformsTabMenuView';
 import UploadFilesInput from './UploadFilesInput';
