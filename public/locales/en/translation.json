@@ -1,0 +1,9 @@
+{
+  "buttons": {
+    "LogIn": "LOG IN",
+    "SignUp": "CREATE ACCOUNT"
+  },
+  "titles": {
+    "portfolio": "Merge data from your p2p platforms to one place for statistics and portfolio overview"
+  }
+}
