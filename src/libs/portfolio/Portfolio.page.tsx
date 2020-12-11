@@ -14,21 +14,18 @@ export const Portfolio = () => {
   return (
     <div style={{ width: '100%', display: 'flex', flexFlow: 'column wrap', alignItems: 'center' }}>
       <div style={{ maxWidth: '900px' }}>
-        <h1>
-          {/* Sjednoťte si data z <b>různých P2P platforem </b> pro kompaktní statistiky a přehled celého portfolia */}
-          {t('titles.portfolio')}
-        </h1>
+        <h1>{t('titles.portfolioPageH1')}</h1>
       </div>
 
       <IntroView />
 
-      <h2>VASE PORTFOLIO</h2>
+      <h2> {t('titles.yourPortfolioH2')} </h2>
       <ResultView />
 
-      <h2>DETAILNI ZOBRAZENI DLE PLATFOREM</h2>
+      <h2> {t('titles.viewInDetailH2')} </h2>
       <PlatformsLogoLinks />
 
-      <h2> DETAILNI TABULKOVY POHLED</h2>
+      <h2> {t('titles.portfolioResultTableH2')} </h2>
       <ResultTable monthlyPortfolioResults={getDefaultResultTableExample()} />
     </div>
   );

@@ -1,5 +1,6 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import { Emoji } from '../../shared/components/Emoji';
@@ -7,19 +8,21 @@ import { Emoji } from '../../shared/components/Emoji';
 import { CredentialsInput } from './components/Credentials.input';
 
 export const SignUpPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div style={{ width: '100%', display: 'flex', flexFlow: 'column wrap', alignItems: 'center' }}>
       <div style={{ maxWidth: '600px' }}>
         <h1>
           <Emoji emoji="🚀" />
-          <b> Registrujte se a získejte mnohem více výhod</b>
+          <b> {t('titles.signUpPageH1')} </b>
         </h1>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '650px', marginLeft: 'auto', marginRight: 'auto' }}>
         <div style={{ marginLeft: '1em' }}>
-          <Emoji emoji="👉" /> <b>P2folio </b> vám zobrazí na výsledky z jednotlivých platforem na měsíční bázi.
+          <Emoji emoji="👉" /> {t('propositions.monthlyResults')}
           <br />
-          <Emoji emoji="👉" /> <b> zkombinuje</b> výsledky dohromady pro historický vývoj celého portfolia
+          <Emoji emoji="👉" /> {t('propositions.portfolioSummary')}
         </div>
       </div>
 
@@ -45,14 +48,14 @@ export const SignUpPage = () => {
             marginTop: '2em'
           }}
         >
-          REGISTROVAT
+          {t('buttons.signUp')}
         </Button>
       </div>
 
       <div style={{ marginTop: '1em' }}>
-        Jiz mate svuj ucet?{' '}
+        {t('propositions.alredyHaveAccount')}{' '}
         <NavLink to="/login" style={{ color: '#f7b500', textDecoration: 'none' }}>
-          PRIHLASTE SE
+          {t('buttons.logIn')}
         </NavLink>
       </div>
     </div>

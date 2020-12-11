@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
 
 import App from '../componentsV1/App';
 import { LoginPage } from '../libs/authentication/Login.page';

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Propositions } from '../../libs/portfolio/components/Propositions';
 import { MintosLogo } from '../icons/components/MintosLogo';
@@ -9,13 +10,15 @@ import { DragAndDrop } from './DragAndDrop';
 import { Emoji } from './Emoji';
 
 export const IntroView = () => {
+  const { t } = useTranslation();
+
   return (
     <div style={{ width: '100%', display: 'flex', flexFlow: 'row wrap', alignItems: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '650px', marginLeft: 'auto', marginRight: 'auto' }}>
         <div style={{ marginLeft: '1em' }}>
-          <Emoji emoji="👉" /> <b>P2folio </b> vám zobrazí na výsledky z jednotlivých platforem na měsíční bázi
+          <Emoji emoji="👉" /> {t('propositions.monthlyResults')}
           <br />
-          <Emoji emoji="👉" /> <b> zkombinuje</b> výsledky dohromady pro historický vývoj celého portfolia
+          <Emoji emoji="👉" /> {t('propositions.portfolioSummary')}
         </div>
         <Propositions />
       </div>

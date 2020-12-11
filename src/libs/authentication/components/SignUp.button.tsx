@@ -15,7 +15,7 @@ export const SignUpButton = () => {
           backgroundColor: '#195bdd'
         }}
       >
-        {t('buttons.SignUp')}
+        {t('buttons.signUp')}
       </Button>
     </div>
   );

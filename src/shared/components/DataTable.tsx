@@ -5,6 +5,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Currency } from '../../common/enums';
 import { IOneMonthPortfolioResult } from '../../core/platforms/models';
@@ -20,8 +21,17 @@ export function getDefaultResultTableExample(): IOneMonthPortfolioResult[] {
   return [example1, example2];
 }
 
-function renderTableHeader() {
-  const columnNames = ['Datum', 'Vklady', 'Výběry', 'Příjaté zisky', 'Zaplacené poplatky', 'Extra odměny'].map((value, index) => {
+function RenderTableHeader() {
+  const { t } = useTranslation();
+
+  const columnNames = [
+    t('tableColumns.date'),
+    t('tableColumns.deposits'),
+    t('tableColumns.withdrawals'),
+    t('tableColumns.interestsReceived'),
+    t('tableColumns.feesPaid'),
+    t('tableColumns.extra')
+  ].map((value, index) => {
     return (
       <TableCell key={index} align="center" variant="head">
         {value}
@@ -74,7 +84,7 @@ function renderTableData(props: ResultTableProps) {
 export const DataTable = (props: ResultTableProps) => {
   return (
     <Table size="small" aria-label="a dense table">
-      <TableHead>{renderTableHeader()}</TableHead>
+      <TableHead>{RenderTableHeader()}</TableHead>
       <TableBody>{renderTableData(props)}</TableBody>
     </Table>
   );

@@ -1,6 +1,6 @@
 {
   "buttons": {
-    "LogIn": "LOGIN",
-    "SignUp": "KONTO ERÖFFNEN"
+    "logIn": "LOGIN",
+    "signUp": "KONTO ERÖFFNEN"
   }
 }

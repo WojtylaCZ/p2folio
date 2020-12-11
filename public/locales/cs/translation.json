@@ -1,6 +1,59 @@
 {
   "buttons": {
-    "LogIn": "PŘIHLÁSIT SE",
-    "SignUp": "VYTVOŘIT ÚČET"
+    "logIn": "PŘIHLÁSIT SE",
+    "signUp": "VYTVOŘIT ÚČET",
+    "selectStatementFiles": "VYBRAT SOUBORY RUČNĚ",
+    "saveForexRates": "ULOŽIT ZADANÉ KURZY",
+    "usePredefinedForexRates": "Použít kurzy z ČNB"
+  },
+  "titles": {
+    "portfolioPageH1": "Sjednoťte si data z různých P2P platforem  pro kompaktni statistiky a přehled celého portfolia",
+    "plaformPageH1": "Výsledky pro platformu ",
+    "logInPageH1": "Vítejte zpět!",
+    "signUpPageH1": "Registrujte se a získejte možnosti navíc",
+    "yourPortfolioH2": "VAŠE PORTFOLIO",
+    "platformResultsH2": "VAŠE VÝSLEDKY NA PLATFORMĚ",
+    "viewInDetailH2": "DETAILNÍ ZOBRAZENÍ",
+    "portfolioResultTableH2": "DETAILNÍ TABULKOVY POHLED",
+    "forexPageH2": "ÚPRAVA KURZŮ MĚN"
+  },
+  "propositions": {
+    "monthlyResults": "P2folio vám zobrazí výsledky z jednotlivých platforem na měsíční bázi",
+    "portfolioSummary": "zkombinuje výsledky dohromady pro historický vývoj celého portfolia",
+    "privateData": "Vaše data jsou v bezpečí jen u vás v prohlížeči.",
+    "noDataUpload": "Vše je anonymní, data se nikam se neodesílají, služba nemá žádnou další část.",
+    "pageRefresh": "Jakmile stránku aktualizujete, všechna data jsou ztracena.",
+    "forexCNB": "Aktuálně pro vykreslení grafu používáme kurzy od ČNB",
+    "forexChange": "můžete si je změnit dle uvážení pod tímto textem.",
+    "forexRates": "Zadané kurzy",
+    "forexBaseCurrency": " jsou vztažené k hlavní měně: ",
+    "alredyHaveAccount": "Jiz mate svuj ucet?",
+    "notYetRegistered": "Ještě nemáte svůj účet?"
+  },
+  "dragAndDrop": {
+    "dragFilesHere": "Sem přetáhněte soubory",
+    "dragFilesHere2": "s výpisy z vašich platforem"
+  },
+  "links": {
+    "howToGetStatementFiles": "Jak získat výpis z platforem?",
+    "selectBaseCurrency": "Výběr hlavní měny:",
+    "showForexRates": "Zobrazit kurzy měn"
+  },
+  "results": {
+    "totalDeposit": "Celkové vklady",
+    "totalWithdrawal": "Celkové výběry",
+    "totalPrincipalReceived": "Přijaté jistiny",
+    "totalInterestsReceived": "Přijaté zisky"
+  },
+  "tableColumns": {
+    "date": "Datum",
+    "deposits": "Vklady",
+    "withdrawals": "Výběry",
+    "interestsReceived": "Přijaté úroky",
+    "feesPaid": "Zaplacené poplatky",
+    "extra": "Extra"
+  },
+  "misc": {
+    "password": "Heslo"
   }
 }

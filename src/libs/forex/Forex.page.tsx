@@ -2,19 +2,33 @@ import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { CurrencySelectForm } from '../../shared/components/CurrencySelectForm';
 import { Emoji } from '../../shared/components/Emoji';
 import '../../shared/Style.css';
 
 export const ForexPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div style={{ maxWidth: '900px', maxHeight: '800px', backgroundColor: '#ffffff', width: '100%' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '3em', maxWidth: '100%' }}>
-        <h2> UPRAVA KURZU MEN </h2>
-        Aktuálně pro vykreslení grafu používáme kurzy od ČNB, <br /> můžete si je změnit dle uvážení pod tímto textem.
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          margin: '3em',
+          maxWidth: '100%',
+          textAlign: 'center'
+        }}
+      >
+        <h2> {t('titles.forexPageH2')} </h2>
+        {t('propositions.forexCNB')}
+        , <br />
+        {t('propositions.forexChange')}
         <div style={{ marginTop: '2em', marginBottom: '2em' }}>
-          Zadané kurzy <Emoji emoji="👇" /> jsou vztažené k hlavní měně <Emoji emoji="👉" />
+          {t('propositions.forexRates')} <Emoji emoji="👇" /> {t('propositions.forexBaseCurrency')} <Emoji emoji="👉" />
           <CurrencySelectForm />
         </div>
         <div
@@ -78,10 +92,10 @@ export const ForexPage = () => {
               backgroundColor: '#195bdd'
             }}
           >
-            ULOZIT ZADANE KURZY
+            {t('buttons.saveForexRates')}
           </Button>
         </div>
-        <div style={{ marginTop: '0.5em' }}>Použít kurzy z ČNB</div>
+        <div style={{ marginTop: '0.5em' }}>{t('buttons.usePredefinedForexRates')}</div>
       </div>
     </div>
   );

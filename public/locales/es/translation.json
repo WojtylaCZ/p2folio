@@ -1,6 +1,6 @@
 {
   "buttons": {
-    "LogIN": "ENTRAR",
-    "SignUp": "CREA TU CUENTA"
+    "logIn": "ENTRAR",
+    "signUp": "CREA TU CUENTA"
   }
 }

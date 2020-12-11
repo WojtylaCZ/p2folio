@@ -8,7 +8,7 @@ export const LoginButton = () => {
   return (
     <div>
       <Button variant="outlined" color="primary" size="small">
-        {t('buttons.LogIn')}
+        {t('buttons.logIn')}
       </Button>
     </div>
   );

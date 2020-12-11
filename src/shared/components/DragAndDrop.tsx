@@ -1,9 +1,12 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import './DragAndDrop.css';
 
 export const DragAndDrop = () => {
+  const { t } = useTranslation();
+
   return (
     <div
       className="Dndarea"
@@ -15,8 +18,10 @@ export const DragAndDrop = () => {
         justifyContent: 'space-around'
       }}
     >
-      <div className="Dndtitle">
-        <b>Sem pretahnete soubory</b> <br /> s vypisy z vasich platforem
+      <div className="Dndtitle" style={{ textAlign: 'center' }}>
+        {t('dragAndDrop.dragFilesHere')}
+        <br />
+        {t('dragAndDrop.dragFilesHere2')}
       </div>
       <Button
         variant="contained"
@@ -27,9 +32,10 @@ export const DragAndDrop = () => {
           backgroundColor: '#195bdd'
         }}
       >
-        VYBRAT SOUBORY RUCNE
+        {t('buttons.selectStatementFiles')}
       </Button>
-      Jak ziskat vypis z platforem?
+
+      {t('links.howToGetStatementFiles')}
     </div>
   );
 };
