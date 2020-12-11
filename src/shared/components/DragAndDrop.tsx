@@ -1,6 +1,6 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import './DragAndDrop.css';
 
@@ -19,9 +19,11 @@ export const DragAndDrop = () => {
       }}
     >
       <div className="Dndtitle" style={{ textAlign: 'center' }}>
-        {t('dragAndDrop.dragFilesHere')}
-        <br />
-        {t('dragAndDrop.dragFilesHere2')}
+        <Trans i18nKey="dragAndDrop.dragFilesHere">
+          <strong>top</strong>
+          <br />
+          bottom
+        </Trans>
       </div>
       <Button
         variant="contained"

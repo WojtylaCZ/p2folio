@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
-import { P2FOLIO } from '../../../shared/components/LogoP2FOLIO';
 import '../../../shared/components/LogoP2FOLIO.css';
 import { Rectangle } from '../../../shared/components/Rectangle';
 import { MintosLogo } from '../../../shared/icons/components/MintosLogo';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import { getDefaultResultTableExample } from '../../shared/components/DataTable';
 import { IntroView } from '../../shared/components/IntroView';
@@ -14,7 +14,11 @@ export const Portfolio = () => {
   return (
     <div style={{ width: '100%', display: 'flex', flexFlow: 'column wrap', alignItems: 'center' }}>
       <div style={{ maxWidth: '900px' }}>
-        <h1>{t('titles.portfolioPageH1')}</h1>
+        <h1>
+          <Trans i18nKey="titles.portfolioPageH1">
+            before <strong /> after
+          </Trans>
+        </h1>
       </div>
 
       <IntroView />

@@ -1,6 +1,6 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 import { Emoji } from '../../shared/components/Emoji';
@@ -20,9 +20,15 @@ export const SignUpPage = () => {
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '650px', marginLeft: 'auto', marginRight: 'auto' }}>
         <div style={{ marginLeft: '1em' }}>
-          <Emoji emoji="👉" /> {t('propositions.monthlyResults')}
+          <Emoji emoji="👉" />
+          <Trans i18nKey="propositions.monthlyResults">
+            <strong /> rest
+          </Trans>
           <br />
-          <Emoji emoji="👉" /> {t('propositions.portfolioSummary')}
+          <Emoji emoji="👉" />
+          <Trans i18nKey="propositions.portfolioSummary">
+            <strong /> rest
+          </Trans>
         </div>
       </div>
 

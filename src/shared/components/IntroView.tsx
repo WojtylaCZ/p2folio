@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next';
 
 import { Propositions } from '../../libs/portfolio/components/Propositions';
 import { MintosLogo } from '../icons/components/MintosLogo';
@@ -10,15 +10,19 @@ import { DragAndDrop } from './DragAndDrop';
 import { Emoji } from './Emoji';
 
 export const IntroView = () => {
-  const { t } = useTranslation();
-
   return (
     <div style={{ width: '100%', display: 'flex', flexFlow: 'row wrap', alignItems: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '650px', marginLeft: 'auto', marginRight: 'auto' }}>
         <div style={{ marginLeft: '1em' }}>
-          <Emoji emoji="👉" /> {t('propositions.monthlyResults')}
+          <Emoji emoji="👉" />
+          <Trans i18nKey="propositions.monthlyResults">
+            <strong /> rest
+          </Trans>
           <br />
-          <Emoji emoji="👉" /> {t('propositions.portfolioSummary')}
+          <Emoji emoji="👉" />
+          <Trans i18nKey="propositions.portfolioSummary">
+            <strong /> rest
+          </Trans>
         </div>
         <Propositions />
       </div>

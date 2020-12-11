@@ -7,7 +7,7 @@
     "usePredefinedForexRates": "Použít kurzy z ČNB"
   },
   "titles": {
-    "portfolioPageH1": "Sjednoťte si data z různých P2P platforem  pro kompaktni statistiky a přehled celého portfolia",
+    "portfolioPageH1": "Sjednoťte si data z <1>různých P2P platforem</1> pro kompaktni statistiky a přehled celého portfolia",
     "plaformPageH1": "Výsledky pro platformu ",
     "logInPageH1": "Vítejte zpět!",
     "signUpPageH1": "Registrujte se a získejte možnosti navíc",
@@ -18,8 +18,8 @@
     "forexPageH2": "ÚPRAVA KURZŮ MĚN"
   },
   "propositions": {
-    "monthlyResults": "P2folio vám zobrazí výsledky z jednotlivých platforem na měsíční bázi",
-    "portfolioSummary": "zkombinuje výsledky dohromady pro historický vývoj celého portfolia",
+    "monthlyResults": "<0>P2folio</0> vám zobrazí výsledky z jednotlivých platforem na měsíční bázi",
+    "portfolioSummary": "<0>Zkombinuje výsledky</0> dohromady pro historický vývoj celého portfolia",
     "privateData": "Vaše data jsou v bezpečí jen u vás v prohlížeči.",
     "noDataUpload": "Vše je anonymní, data se nikam se neodesílají, služba nemá žádnou další část.",
     "pageRefresh": "Jakmile stránku aktualizujete, všechna data jsou ztracena.",
@@ -31,8 +31,7 @@
     "notYetRegistered": "Ještě nemáte svůj účet?"
   },
   "dragAndDrop": {
-    "dragFilesHere": "Sem přetáhněte soubory",
-    "dragFilesHere2": "s výpisy z vašich platforem"
+    "dragFilesHere": "<0>Sem přetáhněte soubory</0> <1/> s výpisy z vašich platforem"
   },
   "links": {
     "howToGetStatementFiles": "Jak získat výpis z platforem?",

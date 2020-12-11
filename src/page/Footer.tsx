@@ -9,7 +9,7 @@ import { TwitterIcon } from '../shared/icons/components/TwitterIcon';
 export const Footer = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '2em' }}>
-      <a href="https://github.com/WojtylaCZ/p2folio" target="_blank">
+      <a href="https://github.com/WojtylaCZ/p2folio" target="_blank" rel="noopener noreferrer">
         <SocialIcon style={{ margin: '0.5em' }} icon={<GitHubIcon />} />{' '}
       </a>
       <SocialIcon style={{ margin: '0.5em' }} icon={<FacebookIcon />} />
