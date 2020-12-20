@@ -24,7 +24,7 @@ export const Propositions = () => {
       <Rectangle
         marginTop="1em"
         marginBottom="1em"
-        content={<Proposition left={<Emoji emoji="🕵️‍♂️ " size="2.0rem" />} right={t('propositions.noDataUpload')} />}
+        content={<Proposition left={<Emoji emoji="🕵️‍♂️ " size="2.0rem" />} right={t('propositions.pageRefresh')} />}
       />
     </div>
   );
