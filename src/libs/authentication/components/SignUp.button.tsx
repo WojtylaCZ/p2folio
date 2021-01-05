@@ -1,7 +1,10 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const SignUpButton = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <Button
@@ -12,7 +15,7 @@ export const SignUpButton = () => {
           backgroundColor: '#195bdd'
         }}
       >
-        NOVY UCET
+        {t('buttons.signUp')}
       </Button>
     </div>
   );

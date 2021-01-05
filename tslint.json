@@ -12,7 +12,7 @@
       }
     },
     "no-duplicate-imports": true,
-    "no-null-keyword": true,
+    "no-null-keyword": false,
     "jsx-no-lambda": false,
     "interface-over-type-literal": false,
     "react-hooks/rules-of-hooks": "error"

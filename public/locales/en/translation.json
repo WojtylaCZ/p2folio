@@ -1,0 +1,58 @@
+{
+  "buttons": {
+    "logIn": "LOG IN",
+    "signUp": "CREATE ACCOUNT",
+    "selectStatementFiles": "CHOOSE FILES",
+    "saveForexRates": "SAVE EXCHANGE RATES",
+    "usePredefinedForexRates": "Use current default rates"
+  },
+  "titles": {
+    "portfolioPageH1": "Merge data from your <1> different p2p platforms </1> to one place for statistics and portfolio overview",
+    "plaformPageH1": "Results for platform ",
+    "logInPageH1": "Welcome back!",
+    "signUpPageH1": "Sign up and get extra features",
+    "yourPortfolioH2": "YOUR PORTFOLIO",
+    "platformResultsH2": "YOUR PLATFORM RESULTS",
+    "viewInDetailH2": "VIEW IN DETAIL",
+    "portfolioResultTableH2": "PORTFOLIO VIEW IN TABLE",
+    "forexPageH2": "CURRENCY EXCHANGE RATES"
+  },
+  "propositions": {
+    "monthlyResults": "<0>P2folio</0> will show you results from each platform on monthly basis",
+    "portfolioSummary": "<0>It combines results </0> together for historical view of the whole portfolio",
+    "privateData": "Your data are stored just in this session your browser",
+    "noDataUpload": "Everything is anonymous, data is not uploaded anywhere, website does not have other part",
+    "pageRefresh": "Once you refresh this page, everything is gone",
+    "forexCNB": "There are currency exchange rates taken from Czech National Bank currently",
+    "forexChange": "you chan adjust them as you want below.",
+    "forexRates": "Exchange rates",
+    "forexBaseCurrency": " are related to a base currency: ",
+    "alredyHaveAccount": "Already signed up?",
+    "notYetRegistered": "No account yet?"
+  },
+  "dragAndDrop": {
+    "dragFilesHere": "<0>Drag and drop statement files</0> <1/> from your platforms here"
+  },
+  "links": {
+    "howToGetStatementFiles": "How to get statement files?",
+    "selectBaseCurrency": "Choose base currency:",
+    "showForexRates": "Show foreign exchange rates"
+  },
+  "results": {
+    "totalDeposit": "Total deposits",
+    "totalWithdrawal": "Total widthdrawals",
+    "totalPrincipalReceived": "Total principal received",
+    "totalInterestsReceived": "Total interests received"
+  },
+  "tableColumns": {
+    "date": "Date",
+    "deposits": "Deposits",
+    "withdrawals": "Withdrawals",
+    "interestsReceived": "Interests received",
+    "feesPaid": "Fees paid",
+    "extra": "Extra"
+  },
+  "misc": {
+    "password": "Password"
+  }
+}

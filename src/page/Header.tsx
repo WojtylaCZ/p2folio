@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { LoginButton } from '../libs/authentication/components/Login.button';
 import { SignUpButton } from '../libs/authentication/components/SignUp.button';
-import { PlatformHeaderButton } from '../libs/portfolio/components/PlatformHeader.button';
+// import { PlatformHeaderButton } from '../libs/portfolio/components/PlatformHeader.button';
 import { LanguageSelect } from '../shared/components/LanguageSelect';
 import { P2FOLIO } from '../shared/components/LogoP2FOLIO';
 

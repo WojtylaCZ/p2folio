@@ -1,9 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { CurrencySelectForm } from '../../../shared/components/CurrencySelectForm';
 import { ForexNavLink } from '../../../shared/components/ForexNavLink';
 
 export const ForexSelect = () => {
+  const { t } = useTranslation();
+
   return (
     <div
       style={{
@@ -21,7 +24,7 @@ export const ForexSelect = () => {
           alignItems: 'center'
         }}
       >
-        <div style={{ marginRight: '0.5em' }}>Vyber hlavni meny:</div>
+        <div style={{ marginRight: '0.5em' }}> {t('links.selectBaseCurrency')} </div>
         <CurrencySelectForm />
       </div>
 
