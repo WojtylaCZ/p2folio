@@ -8,8 +8,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Currency } from '../../common/enums';
-import { IOneMonthPortfolioResult } from '../../core/platforms/models';
-import { getNewPortfolioResultFactory } from '../../core/platforms/utils';
+import { IOneMonthPortfolioResult } from '../../libs/core/platforms/models';
+import { getNewPortfolioResultFactory } from '../../libs/core/platforms/utils';
 
 type ResultTableProps = {
   monthlyPortfolioResults: IOneMonthPortfolioResult[];

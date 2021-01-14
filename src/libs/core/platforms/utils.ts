@@ -1,7 +1,7 @@
 import Dinero from 'dinero.js';
 import { Moment } from 'moment';
 
-import { Currency } from '../../common/enums';
+import { Currency } from '../../../common/enums';
 
 import { MintosPlatform } from './MintosPlatform';
 import { IOneMonthPortfolioResult, IPortfolioResult, ITransaction, SupportedPlatformTypes } from './models';

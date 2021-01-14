@@ -1,7 +1,7 @@
 import Dinero from 'dinero.js';
 import moment from 'moment';
 
-import { Currency } from '../../common/enums';
+import { Currency } from '../../../common/enums';
 
 import {
   IBaseResult,

@@ -2,8 +2,8 @@ import Dinero from 'dinero.js';
 import moment from 'moment';
 import xlsx from 'xlsx';
 
-import { Currency, FileTypes } from '../../common/enums';
-import { getFirstWorkSheetFromRawFile } from '../../common/utils';
+import { Currency, FileTypes } from '../../../common/enums';
+import { getFirstWorkSheetFromRawFile } from '../../../common/utils';
 
 import { IGeneralDeposit, IGeneralWithdrawal, ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';

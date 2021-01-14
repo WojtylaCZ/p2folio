@@ -7,11 +7,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react';
 import ReactGA from 'react-ga';
 
-import { MintosPlatform } from '../core/platforms/MintosPlatform';
-import { SupportedPlatform, SupportedPlatformTypes } from '../core/platforms/models';
-import { TwinoPlatform } from '../core/platforms/TwinoPlatform';
-import { detectPlatform } from '../core/platforms/utils';
-import { ZonkyPlatform } from '../core/platforms/ZonkyPlatform';
+import { MintosPlatform } from '../libs/core/platforms/MintosPlatform';
+import { SupportedPlatform, SupportedPlatformTypes } from '../libs/core/platforms/models';
+import { TwinoPlatform } from '../libs/core/platforms/TwinoPlatform';
+import { detectPlatform } from '../libs/core/platforms/utils';
+import { ZonkyPlatform } from '../libs/core/platforms/ZonkyPlatform';
 
 import DragAndDropFilesInput from './DragAndDropFilesInput';
 import PlatformsTabMenuView from './PlatformsTabMenuView';

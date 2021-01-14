@@ -8,7 +8,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 import React, { useEffect, useState } from 'react';
 
-import { SupportedPlatform, SupportedPlatformTypes } from '../core/platforms/models';
+import { SupportedPlatform, SupportedPlatformTypes } from '../libs/core/platforms/models';
 
 import PlatformView from './PlatformView';
 import PortfolioView from './PortfolioView';
