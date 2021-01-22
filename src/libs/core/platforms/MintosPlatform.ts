@@ -51,8 +51,8 @@ export class MintosPlatform extends Platform {
   private static readonly platformFilenameSubstring = 'account-statement';
   private static readonly platformFileType = FileTypes.XLSX;
   private static readonly ASFileColumnHeaders = [
-    MintosASFileColumnHeadersDefs.TransactionId,
     MintosASFileColumnHeadersDefs.Date,
+    MintosASFileColumnHeadersDefs.TransactionId,
     MintosASFileColumnHeadersDefs.Details,
     MintosASFileColumnHeadersDefs.Turnover,
     MintosASFileColumnHeadersDefs.Balance,
