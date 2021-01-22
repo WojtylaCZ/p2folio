@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Currency } from '../common/enums';
 import { IOneMonthPortfolioResult } from '../libs/core/platforms/models';
-import { getNewPortfolioResultFactory, getPortfolioResultWithOptionalForexConversion } from '../libs/core/platforms/utils';
+import { createZeroPortfolioResult, getPortfolioResultWithOptionalForexConversion } from '../libs/core/platforms/utils';
 import { DataTable, getDefaultResultTableExample } from '../shared/components/DataTable';
 
 import ForexRateInput from './ForexRateInput';
@@ -39,7 +39,7 @@ const PortfolioView = (props: PortfolioPlatformsProps) => {
       forexRateInput = <ForexRateInput setForexRateValue={setForexRateValue} />;
     }
 
-    let portfolioResult = getNewPortfolioResultFactory(portfolioCurrency);
+    let portfolioResult = createZeroPortfolioResult(portfolioCurrency);
 
     if (!isCurrencyConversionNeeded || forexRate) {
       [portfolioResult, monthlyPortfolioResults] = getPortfolioResultWithOptionalForexConversion(

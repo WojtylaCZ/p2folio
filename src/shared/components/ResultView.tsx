@@ -37,19 +37,23 @@ export const ResultView = (props: ResultViewProps) => {
           squared={true}
         />
         <Rectangle
-          content={<ResultBox title={t('results.totalWithdrawal')} value={props.portfolioResult.deposit.toFormat()} />}
+          content={<ResultBox title={t('results.totalWithdrawal')} value={props.portfolioResult.withdrawal.toFormat()} />}
           width="100%"
           maxWidth="323px"
           squared={true}
         />
         <Rectangle
-          content={<ResultBox title={t('results.totalPrincipalReceived')} value={props.portfolioResult.deposit.toFormat()} />}
+          content={
+            <ResultBox title={t('results.totalPrincipalReceived')} value={props.portfolioResult.principalReceived.toFormat()} />
+          }
           width="100%"
           maxWidth="323px"
           squared={true}
         />
         <Rectangle
-          content={<ResultBox title={t('results.totalInterestsReceived')} value={props.portfolioResult.deposit.toFormat()} />}
+          content={
+            <ResultBox title={t('results.totalInterestsReceived')} value={props.portfolioResult.interestReceived.toFormat()} />
+          }
           width="100%"
           maxWidth="323px"
           squared={true}

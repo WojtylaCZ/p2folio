@@ -8,7 +8,7 @@ import ResultTable from '../../shared/components/ResultTable';
 import { ResultView } from '../../shared/components/ResultView';
 import DatasetContext from '../../shared/contexts/DatasetContext';
 import { IOneMonthPortfolioResult, IPortfolioResult, SupportedPlatformTypes } from '../core/platforms/models';
-import { defaultCurrencyForPlatform, getNewPortfolioResultFactory } from '../core/platforms/utils';
+import { createZeroPortfolioResult, defaultCurrencyForPlatform } from '../core/platforms/utils';
 import { PlatformsLogoLinks } from '../portfolio/components/PlatformsLogoLinks';
 
 function getPlatformTitle(platformId: string) {
@@ -48,7 +48,7 @@ export const PlatformPage = () => {
     portfolioResult = platformData.getPortfolioResult();
     monthlyPortfolioResults = platformData.getMonthlyPortfolioResults();
   } else {
-    portfolioResult = getNewPortfolioResultFactory(defaultCurrency);
+    portfolioResult = createZeroPortfolioResult(defaultCurrency);
     monthlyPortfolioResults = getDefaultResultTableExample();
   }
 

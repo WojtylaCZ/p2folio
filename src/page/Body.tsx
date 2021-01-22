@@ -1,3 +1,4 @@
+import i18n from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
@@ -14,7 +15,11 @@ import {
 } from '../libs/core/platforms/models';
 import { Platform } from '../libs/core/platforms/Platform';
 import { TwinoPlatform } from '../libs/core/platforms/TwinoPlatform';
-import { detectPlatform } from '../libs/core/platforms/utils';
+import {
+  createZeroPortfolioResult,
+  detectPlatform,
+  sumTwoPortfolioResultsWithOptionalForexConversion,
+} from '../libs/core/platforms/utils';
 import { ZonkyPlatform } from '../libs/core/platforms/ZonkyPlatform';
 import { ForexPage } from '../libs/forex/Forex.page';
 import { PlatformPage } from '../libs/platform/Platform.page';
@@ -29,23 +34,26 @@ export type NewRawFile = {
 
 export type Dataset = {
   portfolio: {
+    currency: Currency;
     monthlyResults: IOneMonthPortfolioResult[];
     result: IPortfolioResult;
   };
   platforms: Map<SupportedPlatformTypes, Map<Currency, Platform>>;
   numberOfPlatforms: number;
-  defaultCurrency: Currency;
 };
 
 export const Body = () => {
   const [dataset, setDataset] = useState({
+    portfolio: {
+      currency: Currency.EUR,
+      result: createZeroPortfolioResult(Currency.EUR),
+    },
     platforms: new Map([
       [SupportedPlatformTypes.MINTOS, new Map()],
       [SupportedPlatformTypes.TWINO, new Map()],
       [SupportedPlatformTypes.ZONKY, new Map()],
     ]),
     numberOfPlatforms: 0,
-    defaultCurrency: Currency.CZK,
   } as Dataset);
 
   useEffect(() => {
@@ -54,8 +62,6 @@ export const Body = () => {
 
   const addNewRawFile = (file: NewRawFile) => {
     const { name, data } = file;
-
-    console.log(file);
 
     const platformType = detectPlatform(name);
     let platformData: SupportedPlatform;
@@ -77,9 +83,28 @@ export const Body = () => {
     platformData.parseASFile(data);
     platformData.processTransactions();
 
-    setDataset((prevData: Dataset) => {
-      console.log(dataset.platforms.get(platformData.platform));
+    let newPortfolioCurrency = platformData.currency;
+    const newPortfolioResult = createZeroPortfolioResult(platformData.currency);
+    sumTwoPortfolioResultsWithOptionalForexConversion(
+      platformData.getPortfolioResult(),
+      newPortfolioResult,
+      0,
+      platformData.currency
+    );
 
+    if (dataset.numberOfPlatforms > 0) {
+      sumTwoPortfolioResultsWithOptionalForexConversion(
+        dataset.portfolio.result,
+        newPortfolioResult,
+        0,
+        dataset.portfolio.currency
+      );
+      newPortfolioCurrency = dataset.portfolio.currency;
+    }
+
+    setDataset((prevData: Dataset) => {
+      prevData.portfolio.currency = newPortfolioCurrency;
+      prevData.portfolio.result = newPortfolioResult;
       prevData.platforms.get(platformData.platform)!.set(platformData.currency, platformData);
       prevData.numberOfPlatforms = prevData.numberOfPlatforms + 1;
       return { ...prevData };
