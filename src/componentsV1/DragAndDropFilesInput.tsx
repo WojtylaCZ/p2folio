@@ -10,7 +10,7 @@ class DragAndDropFilesInput extends React.Component<FileUploadInputProps> {
   public onLoadHandler(event: any, filename: string) {
     ReactGA.event({
       category: 'FileUpload',
-      action: 'Drag and Drop'
+      action: 'Drag and Drop',
     });
     this.props.onRawFileUploaded(event.target.result, filename);
   }
@@ -43,10 +43,10 @@ class DragAndDropFilesInput extends React.Component<FileUploadInputProps> {
     return (
       <div
         id="drop_zone"
-        onDragOver={e => {
+        onDragOver={(e) => {
           this.handleDragOver(e);
         }}
-        onDrop={e => this.handleFileSelect(e)}
+        onDrop={(e) => this.handleFileSelect(e)}
       >
         {dropZoneText}
       </div>

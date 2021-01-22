@@ -1,8 +1,8 @@
 import Button from '@material-ui/core/Button';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
-import UploadedFilesContext from '../contexts/UploadedFilesContext';
+import NewRawFilesContext from '../contexts/AddNewRawFileContext';
 
 import './DragAndDrop.css';
 
@@ -10,7 +10,7 @@ const defaultBgColorDnD = '#ffffff';
 const dragOoverBgColorDnD = '#95959547';
 
 export const DragAndDrop = () => {
-  const { addUploadedFile } = useContext(UploadedFilesContext);
+  const { addNewRawFile } = useContext(NewRawFilesContext);
   const [bgColor, setBgColor] = useState(defaultBgColorDnD);
 
   const { t } = useTranslation();
@@ -20,11 +20,11 @@ export const DragAndDrop = () => {
       const reader = new FileReader();
 
       reader.onload = () => {
-        addUploadedFile({ name: file.name, rawData: reader.result as ArrayBuffer });
+        addNewRawFile({ name: file.name, data: reader.result as ArrayBuffer });
       };
-      reader.onerror = ex => {
+      reader.onerror = (error) => {
         // FIXME
-        console.log(ex);
+        console.log(error);
       };
       reader.readAsArrayBuffer(file);
     }
@@ -64,7 +64,7 @@ export const DragAndDrop = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: bgColor
+        backgroundColor: bgColor,
       }}
       onDragOver={handleDragOver}
       onDrop={handleDragDrop}
@@ -95,7 +95,7 @@ export const DragAndDrop = () => {
           style={{
             height: '3em',
             borderRadius: '4px',
-            backgroundColor: '#195bdd'
+            backgroundColor: '#195bdd',
           }}
         >
           {t('buttons.selectStatementFiles')}

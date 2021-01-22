@@ -1,13 +1,18 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { IPortfolioResult } from '../../libs/core/platforms/models';
 import { ForexSelect } from '../../libs/forex/components/ForexSelect';
 import { CumulativeGraph } from '../../libs/graphs/Cumulative';
 
 import { Rectangle } from './Rectangle';
 import { ResultBox } from './ResultBox';
 
-export const ResultView = () => {
+type ResultViewProps = {
+  portfolioResult: IPortfolioResult;
+};
+
+export const ResultView = (props: ResultViewProps) => {
   const { t } = useTranslation();
 
   return (
@@ -26,25 +31,25 @@ export const ResultView = () => {
 
       <div style={{ width: '100%', display: 'flex', flexFlow: 'row wrap', alignItems: 'center', justifyContent: 'center' }}>
         <Rectangle
-          content={<ResultBox title={t('results.totalDeposit')} value="200 000 Kc" />}
+          content={<ResultBox title={t('results.totalDeposit')} value={props.portfolioResult.deposit.toFormat()} />}
           width="100%"
           maxWidth="323px"
           squared={true}
         />
         <Rectangle
-          content={<ResultBox title={t('results.totalWithdrawal')} value="100 000 Kc" />}
+          content={<ResultBox title={t('results.totalWithdrawal')} value={props.portfolioResult.deposit.toFormat()} />}
           width="100%"
           maxWidth="323px"
           squared={true}
         />
         <Rectangle
-          content={<ResultBox title={t('results.totalPrincipalReceived')} value="300 000 Kc" />}
+          content={<ResultBox title={t('results.totalPrincipalReceived')} value={props.portfolioResult.deposit.toFormat()} />}
           width="100%"
           maxWidth="323px"
           squared={true}
         />
         <Rectangle
-          content={<ResultBox title={t('results.totalInterestsReceived')} value="100 000 Kc" />}
+          content={<ResultBox title={t('results.totalInterestsReceived')} value={props.portfolioResult.deposit.toFormat()} />}
           width="100%"
           maxWidth="323px"
           squared={true}

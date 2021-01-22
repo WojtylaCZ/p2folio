@@ -15,7 +15,7 @@ enum MintosASFileColumnHeadersDefs {
   Details = 'Details',
   Turnover = 'Turnover',
   Balance = 'Balance',
-  Currency = 'Currency'
+  Currency = 'Currency',
 }
 
 export interface IMintosDeposit extends IGeneralDeposit {
@@ -56,7 +56,7 @@ export class MintosPlatform extends Platform {
     MintosASFileColumnHeadersDefs.Details,
     MintosASFileColumnHeadersDefs.Turnover,
     MintosASFileColumnHeadersDefs.Balance,
-    MintosASFileColumnHeadersDefs.Currency
+    MintosASFileColumnHeadersDefs.Currency,
   ];
 
   public readonly platform = MintosPlatform.platform;
@@ -70,7 +70,7 @@ export class MintosPlatform extends Platform {
       raw: false,
       blankrows: false,
       defval: 0.0,
-      range: 1
+      range: 1,
     });
     this.transactionLog = transactionLog;
   }
@@ -194,25 +194,25 @@ export class MintosPlatform extends Platform {
     return {
       deposit: {
         deposit: Dinero({ currency: this.currency }),
-        incomingCurrencyExchange: Dinero({ currency: this.currency })
+        incomingCurrencyExchange: Dinero({ currency: this.currency }),
       },
       extraReceived: {
         cashbackReceived: Dinero({ currency: this.currency }),
-        referalReceived: Dinero({ currency: this.currency })
+        referalReceived: Dinero({ currency: this.currency }),
       },
       feesPaid: {
         currencyExchangeFeePaid: Dinero({ currency: this.currency }),
-        secondaryMarketFeePaid: Dinero({ currency: this.currency })
+        secondaryMarketFeePaid: Dinero({ currency: this.currency }),
       },
       interestReceived: {
         interestReceived: Dinero({ currency: this.currency }),
-        penaltyReceived: Dinero({ currency: this.currency })
+        penaltyReceived: Dinero({ currency: this.currency }),
       },
       principalReceived: {},
       withdrawal: {
         withdrawal: Dinero({ currency: this.currency }),
-        outgoingCurrencyExchange: Dinero({ currency: this.currency })
-      }
+        outgoingCurrencyExchange: Dinero({ currency: this.currency }),
+      },
     };
   }
 
@@ -225,7 +225,7 @@ export class MintosPlatform extends Platform {
     return Dinero({
       amount: intAmount,
       precision: amountPrecision,
-      currency
+      currency,
     });
   }
 }

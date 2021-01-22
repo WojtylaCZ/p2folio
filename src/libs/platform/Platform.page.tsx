@@ -1,20 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 import { getDefaultResultTableExample } from '../../shared/components/DataTable';
 import { IntroView } from '../../shared/components/IntroView';
 import ResultTable from '../../shared/components/ResultTable';
 import { ResultView } from '../../shared/components/ResultView';
+import DatasetContext from '../../shared/contexts/DatasetContext';
+import { SupportedPlatformTypes } from '../core/platforms/models';
+import { defaultCurrencyForPlatform, getNewPortfolioResultFactory } from '../core/platforms/utils';
 import { PlatformsLogoLinks } from '../portfolio/components/PlatformsLogoLinks';
 
 function getPlatformTitle(platformId: string) {
   return platformId[0].toUpperCase() + platformId.slice(1);
 }
 
+function getPlatform(platformId: string) {
+  switch (platformId) {
+    case SupportedPlatformTypes.MINTOS:
+      return SupportedPlatformTypes.MINTOS;
+    case SupportedPlatformTypes.TWINO:
+      return SupportedPlatformTypes.TWINO;
+    case SupportedPlatformTypes.ZONKY:
+      return SupportedPlatformTypes.ZONKY;
+    default:
+      return undefined;
+  }
+}
+
 export const PlatformPage = () => {
-  const { platformId } = useParams();
   const { t } = useTranslation();
+  const { platformId } = useParams<{ platformId: string }>();
+  const { dataset } = useContext(DatasetContext);
+
+  const platform = getPlatform(platformId);
+  if (!platform) {
+    return <Redirect to="/" />;
+  }
+
+  const defaultCurrency = defaultCurrencyForPlatform(platform);
+
+  let portfolioResult = dataset.platforms.get(platform)?.get(defaultCurrency)?.getPortfolioResult();
+  if (!portfolioResult) {
+    portfolioResult = getNewPortfolioResultFactory(defaultCurrency);
+  }
 
   return (
     <div style={{ width: '100%', display: 'flex', flexFlow: 'column wrap', alignItems: 'center' }}>
@@ -27,7 +56,7 @@ export const PlatformPage = () => {
       <IntroView />
 
       <h2>{t('titles.platformResultsH2')} </h2>
-      <ResultView />
+      <ResultView portfolioResult={portfolioResult} />
 
       <h2>{t('titles.viewInDetailH2')}</h2>
       <PlatformsLogoLinks />

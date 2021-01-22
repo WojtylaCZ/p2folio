@@ -30,7 +30,7 @@ function RenderTableHeader() {
     t('tableColumns.withdrawals'),
     t('tableColumns.interestsReceived'),
     t('tableColumns.feesPaid'),
-    t('tableColumns.extra')
+    t('tableColumns.extra'),
   ].map((value, index) => {
     return (
       <TableCell key={index} align="center" variant="head">

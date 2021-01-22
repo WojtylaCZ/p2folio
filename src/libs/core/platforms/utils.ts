@@ -29,8 +29,8 @@ export function getNewTransactionFactory(processingDate: Moment): ITransaction<a
       feesPaid: {},
       interestReceived: {},
       principalReceived: {},
-      withdrawal: {}
-    }
+      withdrawal: {},
+    },
   };
 }
 
@@ -41,7 +41,7 @@ export function getNewPortfolioResultFactory(currency: Currency): IPortfolioResu
     feesPaid: Dinero({ currency }),
     interestReceived: Dinero({ currency }),
     principalReceived: Dinero({ currency }),
-    withdrawal: Dinero({ currency })
+    withdrawal: Dinero({ currency }),
   };
 }
 
@@ -144,4 +144,17 @@ export function getPortfolioResultWithOptionalForexConversion(
   }
 
   return [portfolioResult, monthlyPortfolioResults];
+}
+
+export function defaultCurrencyForPlatform(platform: SupportedPlatformTypes): Currency {
+  switch (platform) {
+    case SupportedPlatformTypes.MINTOS:
+      return Currency.EUR;
+    case SupportedPlatformTypes.TWINO:
+      return Currency.EUR;
+    case SupportedPlatformTypes.ZONKY:
+      return Currency.CZK;
+    default:
+      return Currency.EUR;
+  }
 }
