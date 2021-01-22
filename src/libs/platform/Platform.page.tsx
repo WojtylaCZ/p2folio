@@ -7,7 +7,7 @@ import { IntroView } from '../../shared/components/IntroView';
 import ResultTable from '../../shared/components/ResultTable';
 import { ResultView } from '../../shared/components/ResultView';
 import DatasetContext from '../../shared/contexts/DatasetContext';
-import { SupportedPlatformTypes } from '../core/platforms/models';
+import { IOneMonthPortfolioResult, IPortfolioResult, SupportedPlatformTypes } from '../core/platforms/models';
 import { defaultCurrencyForPlatform, getNewPortfolioResultFactory } from '../core/platforms/utils';
 import { PlatformsLogoLinks } from '../portfolio/components/PlatformsLogoLinks';
 
@@ -33,16 +33,23 @@ export const PlatformPage = () => {
   const { platformId } = useParams<{ platformId: string }>();
   const { dataset } = useContext(DatasetContext);
 
-  const platform = getPlatform(platformId);
-  if (!platform) {
+  const platformType = getPlatform(platformId);
+  if (!platformType) {
     return <Redirect to="/" />;
   }
 
-  const defaultCurrency = defaultCurrencyForPlatform(platform);
+  const defaultCurrency = defaultCurrencyForPlatform(platformType);
 
-  let portfolioResult = dataset.platforms.get(platform)?.get(defaultCurrency)?.getPortfolioResult();
-  if (!portfolioResult) {
+  const platformData = dataset.platforms.get(platformType)?.get(defaultCurrency);
+
+  let portfolioResult: IPortfolioResult;
+  let monthlyPortfolioResults: IOneMonthPortfolioResult[];
+  if (platformData) {
+    portfolioResult = platformData.getPortfolioResult();
+    monthlyPortfolioResults = platformData.getMonthlyPortfolioResults();
+  } else {
     portfolioResult = getNewPortfolioResultFactory(defaultCurrency);
+    monthlyPortfolioResults = getDefaultResultTableExample();
   }
 
   return (
@@ -62,7 +69,7 @@ export const PlatformPage = () => {
       <PlatformsLogoLinks />
 
       <h2> {t('titles.portfolioResultTableH2')} </h2>
-      <ResultTable monthlyPortfolioResults={getDefaultResultTableExample()} />
+      <ResultTable monthlyPortfolioResults={monthlyPortfolioResults} />
     </div>
   );
 };
