@@ -7,5 +7,5 @@ export type AddNewRawFileContext = {
 };
 
 export default React.createContext<AddNewRawFileContext>({
-  addNewRawFile: (file: NewRawFile) => {}, // tslint:disable-line
+  addNewRawFile: (file: NewRawFile) => {} // tslint:disable-line
 });

@@ -12,13 +12,13 @@ i18n
     fallbackLng: 'en',
     debug: true,
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json'
     },
     // keySeparator: false, // we do not use keys in form messages.welcome
     saveMissing: true,
     interpolation: {
-      escapeValue: false, // react already safes from xss
-    },
+      escapeValue: false // react already safes from xss
+    }
   });
 
 export default i18n;

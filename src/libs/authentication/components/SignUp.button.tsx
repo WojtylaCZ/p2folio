@@ -12,7 +12,7 @@ export const SignUpButton = () => {
         color="primary"
         size="small"
         style={{
-          backgroundColor: '#195bdd',
+          backgroundColor: '#195bdd'
         }}
       >
         {t('buttons.signUp')}

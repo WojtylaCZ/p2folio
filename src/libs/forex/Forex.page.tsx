@@ -20,7 +20,7 @@ export const ForexPage = () => {
           alignItems: 'center',
           margin: '3em',
           maxWidth: '100%',
-          textAlign: 'center',
+          textAlign: 'center'
         }}
       >
         <h2> {t('titles.forexPageH2')} </h2>
@@ -35,7 +35,7 @@ export const ForexPage = () => {
           style={{
             maxWidth: '700px',
             backgroundColor: '#f9fcff',
-            width: '100%',
+            width: '100%'
           }}
         >
           <div
@@ -46,10 +46,10 @@ export const ForexPage = () => {
               label="1 USD ="
               type="number"
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
               InputProps={{
-                endAdornment: <InputAdornment position="end">CZK</InputAdornment>,
+                endAdornment: <InputAdornment position="end">CZK</InputAdornment>
               }}
               style={{ maxWidth: '100px' }}
             />
@@ -59,10 +59,10 @@ export const ForexPage = () => {
               label="1 USD ="
               type="number"
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
               InputProps={{
-                endAdornment: <InputAdornment position="end">EUR</InputAdornment>,
+                endAdornment: <InputAdornment position="end">EUR</InputAdornment>
               }}
               style={{ maxWidth: '100px' }}
             />
@@ -72,10 +72,10 @@ export const ForexPage = () => {
               label="1 USD ="
               type="number"
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
               InputProps={{
-                endAdornment: <InputAdornment position="end">GBP</InputAdornment>,
+                endAdornment: <InputAdornment position="end">GBP</InputAdornment>
               }}
               style={{ maxWidth: '100px' }}
             />
@@ -89,7 +89,7 @@ export const ForexPage = () => {
               maxWidth: '100%',
 
               borderRadius: '4px',
-              backgroundColor: '#195bdd',
+              backgroundColor: '#195bdd'
             }}
           >
             {t('buttons.saveForexRates')}

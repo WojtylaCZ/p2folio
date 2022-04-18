@@ -9,7 +9,7 @@ import {
   IOneMonthPortfolioResult,
   IPortfolioResult,
   ITransaction,
-  SupportedPlatformTypes,
+  SupportedPlatformTypes
 } from './models';
 
 export abstract class Platform {
@@ -37,7 +37,7 @@ export abstract class Platform {
 
         this.monthlyResults.unshift({
           month: newMonthMoment,
-          result: this.getNewBaseResultFactory(),
+          result: this.getNewBaseResultFactory()
         });
         processingMonth = newMonthMoment;
       }
@@ -75,7 +75,7 @@ export abstract class Platform {
         feesPaid: Dinero({ currency: this.currency }),
         interestReceived: Dinero({ currency: this.currency }),
         principalReceived: Dinero({ currency: this.currency }),
-        withdrawal: Dinero({ currency: this.currency }),
+        withdrawal: Dinero({ currency: this.currency })
       };
 
       const platformResult = this.getPlatformResult();
@@ -104,8 +104,8 @@ export abstract class Platform {
             feesPaid: Dinero({ currency: this.currency }),
             interestReceived: Dinero({ currency: this.currency }),
             principalReceived: Dinero({ currency: this.currency }),
-            withdrawal: Dinero({ currency: this.currency }),
-          },
+            withdrawal: Dinero({ currency: this.currency })
+          }
         };
 
         for (const [transactionType, key] of Object.entries(month.result)) {

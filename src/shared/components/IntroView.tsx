@@ -37,7 +37,7 @@ export const IntroView = () => {
           maxWidth: '650px',
           marginLeft: 'auto',
           marginRight: 'auto',
-          marginTop: '1em',
+          marginTop: '1em'
         }}
       >
         <div

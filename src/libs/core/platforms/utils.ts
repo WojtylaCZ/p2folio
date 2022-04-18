@@ -29,8 +29,8 @@ export function getNewTransactionFactory(processingDate: Moment): ITransaction<a
       feesPaid: {},
       interestReceived: {},
       principalReceived: {},
-      withdrawal: {},
-    },
+      withdrawal: {}
+    }
   };
 }
 
@@ -41,7 +41,7 @@ export function createZeroPortfolioResult(currency: Currency): IPortfolioResult 
     feesPaid: Dinero({ currency }),
     interestReceived: Dinero({ currency }),
     principalReceived: Dinero({ currency }),
-    withdrawal: Dinero({ currency }),
+    withdrawal: Dinero({ currency })
   };
 }
 
