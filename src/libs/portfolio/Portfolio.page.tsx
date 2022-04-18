@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
-import { Currency } from '../../common/enums';
 import { getDefaultResultTableExample } from '../../shared/components/DataTable';
 import { IntroView } from '../../shared/components/IntroView';
 import ResultTable from '../../shared/components/ResultTable';

@@ -1,4 +1,3 @@
-import i18n from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
@@ -11,14 +10,14 @@ import {
   IOneMonthPortfolioResult,
   IPortfolioResult,
   SupportedPlatform,
-  SupportedPlatformTypes,
+  SupportedPlatformTypes
 } from '../libs/core/platforms/models';
 import { Platform } from '../libs/core/platforms/Platform';
 import { TwinoPlatform } from '../libs/core/platforms/TwinoPlatform';
 import {
   createZeroPortfolioResult,
   detectPlatform,
-  sumTwoPortfolioResultsWithOptionalForexConversion,
+  sumTwoPortfolioResultsWithOptionalForexConversion
 } from '../libs/core/platforms/utils';
 import { ZonkyPlatform } from '../libs/core/platforms/ZonkyPlatform';
 import { ForexPage } from '../libs/forex/Forex.page';
@@ -46,14 +45,14 @@ export const Body = () => {
   const [dataset, setDataset] = useState({
     portfolio: {
       currency: Currency.EUR,
-      result: createZeroPortfolioResult(Currency.EUR),
+      result: createZeroPortfolioResult(Currency.EUR)
     },
     platforms: new Map([
       [SupportedPlatformTypes.MINTOS, new Map()],
       [SupportedPlatformTypes.TWINO, new Map()],
-      [SupportedPlatformTypes.ZONKY, new Map()],
+      [SupportedPlatformTypes.ZONKY, new Map()]
     ]),
-    numberOfPlatforms: 0,
+    numberOfPlatforms: 0
   } as Dataset);
 
   useEffect(() => {

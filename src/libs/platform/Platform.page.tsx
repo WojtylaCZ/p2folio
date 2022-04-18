@@ -40,13 +40,22 @@ export const PlatformPage = () => {
 
   const defaultCurrency = defaultCurrencyForPlatform(platformType);
 
-  const platformData = dataset.platforms.get(platformType)?.get(defaultCurrency);
+  const platformData = dataset.platforms.get(platformType)
+    ? dataset.platforms.get(platformType)!.get(defaultCurrency)
+    : undefined;
 
   let portfolioResult: IPortfolioResult;
   let monthlyPortfolioResults: IOneMonthPortfolioResult[];
   if (platformData) {
     portfolioResult = platformData.getPortfolioResult();
     monthlyPortfolioResults = platformData.getMonthlyPortfolioResults();
+
+    if (platformData.platform === SupportedPlatformTypes.ZONKY) {
+      console.log(platformData.getPlatformResult().interestReceived.interestReceived.toFormat());
+      console.log(platformData.getPlatformResult().interestReceived.penaltyReceived.toFormat());
+      console.log(platformData.getPlatformResult().feesPaid.plaformFeePaid.toFormat());
+      console.log(platformData.getPlatformResult().feesPaid.secondaryMarketFeePaid.toFormat());
+    }
   } else {
     portfolioResult = createZeroPortfolioResult(defaultCurrency);
     monthlyPortfolioResults = getDefaultResultTableExample();
