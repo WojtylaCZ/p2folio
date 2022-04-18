@@ -2,8 +2,8 @@ import Dinero from 'dinero.js';
 import moment from 'moment';
 import xlsx from 'xlsx';
 
-import { Currency, FileTypes } from '../../common/enums';
-import { getFirstWorkSheetFromRawFile } from '../../common/utils';
+import { Currency, FileTypes } from '../../../common/enums';
+import { getFirstWorkSheetFromRawFile } from '../../../common/utils';
 
 import { IGeneralDeposit, IGeneralWithdrawal, ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';
@@ -15,7 +15,7 @@ enum TwinoASFileColumnHeadersDefs {
   TransactionType = 'Type',
   PaymentType = 'Description',
   LoanId = 'Loan Number',
-  ProcessingAmount = 'Amount, EUR'
+  ProcessingAmount = 'Amount, EUR',
 }
 
 export interface ITwinoInterestReceived {
@@ -40,7 +40,7 @@ export class TwinoPlatform extends Platform {
     TwinoASFileColumnHeadersDefs.TransactionType,
     TwinoASFileColumnHeadersDefs.PaymentType,
     TwinoASFileColumnHeadersDefs.LoanId,
-    TwinoASFileColumnHeadersDefs.ProcessingAmount
+    TwinoASFileColumnHeadersDefs.ProcessingAmount,
   ];
 
   public readonly platform = TwinoPlatform.platform;
@@ -54,7 +54,7 @@ export class TwinoPlatform extends Platform {
       raw: false,
       blankrows: false,
       defval: 0.0,
-      range: 3
+      range: 3,
     });
     this.transactionLog = transactionLog.reverse();
   }
@@ -80,13 +80,13 @@ export class TwinoPlatform extends Platform {
             transaction.result.deposit.deposit = Dinero({
               amount: Math.abs(intAmount),
               precision: amountPrecision,
-              currency: this.currency
+              currency: this.currency,
             });
           } else if (intAmount < 0) {
             transaction.result.withdrawal.withdrawal = Dinero({
               amount: Math.abs(intAmount),
               precision: amountPrecision,
-              currency: this.currency
+              currency: this.currency,
             });
           }
           break;
@@ -97,14 +97,14 @@ export class TwinoPlatform extends Platform {
           transaction.result.interestReceived.penaltyReceived = Dinero({
             amount: Math.abs(intAmount),
             precision: amountPrecision,
-            currency: this.currency
+            currency: this.currency,
           });
           break;
         case 'INTEREST':
           transaction.result.interestReceived.interestReceived = Dinero({
             amount: intAmount,
             precision: amountPrecision,
-            currency: this.currency
+            currency: this.currency,
           });
           break;
       }
@@ -116,18 +116,18 @@ export class TwinoPlatform extends Platform {
   protected getNewBaseResultFactory() {
     return {
       deposit: {
-        deposit: Dinero({ currency: this.currency })
+        deposit: Dinero({ currency: this.currency }),
       },
       extraReceived: {},
       feesPaid: {},
       interestReceived: {
         interestReceived: Dinero({ currency: this.currency }),
-        penaltyReceived: Dinero({ currency: this.currency })
+        penaltyReceived: Dinero({ currency: this.currency }),
       },
       principalReceived: {},
       withdrawal: {
-        withdrawal: Dinero({ currency: this.currency })
-      }
+        withdrawal: Dinero({ currency: this.currency }),
+      },
     };
   }
 }

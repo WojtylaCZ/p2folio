@@ -8,16 +8,16 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Currency } from '../../common/enums';
-import { IOneMonthPortfolioResult } from '../../core/platforms/models';
-import { getNewPortfolioResultFactory } from '../../core/platforms/utils';
+import { IOneMonthPortfolioResult } from '../../libs/core/platforms/models';
+import { createZeroPortfolioResult } from '../../libs/core/platforms/utils';
 
 type ResultTableProps = {
   monthlyPortfolioResults: IOneMonthPortfolioResult[];
 };
 
 export function getDefaultResultTableExample(): IOneMonthPortfolioResult[] {
-  const example1 = { month: moment(), result: getNewPortfolioResultFactory(Currency.CZK) };
-  const example2 = { month: moment().subtract(1, 'months'), result: getNewPortfolioResultFactory(Currency.EUR) };
+  const example1 = { month: moment(), result: createZeroPortfolioResult(Currency.CZK) };
+  const example2 = { month: moment().subtract(1, 'months'), result: createZeroPortfolioResult(Currency.EUR) };
   return [example1, example2];
 }
 
@@ -30,7 +30,7 @@ function RenderTableHeader() {
     t('tableColumns.withdrawals'),
     t('tableColumns.interestsReceived'),
     t('tableColumns.feesPaid'),
-    t('tableColumns.extra')
+    t('tableColumns.extra'),
   ].map((value, index) => {
     return (
       <TableCell key={index} align="center" variant="head">

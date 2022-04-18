@@ -2,8 +2,8 @@ import Dinero from 'dinero.js';
 import moment from 'moment';
 import xlsx from 'xlsx';
 
-import { Currency, FileTypes } from '../../common/enums';
-import { getFirstWorkSheetFromRawFile } from '../../common/utils';
+import { Currency, FileTypes } from '../../../common/enums';
+import { getFirstWorkSheetFromRawFile } from '../../../common/utils';
 
 import { IGeneralDeposit, IGeneralWithdrawal, ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';
@@ -82,7 +82,7 @@ export class ZonkyPlatform extends Platform {
       const processingDate = moment(transactionRecord[ZonkyASFileColumnHeadersDefs.Date], 'DD.MM.YYYY');
       const transaction = getNewTransactionFactory(processingDate);
 
-      const amount = this.getAmount(transactionRecord[ZonkyASFileColumnHeadersDefs.ProcessingAmount], Currency.CZK);
+      const amount = this.getAmount(transactionRecord[ZonkyASFileColumnHeadersDefs.ProcessingAmount].toString(), Currency.CZK);
 
       switch (transactionRecord[ZonkyASFileColumnHeadersDefs.TransactionType]) {
         case 'Poplatek za investování':
@@ -102,22 +102,22 @@ export class ZonkyPlatform extends Platform {
           break;
         case 'Vrácení platby':
           transaction.result.interestReceived.interestReceived = this.getInterestReceived(
-            transactionRecord[ZonkyASFileColumnHeadersDefs.InterestReceived],
+            transactionRecord[ZonkyASFileColumnHeadersDefs.InterestReceived].toString(),
             Currency.CZK
           ).multiply(-1);
           transaction.result.principalReceived.principalReceived = this.getPrincipalReceived(
-            transactionRecord[ZonkyASFileColumnHeadersDefs.PrincipalReceived],
+            transactionRecord[ZonkyASFileColumnHeadersDefs.PrincipalReceived].toString(),
             Currency.CZK
           ).multiply(-1);
           break;
 
         case 'Splátka půjčky':
           transaction.result.interestReceived.interestReceived = this.getInterestReceived(
-            transactionRecord[ZonkyASFileColumnHeadersDefs.InterestReceived],
+            transactionRecord[ZonkyASFileColumnHeadersDefs.InterestReceived].toString(),
             Currency.CZK
           );
           transaction.result.principalReceived.principalReceived = this.getPrincipalReceived(
-            transactionRecord[ZonkyASFileColumnHeadersDefs.PrincipalReceived],
+            transactionRecord[ZonkyASFileColumnHeadersDefs.PrincipalReceived].toString(),
             Currency.CZK
           );
 
@@ -173,9 +173,9 @@ export class ZonkyPlatform extends Platform {
     });
   }
 
-  private getInterestReceived(rawPrincipalReceived: string, currency: Currency): Dinero.Dinero {
-    const principalReceivedPrecision = rawPrincipalReceived.length - (rawPrincipalReceived.indexOf('.') + 1);
-    const principalReceivedInt = Math.abs(parseInt(rawPrincipalReceived.replace(/,/g, '').replace(/\./g, ''), 10));
+  private getInterestReceived(rawInterestReceived: string, currency: Currency): Dinero.Dinero {
+    const principalReceivedPrecision = rawInterestReceived.length - (rawInterestReceived.indexOf('.') + 1);
+    const principalReceivedInt = Math.abs(parseInt(rawInterestReceived.replace(/,/g, '').replace(/\./g, ''), 10));
     return Dinero({
       amount: principalReceivedInt,
       precision: principalReceivedPrecision,

@@ -2,7 +2,7 @@ import xlsx from 'xlsx';
 
 export function loadSelectedFile(file: File, cb: (event: any, filename: string) => void) {
   const reader = new FileReader();
-  reader.onerror = ex => {
+  reader.onerror = (ex) => {
     // FIXME
     console.log(ex);
   };

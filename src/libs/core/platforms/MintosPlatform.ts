@@ -2,8 +2,8 @@ import Dinero from 'dinero.js';
 import moment from 'moment';
 import xlsx from 'xlsx';
 
-import { Currency, FileTypes } from '../../common/enums';
-import { getFirstWorkSheetFromRawFile } from '../../common/utils';
+import { Currency, FileTypes } from '../../../common/enums';
+import { getFirstWorkSheetFromRawFile } from '../../../common/utils';
 
 import { IGeneralDeposit, IGeneralWithdrawal, ITransaction, SupportedPlatformTypes } from './models';
 import { Platform } from './Platform';
@@ -51,8 +51,8 @@ export class MintosPlatform extends Platform {
   private static readonly platformFilenameSubstring = 'account-statement';
   private static readonly platformFileType = FileTypes.XLSX;
   private static readonly ASFileColumnHeaders = [
-    MintosASFileColumnHeadersDefs.TransactionId,
     MintosASFileColumnHeadersDefs.Date,
+    MintosASFileColumnHeadersDefs.TransactionId,
     MintosASFileColumnHeadersDefs.Details,
     MintosASFileColumnHeadersDefs.Turnover,
     MintosASFileColumnHeadersDefs.Balance,
@@ -99,7 +99,7 @@ export class MintosPlatform extends Platform {
         case 'Incoming client payment':
           transaction.result.deposit.deposit = amount;
           break;
-        case 'Withdrawals':
+        case 'Withdrawal':
           transaction.result.withdrawal.withdrawal = amount;
           break;
         case 'Currency exchange fee':

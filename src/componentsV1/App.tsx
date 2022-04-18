@@ -7,11 +7,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react';
 import ReactGA from 'react-ga';
 
-import { MintosPlatform } from '../core/platforms/MintosPlatform';
-import { SupportedPlatform, SupportedPlatformTypes } from '../core/platforms/models';
-import { TwinoPlatform } from '../core/platforms/TwinoPlatform';
-import { detectPlatform } from '../core/platforms/utils';
-import { ZonkyPlatform } from '../core/platforms/ZonkyPlatform';
+import { MintosPlatform } from '../libs/core/platforms/MintosPlatform';
+import { SupportedPlatform, SupportedPlatformTypes } from '../libs/core/platforms/models';
+import { TwinoPlatform } from '../libs/core/platforms/TwinoPlatform';
+import { detectPlatform } from '../libs/core/platforms/utils';
+import { ZonkyPlatform } from '../libs/core/platforms/ZonkyPlatform';
 
 import DragAndDropFilesInput from './DragAndDropFilesInput';
 import PlatformsTabMenuView from './PlatformsTabMenuView';
@@ -29,7 +29,7 @@ interface INewRawFile {
 
 type AppState = {
   newRawFiles: INewRawFile[];
-  portfolioPlatforms: (SupportedPlatform)[];
+  portfolioPlatforms: SupportedPlatform[];
   statementInfo?: string;
   uploadEnabled: boolean;
 };
@@ -39,16 +39,16 @@ class App extends React.Component<{}, AppState> {
     newRawFiles: [] as INewRawFile[],
     portfolioPlatforms: [] as SupportedPlatform[],
     statementInfo: '',
-    uploadEnabled: true
+    uploadEnabled: true,
   };
 
   public handleUploadedRawFile(rawFile: ArrayBuffer, filename: string) {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       newRawFiles: [...prevState.newRawFiles, { filename, rawFile }],
       uploadEnabled: false,
       // if error occurs while loading multiple files, keep it
       // if there is a new upload, erase the error
-      statementInfo: prevState.newRawFiles.length ? prevState.statementInfo : ''
+      statementInfo: prevState.newRawFiles.length ? prevState.statementInfo : '',
     }));
   }
 
@@ -203,32 +203,32 @@ class App extends React.Component<{}, AppState> {
 
         ReactGA.event({
           category: 'PlatformUsed',
-          action: platformData.platform
+          action: platformData.platform,
         });
 
-        const existingDataIndex = this.state.portfolioPlatforms.findIndex(platform => {
+        const existingDataIndex = this.state.portfolioPlatforms.findIndex((platform) => {
           return platform.platform === platformData.platform && platform.currency === platformData.currency;
         });
 
         platformData.parseASFile(rawFile);
         platformData.processTransactions();
 
-        this.setState(prevState => {
+        this.setState((prevState) => {
           if (existingDataIndex >= 0) {
             prevState.portfolioPlatforms.splice(existingDataIndex, 1);
           }
           return {
             newRawFiles: prevState.newRawFiles.slice(1, prevState.newRawFiles.length),
             portfolioPlatforms: [...prevState.portfolioPlatforms, platformData],
-            uploadEnabled: true
+            uploadEnabled: true,
           };
         });
       } catch (e) {
         console.log(e);
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           newRawFiles: prevState.newRawFiles.slice(1),
           statementInfo: 'ERROR: chyba při zpracováni souboru ' + prevState.newRawFiles[0].filename,
-          uploadEnabled: true
+          uploadEnabled: true,
         }));
       }
     }

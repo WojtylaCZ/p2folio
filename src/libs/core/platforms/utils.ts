@@ -1,10 +1,10 @@
 import Dinero from 'dinero.js';
 import { Moment } from 'moment';
 
-import { Currency } from '../../common/enums';
+import { Currency } from '../../../common/enums';
 
 import { MintosPlatform } from './MintosPlatform';
-import { IOneMonthPortfolioResult, IPortfolioResult, ITransaction, SupportedPlatformTypes } from './models';
+import { IOneMonthPortfolioResult, IPortfolioResult, ITransaction, SupportedPlatform, SupportedPlatformTypes } from './models';
 import { TwinoPlatform } from './TwinoPlatform';
 import { ZonkyPlatform } from './ZonkyPlatform';
 
@@ -29,19 +29,19 @@ export function getNewTransactionFactory(processingDate: Moment): ITransaction<a
       feesPaid: {},
       interestReceived: {},
       principalReceived: {},
-      withdrawal: {}
-    }
+      withdrawal: {},
+    },
   };
 }
 
-export function getNewPortfolioResultFactory(currency: Currency): IPortfolioResult {
+export function createZeroPortfolioResult(currency: Currency): IPortfolioResult {
   return {
     deposit: Dinero({ currency }),
     extraReceived: Dinero({ currency }),
     feesPaid: Dinero({ currency }),
     interestReceived: Dinero({ currency }),
     principalReceived: Dinero({ currency }),
-    withdrawal: Dinero({ currency })
+    withdrawal: Dinero({ currency }),
   };
 }
 
@@ -74,11 +74,11 @@ export function sumTwoPortfolioResultsWithOptionalForexConversion(
 }
 
 export function getPortfolioResultWithOptionalForexConversion(
-  portfolioPlatforms: any,
+  portfolioPlatforms: SupportedPlatform[],
   portfolioCurrency: Currency,
   forexRate: number
 ): [IPortfolioResult, IOneMonthPortfolioResult[]] {
-  const portfolioResult = getNewPortfolioResultFactory(portfolioCurrency);
+  const portfolioResult = createZeroPortfolioResult(portfolioCurrency);
   const monthlyPortfolioResults: IOneMonthPortfolioResult[] = [];
 
   for (const platform of portfolioPlatforms) {
@@ -116,7 +116,7 @@ export function getPortfolioResultWithOptionalForexConversion(
       if (monthDataToAdd.month.isAfter(resultMonth.month, 'month')) {
         // isAfter = is later in time, but earlier in the monthly results, so prepend it in the list before resultMonth
         const month = rowToAdd[indexInRowToAdd].month.clone();
-        const result = getNewPortfolioResultFactory(portfolioCurrency);
+        const result = createZeroPortfolioResult(portfolioCurrency);
 
         sumTwoPortfolioResultsWithOptionalForexConversion(rowToAdd[indexInRowToAdd].result, result, forexRate, Currency.CZK);
 
@@ -133,7 +133,7 @@ export function getPortfolioResultWithOptionalForexConversion(
       // there are no existing months to sum with, so just append all
       while (indexInRowToAdd < rowToAdd.length) {
         const month = rowToAdd[indexInRowToAdd].month.clone();
-        const result = getNewPortfolioResultFactory(portfolioCurrency);
+        const result = createZeroPortfolioResult(portfolioCurrency);
 
         sumTwoPortfolioResultsWithOptionalForexConversion(rowToAdd[indexInRowToAdd].result, result, forexRate, Currency.CZK);
 
@@ -144,4 +144,17 @@ export function getPortfolioResultWithOptionalForexConversion(
   }
 
   return [portfolioResult, monthlyPortfolioResults];
+}
+
+export function defaultCurrencyForPlatform(platform: SupportedPlatformTypes): Currency {
+  switch (platform) {
+    case SupportedPlatformTypes.MINTOS:
+      return Currency.EUR;
+    case SupportedPlatformTypes.TWINO:
+      return Currency.EUR;
+    case SupportedPlatformTypes.ZONKY:
+      return Currency.CZK;
+    default:
+      return Currency.EUR;
+  }
 }

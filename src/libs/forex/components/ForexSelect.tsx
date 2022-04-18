@@ -15,13 +15,13 @@ export const ForexSelect = () => {
         justifyContent: 'space-between',
         marginLeft: '0.5em',
         marginRight: '0.5em',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <div
         style={{
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
       >
         <div style={{ marginRight: '0.5em' }}> {t('links.selectBaseCurrency')} </div>

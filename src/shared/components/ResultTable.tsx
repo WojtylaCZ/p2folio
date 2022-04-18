@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IOneMonthPortfolioResult } from '../../core/platforms/models';
+import { IOneMonthPortfolioResult } from '../../libs/core/platforms/models';
 import { ForexSelect } from '../../libs/forex/components/ForexSelect';
 
 import { DataTable } from './DataTable';

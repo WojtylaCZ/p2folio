@@ -2,7 +2,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import React from 'react';
 
-import { IPortfolioResult } from '../core/platforms/models';
+import { IPortfolioResult } from '../libs/core/platforms/models';
 
 type PortfolioHeaderProps = {
   portfolioResult: IPortfolioResult;

@@ -8,13 +8,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 import React, { useEffect, useState } from 'react';
 
-import { SupportedPlatform, SupportedPlatformTypes } from '../core/platforms/models';
+import { SupportedPlatform, SupportedPlatformTypes } from '../libs/core/platforms/models';
 
 import PlatformView from './PlatformView';
 import PortfolioView from './PortfolioView';
 
 export type PortfolioPlatformsProps = {
-  portfolioPlatforms: (SupportedPlatform)[];
+  portfolioPlatforms: SupportedPlatform[];
 };
 
 interface ITabPanelProps {
@@ -43,7 +43,7 @@ function TabPanel(props: ITabPanelProps) {
 function a11yProps(index: any) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -52,11 +52,11 @@ const useStyles = makeStyles((theme: Theme) =>
     tabEnabled: {
       fontSize: '96%',
       fontWeight: 'bold',
-      textTransform: 'none'
+      textTransform: 'none',
     },
     tabDisabled: {
-      textTransform: 'none'
-    }
+      textTransform: 'none',
+    },
   })
 );
 

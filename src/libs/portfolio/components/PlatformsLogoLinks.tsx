@@ -8,7 +8,7 @@ import { TwinoLogo } from '../../../shared/icons/components/TwinoLogo';
 import { ZonkyLogo } from '../../../shared/icons/components/ZonkyLogo';
 
 export const PlatformsLogoLinks = (props: any) => {
-  const { platformId } = useParams();
+  const { platformId } = useParams<{ platformId: string }>();
   let portfolioLink;
   if (platformId) {
     portfolioLink = (

@@ -1,10 +1,10 @@
 import Grid from '@material-ui/core/Grid';
 import React from 'react';
 
-import { MintosPlatform } from '../core/platforms/MintosPlatform';
-import { IBaseResult } from '../core/platforms/models';
-import { TwinoPlatform } from '../core/platforms/TwinoPlatform';
-import { ZonkyPlatform } from '../core/platforms/ZonkyPlatform';
+import { MintosPlatform } from '../libs/core/platforms/MintosPlatform';
+import { IBaseResult } from '../libs/core/platforms/models';
+import { TwinoPlatform } from '../libs/core/platforms/TwinoPlatform';
+import { ZonkyPlatform } from '../libs/core/platforms/ZonkyPlatform';
 
 import MintosSpecificHeaderView from './platformSpecific/MintosSpecificHeaderView';
 import TwinoSpecificHeaderView from './platformSpecific/TwinoSpecificHeaderView';
@@ -32,20 +32,20 @@ const PlatformHeaderView = (props: PlatformDataProps) => {
       principalReceived: 'Neimplementovano',
       interestReceived: 'Přijaté úroky + Obdržené poplatky z prodlení',
       feesPaid: 'Poplatek za obchod na sekundárním trhu  + Poplatek směnárny',
-      extraReceived: 'Bonus za doporučení příteli + Cashback bonus'
+      extraReceived: 'Bonus za doporučení příteli + Cashback bonus',
     };
   } else if (props.platformData instanceof TwinoPlatform) {
     platformSpecificHeader = <TwinoSpecificHeaderView platformResult={platformResult} />;
     portfolioResultTooltips = {
       principalReceived: 'Neimplementovano',
-      interestReceived: 'Přijaté úroky + Obdržené poplatky z prodlení'
+      interestReceived: 'Přijaté úroky + Obdržené poplatky z prodlení',
     };
   } else if (props.platformData instanceof ZonkyPlatform) {
     platformSpecificHeader = <ZonkySpecificHeaderView platformResult={platformResult} />;
     portfolioResultTooltips = {
       principalReceived: 'Splátka půjčky + prodej na sekundárním trhu',
       interestReceived: 'Přijaté úroky + pokuty',
-      feesPaid: 'Poplatek za investování + za prodej na sekundárním trhu'
+      feesPaid: 'Poplatek za investování + za prodej na sekundárním trhu',
     };
   }
   return (
