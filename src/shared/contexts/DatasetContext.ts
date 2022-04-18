@@ -7,5 +7,5 @@ export type DatasetContext = {
 };
 
 export default React.createContext<DatasetContext>({
-  dataset: {} as Dataset,
+  dataset: {} as Dataset
 });

@@ -9,19 +9,19 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
       display: 'flex',
-      flexWrap: 'wrap',
+      flexWrap: 'wrap'
     },
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: 200,
+      width: 200
     },
     button: {
-      margin: theme.spacing(4),
+      margin: theme.spacing(4)
     },
     input: {
-      display: 'none',
-    },
+      display: 'none'
+    }
   })
 );
 

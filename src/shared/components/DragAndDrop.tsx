@@ -22,7 +22,7 @@ export const DragAndDrop = () => {
       reader.onload = () => {
         addNewRawFile({ name: file.name, data: reader.result as ArrayBuffer });
       };
-      reader.onerror = (error) => {
+      reader.onerror = error => {
         // FIXME
         console.log(error);
       };
@@ -64,7 +64,7 @@ export const DragAndDrop = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: bgColor,
+        backgroundColor: bgColor
       }}
       onDragOver={handleDragOver}
       onDrop={handleDragDrop}
@@ -95,7 +95,7 @@ export const DragAndDrop = () => {
           style={{
             height: '3em',
             borderRadius: '4px',
-            backgroundColor: '#195bdd',
+            backgroundColor: '#195bdd'
           }}
         >
           {t('buttons.selectStatementFiles')}

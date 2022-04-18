@@ -10,7 +10,7 @@ class UploadFilesInput extends React.Component<FileUploadInputProps> {
   public onLoadHandler(event: any, filename: string) {
     ReactGA.event({
       category: 'FileUpload',
-      action: 'Choose file',
+      action: 'Choose file'
     });
     this.props.onRawFileUploaded(event.target.result, filename);
   }
@@ -31,7 +31,7 @@ class UploadFilesInput extends React.Component<FileUploadInputProps> {
           type="file"
           disabled={!this.props.uploadEnabled}
           multiple={true}
-          onChange={(e) => {
+          onChange={e => {
             this.onFileInputChange(e);
           }}
         />

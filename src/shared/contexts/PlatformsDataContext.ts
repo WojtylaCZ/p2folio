@@ -7,5 +7,5 @@ export type PortfolioPlatformsContext = {
 };
 
 export default React.createContext<PortfolioPlatformsContext>({
-  portfolioPlatforms: [],
+  portfolioPlatforms: []
 });

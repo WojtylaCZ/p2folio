@@ -39,7 +39,7 @@ export const SignUpPage = () => {
           maxWidth: '350px',
           width: '100%',
           marginTop: '2em',
-          marginBottom: '1.5em',
+          marginBottom: '1.5em'
         }}
       >
         <CredentialsInput />
@@ -51,7 +51,7 @@ export const SignUpPage = () => {
             borderRadius: '4px',
             backgroundColor: '#195bdd',
             width: '100%',
-            marginTop: '2em',
+            marginTop: '2em'
           }}
         >
           {t('buttons.signUp')}

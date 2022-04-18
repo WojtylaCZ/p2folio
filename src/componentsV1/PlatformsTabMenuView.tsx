@@ -43,7 +43,7 @@ function TabPanel(props: ITabPanelProps) {
 function a11yProps(index: any) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`
   };
 }
 
@@ -52,11 +52,11 @@ const useStyles = makeStyles((theme: Theme) =>
     tabEnabled: {
       fontSize: '96%',
       fontWeight: 'bold',
-      textTransform: 'none',
+      textTransform: 'none'
     },
     tabDisabled: {
-      textTransform: 'none',
-    },
+      textTransform: 'none'
+    }
   })
 );
 
